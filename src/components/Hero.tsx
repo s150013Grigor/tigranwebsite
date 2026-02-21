@@ -69,8 +69,8 @@ export default function Hero({
         }}
       />
 
-      {/* ── Bottom fade — vloeiende overgang naar ServicesSection ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-36 md:h-48 z-[2] pointer-events-none bg-gradient-to-b from-transparent to-[#050505]" />
+      {/* ── Bottom fade — brede vloeiende overgang naar ServicesSection ── */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 md:h-80 lg:h-[28rem] z-[2] pointer-events-none bg-gradient-to-b from-transparent to-[#050505]" />
 
       {/* ── Content ── */}
       <div className="relative z-10 flex items-center justify-center w-full h-full">
@@ -96,7 +96,7 @@ export default function Hero({
 
           {/* Titel — woord-voor-woord staggered reveal met 3D perspectief */}
           <h1
-            className="font-heading font-bold leading-[0.9] tracking-[-0.02em] mb-10 overflow-hidden"
+            className="font-heading font-bold leading-[1.05] tracking-[-0.02em] mb-10 pb-2"
             style={{ perspective: '1200px' }}
           >
             <span className="flex flex-wrap justify-center gap-x-5 md:gap-x-8">
