@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -15,7 +14,7 @@ export default function AboutSection({
   title = 'Over Tigran Media',
   subtitle = 'Uw verhaal, mijn passie',
   description = 'Als professionele fotograaf in Vlaanderen geloof ik dat elke foto een verhaal vertelt. Mijn passie ligt in het vastleggen van authentieke momenten — van zakelijke portretten tot bruisende evenementen. Met een persoonlijke, creatieve aanpak zorg ik ervoor dat elke shoot uniek is en uw verhaal op de mooiste manier verteld wordt. Ik werk in heel Vlaanderen en daarbuiten, altijd op zoek naar het perfecte licht en het juiste moment.',
-  image = 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800&h=1000&fit=crop',
+  image = '/zelfportret.webp',
 }: AboutSectionProps) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -31,13 +30,15 @@ export default function AboutSection({
             className="relative"
           >
             <div className="aspect-[4/5] relative overflow-hidden">
-              <Image
-                src={image}
-                alt="Tigran - Professionele fotograaf"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              {/* WebP als primair formaat, JPG als fallback voor oudere browsers */}
+              <picture className="block w-full h-full">
+                <source srcSet="/zelfportret.webp" type="image/webp" />
+                <img
+                  src="/Zelfportret8feb2026.jpg"
+                  alt="Tigran - Fotograaf bij Tigran Media"
+                  className="w-full h-full object-cover"
+                />
+              </picture>
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-accent" />
           </motion.div>
