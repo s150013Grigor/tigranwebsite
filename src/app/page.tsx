@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import Gallery from '@/components/Gallery';
 import ServicesSection from '@/components/ServicesSection';
+import MarqueeTicker from '@/components/MarqueeTicker';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
 import BlogCard from '@/components/BlogCard';
@@ -43,13 +44,17 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(photographerSchema) }}
       />
 
-      {/* Hero - fixed background */}
+      {/* Hero */}
       <Hero />
 
-      {/* All content after hero scrolls over the fixed background */}
+      {/* All content after hero */}
       <div className="relative z-10">
+
         {/* Services */}
         <ServicesSection albums={albumServices} />
+
+        {/* Marquee ticker — visueel scheidingselement */}
+        <MarqueeTicker />
 
         {/* Portfolio Gallery */}
         <Gallery
@@ -59,8 +64,17 @@ export default function HomePage() {
           subtitle="Ons werk"
         />
 
-        {/* Static Divider (formerly Parallax) */}
-        <div className="relative overflow-hidden bg-black" style={{ height: '50vh' }}>
+        {/* Gouden accent lijn */}
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-accent/[0.18] to-transparent" />
+
+        {/* Marquee ticker — tweede scheidingselement */}
+        <MarqueeTicker />
+
+        {/* Gouden accent lijn */}
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-accent/[0.18] to-transparent" />
+
+        {/* Divider — foto met quote */}
+        <div className="relative overflow-hidden bg-black" style={{ height: '60vh' }}>
           <div className="absolute inset-0 w-full h-full">
             <div
               className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
@@ -76,25 +90,28 @@ export default function HomePage() {
               <p className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
                 Kwaliteit & Passie
               </p>
-              <h2 className="text-3xl md:text-5xl 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-heading font-bold text-white max-w-3xl 4xl:max-w-5xl">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl 3xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold tracking-[0.02em] text-gradient-gold max-w-3xl 4xl:max-w-5xl">
                 Elk Moment Verdient het om Vastgelegd te Worden
               </h2>
             </div>
           </div>
         </div>
 
+        {/* Vloeiende overgang zwart → surface-dark */}
+        <div className="h-16 md:h-20 bg-gradient-to-b from-black to-[#1a1a1a]" />
+
         {/* Testimonials */}
         <Testimonials />
 
         {/* Blog Preview */}
         {blogPosts.length > 0 && (
-          <section className="py-20 3xl:py-28 4xl:py-36 bg-primary-light">
+          <section className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-primary-light">
             <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
-              <div className="text-center mb-16 4xl:mb-24">
+              <div className="text-center mb-20 md:mb-24 4xl:mb-32">
                 <p className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
                   Blog
                 </p>
-                <h2 className="text-3xl md:text-4xl 3xl:text-5xl 4xl:text-6xl font-heading font-bold text-white">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl font-heading font-bold tracking-[0.02em] text-gradient-gold">
                   Laatste Berichten
                 </h2>
               </div>
@@ -118,6 +135,7 @@ export default function HomePage() {
 
         {/* CTA */}
         <CTA />
+
       </div>
     </>
   );

@@ -46,15 +46,32 @@
   }
 
   .heading-xl {
-    @apply text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold text-white;
+    @apply text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold text-white;
   }
 
   .heading-lg {
-    @apply text-3xl md:text-4xl 2xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-heading font-bold text-white;
+    @apply text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold text-white;
   }
 
   .heading-md {
-    @apply text-2xl md:text-3xl 2xl:text-4xl 4xl:text-5xl font-heading font-semibold text-white;
+    @apply text-3xl md:text-4xl 2xl:text-5xl 4xl:text-6xl font-heading font-semibold text-white;
+  }
+
+  /* Warme gradient mesh achtergrond voor secties */
+  .bg-mesh-warm {
+    background:
+      radial-gradient(ellipse 80% 55% at 10% 0%, rgba(200, 169, 126, 0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 55% 45% at 90% 100%, rgba(200, 169, 126, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(200, 169, 126, 0.025) 0%, transparent 70%),
+      #050505;
+  }
+
+  /* Wit-naar-goud gradient op display titels */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f0ea 50%, #c8a97e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .text-muted {
@@ -66,11 +83,43 @@
   }
 
   .btn-primary {
-    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 bg-accent text-primary font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:bg-accent-light transition-all duration-300 inline-block;
+    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 bg-accent text-primary font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:bg-accent-light transition-all duration-300 inline-block relative overflow-hidden;
   }
 
   .btn-outline {
-    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 border border-white/30 text-white font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:border-accent hover:text-accent transition-all duration-300 inline-block;
+    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 border border-white/30 text-white font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:border-accent hover:text-accent transition-all duration-300 inline-block relative overflow-hidden;
+  }
+
+  /* Shimmer sweep op buttons */
+  .btn-primary::before,
+  .btn-outline::before,
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.18) 50%,
+      transparent 100%
+    );
+    transform: skewX(-15deg);
+    transition: left 0.65s ease;
+    pointer-events: none;
+  }
+
+  .btn-primary:hover::before,
+  .btn-outline:hover::before,
+  .shimmer:hover::before {
+    left: 150%;
+  }
+
+  /* Herbruikbare shimmer class (voor Hero knoppen e.d.) */
+  .shimmer {
+    @apply relative overflow-hidden;
   }
 
   /* Prose styles for blog content */

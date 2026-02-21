@@ -30,22 +30,38 @@ export default function Testimonials({
   const duplicated = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section ref={sectionRef} className="py-20 3xl:py-28 4xl:py-36 bg-surface-dark overflow-hidden">
-      <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
-        <div className="text-center mb-16 4xl:mb-24">
+    <section ref={sectionRef} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-surface-dark overflow-hidden relative">
+      {/* Warme gradient mesh overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 50% at 80% 10%, rgba(200, 169, 126, 0.055) 0%, transparent 60%), ' +
+            'radial-gradient(ellipse 50% 40% at 10% 90%, rgba(200, 169, 126, 0.04) 0%, transparent 55%)',
+        }}
+      />
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
+        <div className="text-center mb-20 md:mb-24 4xl:mb-32">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
+            className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.5em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
+          {/* Gouden decoratieve lijn */}
+          <motion.span
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.12, ease: [0.25, 0.4, 0.25, 1] }}
+            className="block w-10 h-[1px] bg-accent/40 mx-auto mb-5 origin-center"
+          />
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-4xl 2xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-heading font-bold text-white"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold"
           >
             {title}
           </motion.h2>

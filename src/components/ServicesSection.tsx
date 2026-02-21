@@ -2,29 +2,15 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { HiCamera, HiSparkles, HiPhotograph, HiUsers, HiGlobe, HiHome } from 'react-icons/hi';
 
 interface Service {
-  icon: React.ReactNode;
   title: string;
   description: string;
   href: string;
   price?: string;
 }
 
-// Icon mapping by category/index
-const iconSet = [
-  <HiCamera className="w-8 h-8" key="cam" />,
-  <HiGlobe className="w-8 h-8" key="globe" />,
-  <HiSparkles className="w-8 h-8" key="spark" />,
-  <HiUsers className="w-8 h-8" key="users" />,
-  <HiHome className="w-8 h-8" key="home" />,
-  <HiPhotograph className="w-8 h-8" key="photo" />,
-];
-
-// Webdesign is always appended as a static service
 const webdesignService: Service = {
-  icon: <HiPhotograph className="w-8 h-8" />,
   title: 'Webdesign',
   description: 'Professionele websites die uw merk online tot leven brengen. Modern, snel en responsive.',
   href: '/contact/',
@@ -48,11 +34,9 @@ export default function ServicesSection({
   title = 'Onze Diensten',
   subtitle = 'Wat wij bieden',
 }: ServicesSectionProps) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
 
-  // Build services from albums + webdesign
-  const services: Service[] = albums.map((album, i) => ({
-    icon: iconSet[i % iconSet.length],
+  const services: Service[] = albums.map((album) => ({
     title: album.title,
     description: album.description,
     href: `/portfolio/${album.slug}/`,
@@ -60,54 +44,91 @@ export default function ServicesSection({
   services.push(webdesignService);
 
   return (
-    <section ref={ref} className="py-20 3xl:py-28 4xl:py-36 bg-primary-dark">
+    <section ref={ref} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-mesh-warm relative overflow-hidden">
       <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
-        <div className="text-center mb-16 4xl:mb-24">
+
+        {/* Sectie header */}
+        <div className="mb-20 md:mb-24 4xl:mb-32">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-accent text-sm 3xl:text-base 4xl:text-lg 5xl:text-xl tracking-[0.3em] uppercase mb-4 font-body"
+            className="text-accent text-sm 3xl:text-base 4xl:text-lg 5xl:text-xl tracking-[0.5em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
+          {/* Gouden decoratieve lijn */}
+          <motion.span
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={inView ? { scaleX: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.12, ease: [0.25, 0.4, 0.25, 1] }}
+            className="block w-10 h-[1px] bg-accent/40 mb-5 origin-left"
+          />
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-4xl 2xl:text-5xl 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-heading font-bold text-white"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold"
           >
             {title}
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 4xl:gap-12">
+        {/* Editorial grid — dunne lijnen, grote nummers, asymmetrisch */}
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-white/[0.07]">
           {services.map((service, index) => (
             <motion.a
               key={service.title}
               href={service.href}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group p-8 3xl:p-10 4xl:p-12 bg-primary-light border border-white/5 hover:border-accent/30 transition-all duration-300"
+              transition={{
+                duration: 0.7,
+                delay: index * 0.08,
+                ease: [0.25, 0.4, 0.25, 1],
+              }}
+              className={`group relative flex flex-col overflow-hidden border-b border-white/[0.07] px-8 py-12 3xl:px-12 3xl:py-16 4xl:px-16 4xl:py-20 hover:bg-white/[0.02] transition-colors duration-500 ${
+                index % 2 === 0 ? 'md:border-r md:border-white/[0.07]' : ''
+              }`}
             >
-              <div className="text-accent mb-6 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <h3 className="text-white font-heading text-xl 3xl:text-2xl 4xl:text-3xl mb-3 group-hover:text-accent transition-colors">
+              {/* Watermark nummer — overlapt de kaartrand voor diepte-effect */}
+              <span
+                className="absolute -right-3 -top-6 text-[7rem] lg:text-[8.5rem] 2xl:text-[10rem] 3xl:text-[12rem] font-heading font-bold text-white/[0.035] leading-none select-none pointer-events-none"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              {/* Klein accentnummer — bovenaan */}
+              <span className="text-accent/50 text-xs tracking-[0.5em] font-body uppercase mb-8 3xl:mb-10 block">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              {/* Titel */}
+              <h3 className="text-white font-heading text-2xl md:text-3xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl mb-5 group-hover:text-accent/90 transition-colors duration-400 relative z-10 leading-tight">
                 {service.title}
               </h3>
-              <p className="text-gray-400 text-sm 2xl:text-base 3xl:text-base 4xl:text-lg 5xl:text-xl leading-relaxed">
+
+              {/* Geanimeerde dunne lijn */}
+              <span className="block w-8 h-[1px] bg-white/15 mb-5 group-hover:w-16 group-hover:bg-accent/70 transition-all duration-500 ease-out" />
+
+              {/* Beschrijving */}
+              <p className="text-gray-500 text-sm 2xl:text-base 3xl:text-base 4xl:text-lg leading-relaxed font-body relative z-10 max-w-sm">
                 {service.description}
               </p>
+
               {service.price && (
-                <p className="text-accent font-heading text-lg 3xl:text-xl 4xl:text-2xl mt-4 font-semibold">
+                <p className="text-accent font-heading text-lg 3xl:text-xl 4xl:text-2xl mt-6 font-semibold relative z-10">
                   {service.price}
                 </p>
               )}
+
+              {/* Hover sweep lijn — onderkant */}
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-accent/50 group-hover:w-full transition-all duration-500 ease-out" />
             </motion.a>
           ))}
         </div>
+
       </div>
     </section>
   );

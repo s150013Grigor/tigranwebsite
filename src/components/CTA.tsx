@@ -42,7 +42,7 @@ export default function CTA({
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-3xl md:text-5xl 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-heading font-bold text-white mb-6"
+        className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold mb-6"
       >
         {title}
       </motion.h2>
