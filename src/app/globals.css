@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-primary text-white font-body;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-light rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent/50;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24 2xl:py-32 4xl:py-40;
+  }
+
+  .container-custom {
+    @apply max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16;
+  }
+
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold text-white;
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-4xl 2xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-heading font-bold text-white;
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-3xl 2xl:text-4xl 4xl:text-5xl font-heading font-semibold text-white;
+  }
+
+  .text-muted {
+    @apply text-gray-400 text-sm 2xl:text-base 4xl:text-lg 5xl:text-xl leading-relaxed;
+  }
+
+  .label-accent {
+    @apply text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase font-body;
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 bg-accent text-primary font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:bg-accent-light transition-all duration-300 inline-block;
+  }
+
+  .btn-outline {
+    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 border border-white/30 text-white font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:border-accent hover:text-accent transition-all duration-300 inline-block;
+  }
+
+  /* Prose styles for blog content */
+  .prose-custom {
+    @apply text-gray-300 leading-relaxed;
+  }
+
+  .prose-custom h1 {
+    @apply text-3xl md:text-4xl font-heading font-bold text-white mt-12 mb-6;
+  }
+
+  .prose-custom h2 {
+    @apply text-2xl md:text-3xl font-heading font-semibold text-white mt-10 mb-4;
+  }
+
+  .prose-custom h3 {
+    @apply text-xl md:text-2xl font-heading font-semibold text-white mt-8 mb-3;
+  }
+
+  .prose-custom p {
+    @apply text-gray-300 leading-relaxed mb-4;
+  }
+
+  .prose-custom ul {
+    @apply list-disc list-inside mb-4 space-y-2 text-gray-300;
+  }
+
+  .prose-custom ol {
+    @apply list-decimal list-inside mb-4 space-y-2 text-gray-300;
+  }
+
+  .prose-custom li {
+    @apply text-gray-300;
+  }
+
+  .prose-custom a {
+    @apply text-accent hover:text-accent-light underline transition-colors;
+  }
+
+  .prose-custom blockquote {
+    @apply border-l-2 border-accent pl-6 italic text-gray-400 my-6;
+  }
+
+  .prose-custom strong {
+    @apply text-white font-semibold;
+  }
+
+  .prose-custom hr {
+    @apply border-white/10 my-8;
+  }
+
+  .prose-custom img {
+    @apply rounded-sm my-8;
+  }
+
+  .prose-custom code {
+    @apply bg-surface px-2 py-0.5 text-accent text-sm rounded;
+  }
+}

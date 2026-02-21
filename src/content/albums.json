@@ -1,0 +1,70 @@
+[
+  {
+    "id": "portret",
+    "title": "Portretfotografie",
+    "slug": "portret",
+    "description": "Professionele portretfotografie die uw persoonlijkheid en unieke uitstraling vastlegt. Perfect voor profielfoto's, zakelijke portretten en persoonlijke shoots.",
+    "coverImage": "https://tigranmedia.be/uploads/cover-portretfotografie-1770902549779.webp",
+    "category": "portret",
+    "featured": true,
+    "order": 1,
+    "photos": [
+      "portret-1",
+      "portret-2",
+      "portret-3",
+      "portret-4",
+      "portret-5",
+      "portret-6",
+      "zwart-wit-foto-grigor-mkrttsjan-1770825537769",
+      "grigor-mkrttsjan-werk-opstelling-1770825593559"
+    ]
+  },
+  {
+    "id": "product",
+    "title": "Zakelijke Fotografie",
+    "slug": "product",
+    "description": "Stijlvolle product- en zakelijke fotografie die uw producten en bedrijf in het beste licht plaatst. Perfect voor e-commerce, catalogi en branding.",
+    "coverImage": "https://tigranmedia.be/uploads/cover-zakelijke-fotografie-1771183493077.webp",
+    "category": "zakelijk",
+    "featured": true,
+    "order": 2,
+    "photos": [
+      "broodjes-in-bakkerij-kontoer-turnhout-1770811799375",
+      "bakkerij-kontoer-turnhout-1770811913135",
+      "bistro-tafels-kontoer-turnhout-1770812011657",
+      "kineworks-turnhout-1770813957822",
+      "vermogen-test-kineworks-turnhout-1770814220534",
+      "kineworks-vermogen-test-uitleg-1770814315391",
+      "lactaat-test-kineworks-1770814492074",
+      "kineworks-lactaat-test-1770825315875",
+      "kineworks-turnhout-meting-1770825400177",
+      "kineworks-inspannings-test-1770825463107",
+      "werk-setup-webzley-web-development-1770825667051",
+      "woodz-turnhout-1770826939434",
+      "kassa-woodz-turnhout-1770896111940"
+    ]
+  },
+  {
+    "id": "evenement",
+    "title": "Evenement Fotoshoot",
+    "slug": "evenement",
+    "description": "Dynamische evenementfotografie voor bedrijfsevents, feesten, conferenties en meer. Ik vang de sfeer en energie van elk evenement.",
+    "coverImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=800&fit=crop",
+    "category": "evenement",
+    "featured": true,
+    "order": 3,
+    "photos": [
+      "evenement-1",
+      "evenement-2",
+      "evenement-3",
+      "evenement-4",
+      "evenement-5",
+      "evenement-6",
+      "kontoer-team-1770821790207",
+      "presentatie-tobe-kempen-1770892463276",
+      "presentatie-tobe-kempen-1770892508377",
+      "presentatie-tobe-kempen-1770892784452",
+      "presentatie-tobe-kempen-1770892865912"
+    ]
+  }
+]

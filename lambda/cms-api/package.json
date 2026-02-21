@@ -1,0 +1,11 @@
+{
+  "name": "tigranmedia-cms-lambda",
+  "version": "1.0.0",
+  "description": "CMS API Lambda for Tigran Media admin panel",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-codebuild": "^3.0.0",
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/s3-request-presigner": "^3.0.0"
+  }
+}

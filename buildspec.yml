@@ -1,0 +1,70 @@
+version: 0.2
+
+env:
+  variables:
+    BUCKET_NAME: "tigranmedia.be"
+    DISTRIBUTION_ID: "EH9ROX11S3VT1"
+    DEPLOY_TARGET: "production"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm ci --prefer-offline
+
+  pre_build:
+    commands:
+      # Download latest CMS content from S3 (overrides static content files)
+      - aws s3 cp s3://$BUCKET_NAME/cms-data/albums.json src/content/albums.json || true
+      - aws s3 cp s3://$BUCKET_NAME/cms-data/photos.json src/content/photos.json || true
+      - aws s3 cp s3://$BUCKET_NAME/cms-data/testimonials.json src/content/testimonials.json || true
+      - aws s3 cp s3://$BUCKET_NAME/cms-data/faq.json src/content/faq.json || true
+      - aws s3 sync s3://$BUCKET_NAME/cms-data/blog/ src/content/blog/ --delete || true
+
+  build:
+    commands:
+      - node scripts/generate-sitemap.js
+      - npm run build
+
+  post_build:
+    commands:
+      - |
+        if [ "$DEPLOY_TARGET" = "preview" ]; then
+          echo "Deploying to PREVIEW..."
+          # Clear old preview and sync new build
+          aws s3 rm s3://$BUCKET_NAME/preview/ --recursive || true
+          aws s3 sync out/ s3://$BUCKET_NAME/preview/ \
+            --cache-control "public, max-age=0, must-revalidate" \
+            --exclude "_next/*"
+          aws s3 sync out/_next/ s3://$BUCKET_NAME/preview/_next/ \
+            --cache-control "public, max-age=31536000, immutable"
+          # Invalidate preview paths
+          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/preview/*"
+          echo "Preview deploy complete!"
+        else
+          echo "Deploying to PRODUCTION..."
+          # Backup current site before deploying
+          aws s3 sync s3://$BUCKET_NAME/ s3://$BUCKET_NAME/backup/ \
+            --exclude "cms-data/*" --exclude "codebuild/*" --exclude "uploads/*" \
+            --exclude "preview/*" --exclude "backup/*" || true
+          # Sync HTML/JSON/XML with short cache (must-revalidate)
+          aws s3 sync out/ s3://$BUCKET_NAME/ --delete \
+            --cache-control "public, max-age=0, must-revalidate" \
+            --exclude "_next/*" \
+            --exclude "cms-data/*" \
+            --exclude "codebuild/*" \
+            --exclude "uploads/*" \
+            --exclude "preview/*" \
+            --exclude "backup/*"
+          # Sync _next/ hashed assets with immutable long cache (1 year)
+          aws s3 sync out/_next/ s3://$BUCKET_NAME/_next/ --delete \
+            --cache-control "public, max-age=31536000, immutable"
+          # Invalidate CloudFront
+          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
+          echo "Production deploy complete!"
+        fi
+
+cache:
+  paths:
+    - "node_modules/**/*"

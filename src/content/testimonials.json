@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah & Michiel",
+    "title": "Bruiloft in Antwerpen",
+    "description": "Tigran heeft onze bruiloft op de meest magische manier vastgelegd. Elke foto vertelt een verhaal en brengt ons terug naar die prachtige dag. Absoluut de beste keuze die we konden maken!",
+    "rating": 5
+  },
+  {
+    "id": "2",
+    "name": "Annelies De Vos",
+    "title": "Portretfotografie",
+    "description": "Ik voelde me meteen op mijn gemak voor de camera. De foto's zijn natuurlijk en professioneel — precies wat ik zocht voor mijn portfolio. Heel blij met het resultaat!",
+    "rating": 5
+  },
+  {
+    "id": "3",
+    "name": "Jan Peeters",
+    "title": "Bedrijfsevenement Gent",
+    "description": "Uitstekende samenwerking! Tigran was discreet aanwezig op ons bedrijfsevenement en leverde schitterende beelden die perfect onze bedrijfscultuur weergeven.",
+    "rating": 5
+  },
+  {
+    "id": "1770830289909",
+    "name": "Kineworks Turnhout",
+    "title": "Kinesist Turnhout",
+    "description": "“Tigran leest de sfeer intuïtief aan en levert foto’s die barsten van energie — discreet tijdens de shoot, uitmuntend in kwaliteit.”",
+    "rating": 5
+  },
+  {
+    "id": "1770830315999",
+    "name": "Kontoer Turnhout",
+    "title": "Bistro",
+    "description": "“Dank u voor de fijne samenwerking en de mooie resultaten. U bent in de toekomst altijd van harte welkom om opnieuw langs te komen.”",
+    "rating": 5
+  }
+]

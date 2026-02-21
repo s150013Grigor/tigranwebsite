@@ -1,0 +1,52 @@
+[
+    {
+        "id":  "1",
+        "question":  "Wat zijn de tarieven voor een fotoshoot?",
+        "answer":  "Onze tarieven varieren afhankelijk van het type fotoshoot, de duur en de locatie. Een portretshoot begint vanaf 80 euro, zakelijke fotografie vanaf 250 euro en evenementfotografie vanaf 350 euro. Neem contact met ons op voor een persoonlijke offerte op maat."
+    },
+    {
+        "id":  "2",
+        "question":  "Hoe lang duurt het voordat ik mijn foto\u0027s ontvang?",
+        "answer":  "Na de fotoshoot ontvangt u een online galerij met uw bewerkte foto's. De levertijd is afhankelijk van het type project en het aantal foto's dat bewerkt moet worden."
+    },
+    {
+        "id":  "3",
+        "question":  "Kan ik de locatie van de fotoshoot zelf kiezen?",
+        "answer":  "Absoluut! U kunt zelf een locatie kiezen of ik kan locaties voorstellen die perfect passen bij het type shoot. Ik werk zowel op locatie als in de studio en ken vele mooie plekjes in heel Vlaanderen."
+    },
+    {
+        "id":  "4",
+        "question":  "Hoeveel foto\u0027s ontvang ik na een fotoshoot?",
+        "answer":  "Het aantal foto's verschilt per type shoot. Bij een portretshoot ontvangt u gemiddeld 5-20 bewerkte foto's, bij een evenement 100-300 foto's en bij standaard shoots 20-50 foto's. Dit is allemaal afhankelijk van het project."
+    },
+    {
+        "id":  "5",
+        "question":  "Moet ik een aanbetaling doen bij boeking?",
+        "answer":  "Betaling gebeurt na de shoot. Als u binnen 24 uur voor de shoot afzegt, wordt 50% van het totaalbedrag in rekening gebracht."
+    },
+    {
+        "id":  "6",
+        "question":  "Biedt u ook videografie aan?",
+        "answer":  "Op dit moment focussen wij ons op fotografie. Voor videografie werken wij samen met betrouwbare partners die wij graag aan u doorverwijzen. Zo bent u verzekerd van dezelfde hoge kwaliteit."
+    },
+    {
+        "id":  "7",
+        "question":  "Wat als het regent op de dag van de buitenshoot?",
+        "answer":  "Bij slecht weer bieden wij de mogelijkheid om de shoot te verplaatsen naar een andere datum zonder extra kosten. We bekijken samen een geschikte alternatieve datum. Soms kan regen ook voor bijzondere sfeerbeelden zorgen!"
+    },
+    {
+        "id":  "8",
+        "question":  "Kan ik de ruwe (onbewerkte) foto\u0027s ontvangen?",
+        "answer":  "Wij leveren enkel bewerkte foto\u0027s die voldoen aan onze kwaliteitsstandaard. Elke foto wordt individueel bewerkt om het beste resultaat te garanderen. Dit is onderdeel van onze artistieke visie."
+    },
+    {
+        "id":  "9",
+        "question":  "In welk formaat ontvang ik de foto\u0027s?",
+        "answer":  "U ontvangt de foto\u0027s in hoge resolutie (JPEG) via een beveiligde online galerij. Op verzoek kunnen we ook TIFF-bestanden of andere formaten leveren. De foto\u0027s zijn geschikt voor zowel digitaal gebruik als prints."
+    },
+    {
+        "id":  "10",
+        "question":  "Reist u ook buiten Vlaanderen voor fotoshoots?",
+        "answer":  "Ja, ik reis graag voor fotoshoots! Binnen België zijn er geen extra reiskosten. Voor opdrachten in het buitenland worden reis- en verblijfkosten in overleg besproken en aan de offerte toegevoegd."
+    }
+]
