@@ -22,9 +22,22 @@ echo "========================================"
 echo ""
 
 # ─────────────────────────────────────────────
-# Stap 1: Build
+# Stap 1: CMS content ophalen van S3
 # ─────────────────────────────────────────────
-echo "[1/3] Bouwen..."
+echo "[1/4] CMS content ophalen van S3..."
+
+aws s3 cp "s3://$BUCKET_NAME/cms-data/albums.json"       "src/content/albums.json"       --region "$REGION" || true
+aws s3 cp "s3://$BUCKET_NAME/cms-data/photos.json"       "src/content/photos.json"       --region "$REGION" || true
+aws s3 cp "s3://$BUCKET_NAME/cms-data/testimonials.json" "src/content/testimonials.json" --region "$REGION" || true
+aws s3 cp "s3://$BUCKET_NAME/cms-data/faq.json"          "src/content/faq.json"          --region "$REGION" || true
+aws s3 sync "s3://$BUCKET_NAME/cms-data/blog/" "src/content/blog/" --region "$REGION" --delete || true
+
+echo "  CMS content gesynchroniseerd."
+
+# ─────────────────────────────────────────────
+# Stap 2: Build
+# ─────────────────────────────────────────────
+echo "[2/4] Bouwen..."
 
 if ! npx next build; then
     echo ""
@@ -38,7 +51,7 @@ echo "  Build geslaagd."
 # Stap 2: Sync naar S3
 # ─────────────────────────────────────────────
 echo ""
-echo "[2/3] Uploaden naar S3..."
+echo "[3/4] Uploaden naar S3..."
 
 # HTML, JSON, XML, etc. → korte cache
 aws s3 sync "out/" "s3://$BUCKET_NAME/" \
@@ -64,7 +77,7 @@ echo "  Geupload naar S3."
 # Stap 3: CloudFront cache legen
 # ─────────────────────────────────────────────
 echo ""
-echo "[3/3] CloudFront cache legen..."
+echo "[4/4] CloudFront cache legen..."
 
 INVALIDATION_ID=$(aws cloudfront create-invalidation \
     --distribution-id "$DISTRIBUTION_ID" \
