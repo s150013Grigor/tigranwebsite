@@ -74,7 +74,7 @@ export default function HomePage() {
         <div className="h-[1px] bg-gradient-to-r from-transparent via-accent/[0.18] to-transparent" />
 
         {/* Divider — foto met quote */}
-        <div className="relative overflow-hidden bg-black" style={{ height: '60vh' }}>
+        <div className="relative overflow-hidden bg-[#1a1a1a]" style={{ height: '60vh' }}>
           <div className="absolute inset-0 w-full h-full">
             <div
               className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
@@ -85,6 +85,10 @@ export default function HomePage() {
             />
           </div>
           <div className="absolute inset-0 bg-black z-10" style={{ opacity: 0.6 }} />
+          {/* Fade aan bovenkant: van gallery-achtergrond naar transparant */}
+          <div className="absolute top-0 left-0 right-0 h-20 z-[15] pointer-events-none bg-gradient-to-b from-[#0a0a0a] to-transparent" />
+          {/* Fade aan onderkant: vervaagt naadloos in Testimonials achtergrond */}
+          <div className="absolute bottom-0 left-0 right-0 h-36 md:h-48 z-[15] pointer-events-none bg-gradient-to-b from-transparent to-[#1a1a1a]" />
           <div className="relative z-20 flex items-center justify-center w-full h-full">
             <div className="text-center px-4">
               <p className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
@@ -96,9 +100,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        {/* Vloeiende overgang zwart → surface-dark */}
-        <div className="h-16 md:h-20 bg-gradient-to-b from-black to-[#1a1a1a]" />
 
         {/* Testimonials */}
         <Testimonials />
