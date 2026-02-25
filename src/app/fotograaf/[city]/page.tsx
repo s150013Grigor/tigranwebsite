@@ -75,13 +75,6 @@ export default function CityPage({ params }: { params: { city: string } }) {
     href: `/portfolio/${album.slug}/`,
   }));
 
-  // Services - same as homepage
-  const albumServices = albums.map((a) => ({
-    title: a.title,
-    description: a.description,
-    slug: a.slug,
-  }));
-
   // Neighboring cities for internal linking
   const neighborCities = cities
     .filter((c) => c.province === city.province && c.slug !== city.slug)
@@ -108,7 +101,6 @@ export default function CityPage({ params }: { params: { city: string } }) {
       <div className="relative z-10">
         {/* Services - same component as homepage */}
         <ServicesSection
-          albums={albumServices}
           title={`Onze Diensten in ${city.name}`}
           subtitle={`Fotograaf ${city.name}`}
         />
