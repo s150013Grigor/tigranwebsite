@@ -17,13 +17,13 @@ interface CTAProps {
 }
 
 export default function CTA({
-  title = 'Klaar om Herinneringen te Creëren?',
-  description = 'Boek vandaag uw fotoshoot en laat uw mooiste momenten professioneel vastleggen door Tigran Media.',
+  title = 'Klaar om je merk visueel te versterken?',
+  description = 'Boek een kennismakingsgesprek en ontdek hoe professionele contentfoto\'s jouw bedrijf online laten groeien.',
   ctaText = 'Neem Contact Op',
   ctaLink = '/contact/',
   secondaryCtaText = 'Bekijk Portfolio',
   secondaryCtaLink = '/portfolio/',
-  backgroundImage = 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=1920&h=800&fit=crop',
+  backgroundImage = '/DSCF6090-2.jpg',
   variant = 'parallax',
 }: CTAProps) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -82,6 +82,7 @@ export default function CTA({
     return (
       <Parallax
         backgroundImage={backgroundImage}
+        imageAlt="Tigran Media fotograaf in actie"
         speed={0.3}
         overlayOpacity={0.7}
         height="auto"

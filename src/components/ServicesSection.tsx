@@ -12,63 +12,38 @@ interface Service {
   price?: string;
 }
 
-const defaultServices: Service[] = [
-  {
-    icon: <HiCamera className="w-8 h-8" />,
-    title: 'Portretfotografie',
-    description: 'Professionele portretten die uw persoonlijkheid vastleggen. In studio of op locatie.',
-    href: '/portfolio/portret/',
-    price: 'Vanaf €80',
-  },
-  {
-    icon: <HiGlobe className="w-8 h-8" />,
-    title: 'Outdoor Fotografie',
-    description: 'Prachtige buitenshoot op locatie. Natuurlijk licht en authentieke sfeer.',
-    href: '/portfolio/natuur/',
-    price: 'Vanaf €120',
-  },
-  {
-    icon: <HiSparkles className="w-8 h-8" />,
-    title: 'Zakelijke Fotografie',
-    description: 'Professionele corporate foto\'s voor uw bedrijf, team en branding.',
-    href: '/portfolio/product/',
-    price: 'Vanaf €250',
-  },
-  {
-    icon: <HiUsers className="w-8 h-8" />,
-    title: 'Zakelijk Evenement',
-    description: 'Dynamische fotografie voor bedrijfsevents, conferenties en speciale gelegenheden.',
-    href: '/portfolio/evenement/',
-    price: 'Vanaf €350',
-  },
-  {
-    icon: <HiPhotograph className="w-8 h-8" />,
-    title: 'Webdesign',
-    description: 'Professionele websites die uw merk online tot leven brengen. Modern, snel en responsive.',
-    href: '/contact/',
-    price: 'Op aanvraag',
-  },
-  {
-    icon: <HiHome className="w-8 h-8" />,
-    title: 'Vastgoedfotografie',
-    description: 'Professionele fotografie voor vastgoedverkoop en verhuur. Wij zorgen voor heldere, ruimtelijke en uitnodigende beelden.',
-    href: '/contact/',
-    price: 'Vanaf €250',
-  },
-];
+const webdesignService: Service = {
+  title: 'Webdesign',
+  description: 'Professionele websites die uw merk online tot leven brengen. Modern, snel en responsive.',
+  href: '/contact/',
+  price: 'Op aanvraag',
+};
+
+interface AlbumService {
+  title: string;
+  description: string;
+  slug: string;
+}
 
 interface ServicesSectionProps {
-  services?: Service[];
+  albums?: AlbumService[];
   title?: string;
   subtitle?: string;
 }
 
 export default function ServicesSection({
-  services = defaultServices,
+  albums = [],
   title = 'Onze Diensten',
   subtitle = 'Wat wij bieden',
 }: ServicesSectionProps) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
+
+  const services: Service[] = albums.map((album) => ({
+    title: album.title,
+    description: album.description,
+    href: `/portfolio/${album.slug}/`,
+  }));
+  services.push(webdesignService);
 
   return (
     <section ref={ref} className="py-20 bg-primary-dark">
@@ -92,20 +67,38 @@ export default function ServicesSection({
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Editorial grid — dunne lijnen, grote nummers, asymmetrisch */}
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-white/[0.07]">
           {services.map((service, index) => (
             <motion.a
               key={service.title}
               href={service.href}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group p-8 bg-primary-light border border-white/5 hover:border-accent/30 transition-all duration-300"
+              transition={{
+                duration: 0.7,
+                delay: index * 0.08,
+                ease: [0.25, 0.4, 0.25, 1],
+              }}
+              className={`group relative flex flex-col overflow-hidden border-b border-white/[0.07] px-8 py-12 3xl:px-12 3xl:py-16 4xl:px-16 4xl:py-20 hover:bg-white/[0.02] transition-colors duration-500 ${
+                index % 2 === 0 ? 'md:border-r md:border-white/[0.07]' : ''
+              }`}
             >
-              <div className="text-accent mb-6 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <h3 className="text-white font-heading text-xl mb-3 group-hover:text-accent transition-colors">
+              {/* Watermark nummer — overlapt de kaartrand voor diepte-effect */}
+              <span
+                className="absolute -right-3 -top-6 text-[7rem] lg:text-[8.5rem] 2xl:text-[10rem] 3xl:text-[12rem] font-heading font-bold text-white/[0.035] leading-none select-none pointer-events-none"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              {/* Klein accentnummer — bovenaan */}
+              <span className="text-accent/50 text-xs tracking-[0.5em] font-body uppercase mb-8 3xl:mb-10 block">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              {/* Titel */}
+              <h3 className="text-white font-heading text-2xl md:text-3xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl mb-5 group-hover:text-accent/90 transition-colors duration-400 relative z-10 leading-tight">
                 {service.title}
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -117,7 +110,8 @@ export default function ServicesSection({
                 </p>
               )}
             </motion.a>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

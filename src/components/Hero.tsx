@@ -18,8 +18,8 @@ interface HeroProps {
 
 export default function Hero({
   title = 'Tigran Media',
-  subtitle = 'Professionele Fotografie',
-  description = 'Momenten vastleggen die een leven lang meegaan. Portretten, evenementen, zakelijke fotografie en meer in heel Vlaanderen.',
+  subtitle = 'Content & Branding Fotografie',
+  description = 'Professionele foto\'s voor je website, social media en branding — zodat je bedrijf er online uitziet zoals het verdient.',
   backgroundImage = 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1920&h=1080&fit=crop',
   ctaText = 'Bekijk Portfolio',
   ctaLink = '/portfolio/',

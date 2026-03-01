@@ -28,6 +28,12 @@ export default function HomePage() {
     href: `/portfolio/${album.slug}/`,
   }));
 
+  const albumServices = albums.map((a) => ({
+    title: a.title,
+    description: a.description,
+    slug: a.slug,
+  }));
+
   return (
     <>
       <script
@@ -41,7 +47,10 @@ export default function HomePage() {
       {/* All content after hero scrolls over the fixed background */}
       <div className="relative z-10">
         {/* Services */}
-        <ServicesSection />
+        <ServicesSection albums={albumServices} />
+
+        {/* Marquee ticker — visueel scheidingselement */}
+        <MarqueeTicker />
 
         {/* Portfolio Gallery */}
         <Gallery
