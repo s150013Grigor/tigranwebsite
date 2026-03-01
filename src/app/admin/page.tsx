@@ -1,10 +1,10 @@
 ﻿'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { HiPhotograph, HiDocumentText, HiCollection, HiCog, HiHome, HiStar, HiUpload, HiPencil, HiTrash, HiX, HiInformationCircle, HiCloudUpload, HiExternalLink, HiRefresh, HiCheck, HiExclamation, HiEye, HiRewind, HiChevronUp, HiChevronDown } from 'react-icons/hi';
+import { HiPhotograph, HiDocumentText, HiCollection, HiCog, HiHome, HiStar, HiUpload, HiPencil, HiTrash, HiX, HiInformationCircle, HiCloudUpload, HiExternalLink, HiRefresh, HiCheck, HiExclamation, HiEye, HiRewind, HiChevronUp, HiChevronDown, HiQuestionMarkCircle } from 'react-icons/hi';
 import Link from 'next/link';
 
-type Tab = 'dashboard' | 'albums' | 'photos' | 'blog' | 'testimonials' | 'settings';
+type Tab = 'dashboard' | 'albums' | 'photos' | 'blog' | 'testimonials' | 'faq' | 'settings';
 
 interface AuthState {
   isLoggedIn: boolean;
@@ -44,6 +44,7 @@ export default function AdminPage() {
   const [photos, setPhotos] = useState<any[]>([]);
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
   const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [faqs, setFaqs] = useState<any[]>([]);
 
   // Editing states
   const [editingItem, setEditingItem] = useState<any>(null);
@@ -60,6 +61,7 @@ export default function AdminPage() {
   const [photoSourceMode, setPhotoSourceMode] = useState<'url' | 'upload'>('upload');
   const [blogForm, setBlogForm] = useState({ title: '', slug: '', excerpt: '', coverImage: '', category: '', tags: '', content: '' });
   const [testimonialForm, setTestimonialForm] = useState({ id: '', name: '', title: '', description: '', rating: 5 });
+  const [faqForm, setFaqForm] = useState({ id: '', question: '', answer: '' });
 
   // Album photo upload state
   const [albumUploadTarget, setAlbumUploadTarget] = useState<string | null>(null);
@@ -140,16 +142,18 @@ export default function AdminPage() {
   const loadData = useCallback(async () => {
     if (!auth.isLoggedIn) return;
     try {
-      const [albumsRes, photosRes, blogRes, testimonialsRes] = await Promise.all([
+      const [albumsRes, photosRes, blogRes, testimonialsRes, faqRes] = await Promise.all([
         fetch(`${apiBase}/albums`, { headers: { Authorization: `Bearer ${auth.token}` } }),
         fetch(`${apiBase}/photos`, { headers: { Authorization: `Bearer ${auth.token}` } }),
         fetch(`${apiBase}/blog`, { headers: { Authorization: `Bearer ${auth.token}` } }),
         fetch(`${apiBase}/testimonials`, { headers: { Authorization: `Bearer ${auth.token}` } }),
+        fetch(`${apiBase}/faq`, { headers: { Authorization: `Bearer ${auth.token}` } }),
       ]);
       if (albumsRes.ok) setAlbums(await albumsRes.json());
       if (photosRes.ok) setPhotos(await photosRes.json());
       if (blogRes.ok) setBlogPosts(await blogRes.json());
       if (testimonialsRes.ok) setTestimonials(await testimonialsRes.json());
+      if (faqRes.ok) setFaqs(await faqRes.json());
     } catch { notify('Kan data niet laden.'); }
   }, [auth.isLoggedIn, auth.token, apiBase]);
 
@@ -485,6 +489,27 @@ export default function AdminPage() {
     } catch { notify('Kan niet verbinden met CMS server.'); }
   };
 
+  const saveFaq = async () => {
+    if (!faqForm.question.trim() || !faqForm.answer.trim()) {
+      notify('Vraag en antwoord zijn verplicht.');
+      return;
+    }
+    try {
+      const method = editType === 'edit' ? 'PUT' : 'POST';
+      const url = editType === 'edit' ? `${apiBase}/faq/${editingItem.id}` : `${apiBase}/faq`;
+      const res = await fetch(url, {
+        method,
+        headers: authHeaders(),
+        body: JSON.stringify(faqForm),
+      });
+      if (res.ok) {
+        notify(editType === 'edit' ? 'FAQ bijgewerkt!' : 'FAQ opgeslagen!');
+        resetFaqForm();
+        loadData();
+      } else notify('Fout bij opslaan.');
+    } catch { notify('Kan niet verbinden met CMS server.'); }
+  };
+
   const doDelete = async (type: string, id: string) => {
     setBusy(true);
     try {
@@ -497,6 +522,7 @@ export default function AdminPage() {
         if (type === 'photos') setPhotos(prev => prev.filter(p => p.id !== id));
         if (type === 'blog') setBlogPosts(prev => prev.filter(b => b.slug !== id && b.id !== id));
         if (type === 'testimonials') setTestimonials(prev => prev.filter(t => t.id !== id));
+        if (type === 'faq') setFaqs(prev => prev.filter(f => f.id !== id));
         notify('Item verwijderd!');
       } else {
         notify('Fout bij verwijderen.');
@@ -585,11 +611,13 @@ export default function AdminPage() {
   const resetPhotoForm = () => { setPhotoForm({ id: '', title: '', slug: '', description: '', albumId: '', src: '', alt: '', width: 1920, height: 1280, tags: '' }); setPhotoFile(null); setPhotoSourceMode('upload'); setEditType(null); setEditingItem(null); };
   const resetBlogForm = () => { setBlogForm({ title: '', slug: '', excerpt: '', coverImage: '', category: '', tags: '', content: '' }); setEditType(null); setEditingItem(null); };
   const resetTestimonialForm = () => { setTestimonialForm({ id: '', name: '', title: '', description: '', rating: 5 }); setEditType(null); setEditingItem(null); };
+  const resetFaqForm = () => { setFaqForm({ id: '', question: '', answer: '' }); setEditType(null); setEditingItem(null); };
 
   const editAlbum = (album: any) => { setAlbumForm({ ...album, order: album.order || 0 }); setAlbumCoverFile(null); setEditingItem(album); setEditType('edit'); };
   const editPhoto = (photo: any) => { setPhotoForm({ ...photo, tags: Array.isArray(photo.tags) ? photo.tags.join(', ') : photo.tags }); setPhotoFile(null); setPhotoSourceMode('url'); setEditingItem(photo); setEditType('edit'); };
   const editBlog = (post: any) => { setBlogForm({ ...post, tags: Array.isArray(post.tags) ? post.tags.join(', ') : post.tags || '' }); setEditingItem(post); setEditType('edit'); };
   const editTestimonial = (t: any) => { setTestimonialForm(t); setEditingItem(t); setEditType('edit'); };
+  const editFaq = (f: any) => { setFaqForm(f); setEditingItem(f); setEditType('edit'); };
 
   const inputClass = 'w-full px-4 py-3 bg-surface border border-white/10 text-white text-sm focus:border-accent focus:outline-none transition-colors';
   const labelClass = 'block text-sm text-gray-400 mb-2';
@@ -676,6 +704,7 @@ export default function AdminPage() {
     { id: 'photos' as Tab, label: "Foto's", icon: HiPhotograph },
     { id: 'blog' as Tab, label: 'Blog', icon: HiDocumentText },
     { id: 'testimonials' as Tab, label: 'Getuigenissen', icon: HiStar },
+    { id: 'faq' as Tab, label: 'FAQ', icon: HiQuestionMarkCircle },
     { id: 'settings' as Tab, label: 'Instellingen', icon: HiCog },
   ];
 
@@ -733,7 +762,7 @@ export default function AdminPage() {
           <div className="space-y-8">
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[{ n: albums.length, l: 'Albums' }, { n: photos.length, l: "Foto's" }, { n: blogPosts.length, l: 'Blogposts' }, { n: testimonials.length, l: 'Getuigenissen' }].map(s => (
+              {[{ n: albums.length, l: 'Albums' }, { n: photos.length, l: "Foto's" }, { n: blogPosts.length, l: 'Blogposts' }, { n: testimonials.length, l: 'Getuigenissen' }, { n: faqs.length, l: 'FAQ' }].map(s => (
                 <div key={s.l} className="p-6 bg-surface border border-white/5 text-center">
                   <p className="text-3xl font-heading font-bold text-accent">{s.n}</p>
                   <p className="text-gray-400 text-sm mt-1">{s.l}</p>
@@ -1097,6 +1126,41 @@ export default function AdminPage() {
                   </div>
                 ))}
                 {testimonials.length === 0 && <p className="text-gray-500 text-sm">Geen getuigenissen gevonden.</p>}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ============ FAQ TAB ============ */}
+        {activeTab === 'faq' && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-heading font-bold text-white">{editType === 'edit' ? 'FAQ Bewerken' : 'Nieuwe FAQ'}</h2>
+                {editType === 'edit' && <button onClick={resetFaqForm} className="text-gray-400 hover:text-white"><HiX className="w-5 h-5" /></button>}
+              </div>
+              <div className="space-y-4">
+                <div><label className={labelClass}>Vraag *</label><input type="text" className={inputClass} placeholder="Bijv. Wat zijn de tarieven voor een fotoshoot?" value={faqForm.question} onChange={(e) => setFaqForm({ ...faqForm, question: e.target.value })} /></div>
+                <div><label className={labelClass}>Antwoord *</label><textarea className={inputClass} rows={6} placeholder="Het antwoord op de vraag..." value={faqForm.answer} onChange={(e) => setFaqForm({ ...faqForm, answer: e.target.value })} /></div>
+                <button onClick={saveFaq} className="btn-primary">{editType === 'edit' ? 'Bijwerken' : 'Opslaan'}</button>
+              </div>
+            </div>
+            <div>
+              <h2 className="text-xl font-heading font-bold text-white mb-6">Bestaande FAQ&apos;s ({faqs.length})</h2>
+              <div className="space-y-3 max-h-[600px] overflow-y-auto">
+                {faqs.map((faq) => (
+                  <div key={faq.id} className="flex items-center justify-between p-4 bg-surface border border-white/5">
+                    <div className="flex-1 min-w-0 mr-4">
+                      <p className="text-white text-sm font-semibold">{faq.question}</p>
+                      <p className="text-gray-400 text-xs mt-1 line-clamp-2">{faq.answer}</p>
+                    </div>
+                    <div className="flex space-x-2">
+                      <button onClick={() => editFaq(faq)} className="text-accent hover:text-accent-light"><HiPencil className="w-4 h-4" /></button>
+                      <button onClick={() => deleteItem('faq', faq.id)} className="text-red-400 hover:text-red-300"><HiTrash className="w-4 h-4" /></button>
+                    </div>
+                  </div>
+                ))}
+                {faqs.length === 0 && <p className="text-gray-500 text-sm">Geen FAQ items gevonden.</p>}
               </div>
             </div>
           </div>

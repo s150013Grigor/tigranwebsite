@@ -2,133 +2,123 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { HiCamera, HiHeart, HiSparkles, HiPhotograph, HiUsers, HiGlobe, HiHome } from 'react-icons/hi';
 
 interface Service {
+  icon: React.ReactNode;
   title: string;
   description: string;
   href: string;
   price?: string;
 }
 
-const webdesignService: Service = {
-  title: 'Webdesign',
-  description: 'Professionele websites die uw merk online tot leven brengen. Modern, snel en responsive.',
-  href: '/contact/',
-  price: 'Op aanvraag',
-};
-
-interface AlbumService {
-  title: string;
-  description: string;
-  slug: string;
-}
+const defaultServices: Service[] = [
+  {
+    icon: <HiCamera className="w-8 h-8" />,
+    title: 'Portretfotografie',
+    description: 'Professionele portretten die uw persoonlijkheid vastleggen. In studio of op locatie.',
+    href: '/portfolio/portret/',
+    price: 'Vanaf €80',
+  },
+  {
+    icon: <HiGlobe className="w-8 h-8" />,
+    title: 'Outdoor Fotografie',
+    description: 'Prachtige buitenshoot op locatie. Natuurlijk licht en authentieke sfeer.',
+    href: '/portfolio/natuur/',
+    price: 'Vanaf €120',
+  },
+  {
+    icon: <HiSparkles className="w-8 h-8" />,
+    title: 'Zakelijke Fotografie',
+    description: 'Professionele corporate foto\'s voor uw bedrijf, team en branding.',
+    href: '/portfolio/product/',
+    price: 'Vanaf €250',
+  },
+  {
+    icon: <HiUsers className="w-8 h-8" />,
+    title: 'Zakelijk Evenement',
+    description: 'Dynamische fotografie voor bedrijfsevents, conferenties en speciale gelegenheden.',
+    href: '/portfolio/evenement/',
+    price: 'Vanaf €350',
+  },
+  {
+    icon: <HiPhotograph className="w-8 h-8" />,
+    title: 'Webdesign',
+    description: 'Professionele websites die uw merk online tot leven brengen. Modern, snel en responsive.',
+    href: '/contact/',
+    price: 'Op aanvraag',
+  },
+  {
+    icon: <HiHome className="w-8 h-8" />,
+    title: 'Vastgoedfotografie',
+    description: 'Professionele fotografie voor vastgoedverkoop en verhuur. Wij zorgen voor heldere, ruimtelijke en uitnodigende beelden.',
+    href: '/contact/',
+    price: 'Vanaf €250',
+  },
+];
 
 interface ServicesSectionProps {
-  albums?: AlbumService[];
+  services?: Service[];
   title?: string;
   subtitle?: string;
 }
 
 export default function ServicesSection({
-  albums = [],
+  services = defaultServices,
   title = 'Onze Diensten',
   subtitle = 'Wat wij bieden',
 }: ServicesSectionProps) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
-
-  const services: Service[] = albums.map((album) => ({
-    title: album.title,
-    description: album.description,
-    href: `/portfolio/${album.slug}/`,
-  }));
-  services.push(webdesignService);
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section ref={ref} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-mesh-warm relative overflow-hidden">
-      <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
-
-        {/* Sectie header */}
-        <div className="mb-20 md:mb-24 4xl:mb-32">
+    <section ref={ref} className="py-20 bg-primary-dark">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-accent text-sm 3xl:text-base 4xl:text-lg 5xl:text-xl tracking-[0.5em] uppercase mb-4 font-body"
+            className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
-          {/* Gouden decoratieve lijn */}
-          <motion.span
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={inView ? { scaleX: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.12, ease: [0.25, 0.4, 0.25, 1] }}
-            className="block w-10 h-[1px] bg-accent/40 mb-5 origin-left"
-          />
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl md:text-4xl font-heading font-bold text-white"
           >
             {title}
           </motion.h2>
         </div>
 
-        {/* Editorial grid — dunne lijnen, grote nummers, asymmetrisch */}
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-white/[0.07]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.a
               key={service.title}
               href={service.href}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.08,
-                ease: [0.25, 0.4, 0.25, 1],
-              }}
-              className={`group relative flex flex-col overflow-hidden border-b border-white/[0.07] px-8 py-12 3xl:px-12 3xl:py-16 4xl:px-16 4xl:py-20 hover:bg-white/[0.02] transition-colors duration-500 ${
-                index % 2 === 0 ? 'md:border-r md:border-white/[0.07]' : ''
-              }`}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group p-8 bg-primary-light border border-white/5 hover:border-accent/30 transition-all duration-300"
             >
-              {/* Watermark nummer — overlapt de kaartrand voor diepte-effect */}
-              <span
-                className="absolute -right-3 -top-6 text-[7rem] lg:text-[8.5rem] 2xl:text-[10rem] 3xl:text-[12rem] font-heading font-bold text-white/[0.035] leading-none select-none pointer-events-none"
-                aria-hidden="true"
-              >
-                {String(index + 1).padStart(2, '0')}
-              </span>
-
-              {/* Klein accentnummer — bovenaan */}
-              <span className="text-accent/50 text-xs tracking-[0.5em] font-body uppercase mb-8 3xl:mb-10 block">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-
-              {/* Titel */}
-              <h3 className="text-white font-heading text-2xl md:text-3xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl mb-5 group-hover:text-accent/90 transition-colors duration-400 relative z-10 leading-tight">
+              <div className="text-accent mb-6 group-hover:scale-110 transition-transform duration-300">
+                {service.icon}
+              </div>
+              <h3 className="text-white font-heading text-xl mb-3 group-hover:text-accent transition-colors">
                 {service.title}
               </h3>
-
-              {/* Geanimeerde dunne lijn */}
-              <span className="block w-8 h-[1px] bg-white/15 mb-5 group-hover:w-16 group-hover:bg-accent/70 transition-all duration-500 ease-out" />
-
-              {/* Beschrijving */}
-              <p className="text-gray-500 text-sm 2xl:text-base 3xl:text-base 4xl:text-lg leading-relaxed font-body relative z-10 max-w-sm">
+              <p className="text-gray-400 text-sm leading-relaxed">
                 {service.description}
               </p>
-
               {service.price && (
-                <p className="text-accent font-heading text-lg 3xl:text-xl 4xl:text-2xl mt-6 font-semibold relative z-10">
+                <p className="text-accent font-heading text-lg mt-4 font-semibold">
                   {service.price}
                 </p>
               )}
-
-              {/* Hover sweep lijn — onderkant */}
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-accent/50 group-hover:w-full transition-all duration-500 ease-out" />
             </motion.a>
           ))}
         </div>
-
       </div>
     </section>
   );
