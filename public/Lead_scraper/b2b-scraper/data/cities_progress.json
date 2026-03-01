@@ -1,0 +1,225 @@
+{
+  "Turnhout": {
+    "regio": "Kempen Kern",
+    "leads_gevonden": 20,
+    "emails_geldig": 0,
+    "bezocht": true,
+    "laatste_scrape": "2026-02-23T18:51:54.021035"
+  },
+  "Mol": {
+    "regio": "Kempen Kern",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Geel": {
+    "regio": "Kempen Kern",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Herentals": {
+    "regio": "Kempen Kern",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Westerlo": {
+    "regio": "Kempen Kern",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Olen": {
+    "regio": "Kempen Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Balen": {
+    "regio": "Kempen Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Dessel": {
+    "regio": "Kempen Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Retie": {
+    "regio": "Kempen Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Arendonk": {
+    "regio": "Kempen Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Ravels": {
+    "regio": "Kempen Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Beerse": {
+    "regio": "Kempen Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Lille": {
+    "regio": "Kempen Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Antwerpen": {
+    "regio": "Antwerpen Regio",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Mechelen": {
+    "regio": "Antwerpen Regio",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Lier": {
+    "regio": "Antwerpen Regio",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Heist-op-den-Berg": {
+    "regio": "Antwerpen Regio",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Gent": {
+    "regio": "Gent & Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Aalst": {
+    "regio": "Gent & Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Sint-Niklaas": {
+    "regio": "Gent & Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Dendermonde": {
+    "regio": "Gent & Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Lokeren": {
+    "regio": "Gent & Rand",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Hasselt": {
+    "regio": "Limburg",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Genk": {
+    "regio": "Limburg",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Tongeren": {
+    "regio": "Limburg",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Maaseik": {
+    "regio": "Limburg",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Beringen": {
+    "regio": "Limburg",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Leuven": {
+    "regio": "Vlaams-Brabant",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Vilvoorde": {
+    "regio": "Vlaams-Brabant",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Aarschot": {
+    "regio": "Vlaams-Brabant",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Diest": {
+    "regio": "Vlaams-Brabant",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Tienen": {
+    "regio": "Vlaams-Brabant",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Brugge": {
+    "regio": "West-Vlaanderen",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Kortrijk": {
+    "regio": "West-Vlaanderen",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Roeselare": {
+    "regio": "West-Vlaanderen",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Oostende": {
+    "regio": "West-Vlaanderen",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  },
+  "Ieper": {
+    "regio": "West-Vlaanderen",
+    "leads_gevonden": 0,
+    "bezocht": false,
+    "laatste_scrape": null
+  }
+}

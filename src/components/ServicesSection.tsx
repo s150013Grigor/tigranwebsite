@@ -10,13 +10,6 @@ interface Service {
   price?: string;
 }
 
-const webdesignService: Service = {
-  title: 'Webdesign',
-  description: 'Professionele websites die uw merk online tot leven brengen. Modern, snel en responsive.',
-  href: '/contact/',
-  price: 'Op aanvraag',
-};
-
 interface AlbumService {
   title: string;
   description: string;
@@ -25,23 +18,28 @@ interface AlbumService {
 
 interface ServicesSectionProps {
   albums?: AlbumService[];
+  services?: Service[];
   title?: string;
   subtitle?: string;
 }
 
 export default function ServicesSection({
   albums = [],
+  services: servicesProp,
   title = 'Onze Diensten',
   subtitle = 'Wat wij bieden',
 }: ServicesSectionProps) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
 
-  const services: Service[] = albums.map((album) => ({
-    title: album.title,
-    description: album.description,
-    href: `/portfolio/${album.slug}/`,
-  }));
-  services.push(webdesignService);
+  const services: Service[] = servicesProp
+    ? servicesProp
+    : [
+        ...albums.map((album) => ({
+          title: album.title,
+          description: album.description,
+          href: `/portfolio/${album.slug}/`,
+        })),
+      ];
 
   return (
     <section ref={ref} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-mesh-warm relative overflow-hidden">
@@ -75,8 +73,11 @@ export default function ServicesSection({
         </div>
 
         {/* Editorial grid — dunne lijnen, grote nummers, asymmetrisch */}
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-white/[0.07]">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-white/[0.07]">
+          {services.map((service, index) => {
+            const isLastOdd = index === services.length - 1 && services.length % 2 !== 0;
+
+            return (
             <motion.a
               key={service.title}
               href={service.href}
@@ -87,9 +88,12 @@ export default function ServicesSection({
                 delay: index * 0.08,
                 ease: [0.25, 0.4, 0.25, 1],
               }}
-              className={`group relative flex flex-col overflow-hidden border-b border-white/[0.07] px-8 py-12 3xl:px-12 3xl:py-16 4xl:px-16 4xl:py-20 hover:bg-white/[0.02] transition-colors duration-500 ${
-                index % 2 === 0 ? 'md:border-r md:border-white/[0.07]' : ''
-              }`}
+              className={`group relative flex flex-col overflow-hidden border-b border-white/[0.07] px-6 py-10 sm:px-8 sm:py-12 3xl:px-12 3xl:py-16 4xl:px-16 4xl:py-20 hover:bg-white/[0.02] transition-colors duration-500
+                ${isLastOdd ? 'sm:col-span-2 sm:max-w-[50%] sm:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0' : ''}
+                ${index % 3 !== 2 ? 'lg:border-r lg:border-white/[0.07]' : ''}
+                ${index % 2 === 0 && !isLastOdd ? 'sm:border-r sm:border-white/[0.07]' : ''}
+                ${isLastOdd ? 'sm:border-r-0' : ''}
+                `}
             >
               {/* Watermark nummer — overlapt de kaartrand voor diepte-effect */}
               <span
@@ -126,7 +130,8 @@ export default function ServicesSection({
               {/* Hover sweep lijn — onderkant */}
               <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-accent/50 group-hover:w-full transition-all duration-500 ease-out" />
             </motion.a>
-          ))}
+            );
+          })}
         </div>
 
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, ReactNode } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface ParallaxProps {
@@ -8,6 +9,7 @@ interface ParallaxProps {
   speed?: number;
   className?: string;
   backgroundImage?: string;
+  imageAlt?: string;
   overlay?: boolean;
   overlayOpacity?: number;
   direction?: 'up' | 'down';
@@ -19,6 +21,7 @@ export default function Parallax({
   speed = 0.5,
   className = '',
   backgroundImage,
+  imageAlt = '',
   overlay = true,
   overlayOpacity = 0.5,
   direction = 'up',
@@ -34,6 +37,9 @@ export default function Parallax({
   const y = useTransform(scrollYProgress, [0, 1], [0, 500 * speed * factor]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.6]);
 
+  // Lokale paden (beginnen met /) → <Image> voor Next.js WebP optimalisatie
+  const isLocalImage = backgroundImage?.startsWith('/');
+
   return (
     <div
       ref={ref}
@@ -45,14 +51,29 @@ export default function Parallax({
           className="absolute inset-0 w-full h-full"
           style={{ y }}
         >
-          <div
-            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(${backgroundImage})`,
-              height: '150%',
-              top: '-25%',
-            }}
-          />
+          {isLocalImage ? (
+            <div
+              className="absolute inset-0 w-full"
+              style={{ height: '150%', top: '-25%' }}
+            >
+              <Image
+                src={backgroundImage}
+                alt={imageAlt}
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+            </div>
+          ) : (
+            <div
+              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${backgroundImage})`,
+                height: '150%',
+                top: '-25%',
+              }}
+            />
+          )}
         </motion.div>
       )}
       {overlay && (

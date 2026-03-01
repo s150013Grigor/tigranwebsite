@@ -37,6 +37,24 @@ export default function HomePage() {
     slug: a.slug,
   }));
 
+  const brandingServices = [
+    {
+      title: 'Website Fotografie',
+      description: 'Professionele beelden voor je homepage, over ons en dienstenpagina\'s. Eenmalig, hoogwaardig en tijdloos.',
+      href: '/contact/',
+    },
+    {
+      title: 'Social Media Content',
+      description: 'Maandelijkse contentfoto\'s voor Instagram en LinkedIn. Consistent, authentiek en on-brand.',
+      href: '/contact/',
+    },
+    {
+      title: 'Branding & Rebranding',
+      description: 'Een volledig nieuw visueel verhaal voor je merk. Voor bedrijven die zich herpositioneren of willen groeien.',
+      href: '/contact/',
+    },
+  ];
+
   return (
     <>
       <script
@@ -51,7 +69,7 @@ export default function HomePage() {
       <div className="relative z-10">
 
         {/* Services */}
-        <ServicesSection albums={albumServices} />
+        <ServicesSection services={brandingServices} />
 
         {/* Marquee ticker — visueel scheidingselement */}
         <MarqueeTicker />

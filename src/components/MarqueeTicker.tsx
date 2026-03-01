@@ -2,18 +2,18 @@
 
 // Visueel scheidingselement tussen secties — horizontale ticker
 const ITEMS = [
-  'FOTOGRAFIE',
-  'EVENTS',
-  'CORPORATE',
+  'WEBSITE',
+  'SOCIAL MEDIA',
   'BRANDING',
-  'PORTRET',
-  'PRODUCTEN',
-  'FOTOGRAFIE',
-  'EVENTS',
-  'CORPORATE',
+  'CONTENT',
+  'REBRANDING',
+  'B2B',
+  'WEBSITE',
+  'SOCIAL MEDIA',
   'BRANDING',
-  'PORTRET',
-  'PRODUCTEN',
+  'CONTENT',
+  'REBRANDING',
+  'B2B',
 ];
 
 // 4× dupliceren voor naadloze loop (translateX -50% = precies 1 volledige set)
