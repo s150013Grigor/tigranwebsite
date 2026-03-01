@@ -198,12 +198,9 @@ export default function ContactForm({
                     className="w-full px-4 py-3 bg-surface border border-white/10 text-white text-sm focus:border-accent focus:outline-none transition-colors"
                   >
                     <option value="">Selecteer een type</option>
-                    <option value="zakelijk">Zakelijke Fotografie</option>
-                    <option value="portret">Portretfotografie</option>
-                    <option value="evenement">Evenementfotografie</option>
-                    <option value="product">Productfotografie</option>
-                    <option value="familie">Familiefotografie</option>
-                    <option value="natuur">Natuurfotografie</option>
+                    <option value="website">Website Fotografie</option>
+                    <option value="social-media">Social Media Content</option>
+                    <option value="branding">Branding & Rebranding</option>
                     <option value="anders">Anders</option>
                   </select>
                 </div>
