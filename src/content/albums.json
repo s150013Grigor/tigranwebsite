@@ -22,12 +22,12 @@
   {
     "id": "product",
     "title": "Zakelijke Fotografie",
-    "slug": "product",
+    "slug": "zakelijk",
     "description": "Stijlvolle product- en zakelijke fotografie die uw producten en bedrijf in het beste licht plaatst. Perfect voor e-commerce, catalogi en branding.",
     "coverImage": "https://tigranmedia.be/uploads/cover-zakelijke-fotografie-1771183493077.webp",
     "category": "zakelijk",
     "featured": true,
-    "order": 2,
+    "order": 3,
     "photos": [
       "broodjes-in-bakkerij-kontoer-turnhout-1770811799375",
       "bakkerij-kontoer-turnhout-1770811913135",
@@ -49,10 +49,10 @@
     "title": "Evenement Fotoshoot",
     "slug": "evenement",
     "description": "Dynamische evenementfotografie voor bedrijfsevents, feesten, conferenties en meer. Ik vang de sfeer en energie van elk evenement.",
-    "coverImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=800&fit=crop",
+    "coverImage": "https://tigranmedia.be/uploads/cover-evenement-fotoshoot-1771518939862.webp",
     "category": "evenement",
     "featured": true,
-    "order": 3,
+    "order": 4,
     "photos": [
       "evenement-1",
       "evenement-2",
@@ -64,7 +64,8 @@
       "presentatie-tobe-kempen-1770892463276",
       "presentatie-tobe-kempen-1770892508377",
       "presentatie-tobe-kempen-1770892784452",
-      "presentatie-tobe-kempen-1770892865912"
+      "presentatie-tobe-kempen-1770892865912",
+      "open-coffee-19feb-26-1771518721836"
     ]
   }
 ]

@@ -45,7 +45,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 text-sm 3xl:text-base 4xl:text-lg leading-relaxed mb-6">
-              Professionele fotograaf in Vlaanderen. Gespecialiseerd in portret-, evenement-, zakelijke en productfotografie.
+              Content & branding fotograaf in Vlaanderen. Gespecialiseerd in website, social media en rebrandingfotografie voor bedrijven.
             </p>
             <div className="space-y-3">
               <a
