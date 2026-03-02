@@ -120,13 +120,15 @@ export default function RootLayout({
         </Script>
 
         {/* Google Ads Conversion Tracking */}
-        {/*
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17899815726"
+        />
         <Script id="google-ads" strategy="afterInteractive">
           {`
-            gtag('config', 'AW-XXXXXXXXX');
+            gtag('config', 'AW-17899815726');
           `}
         </Script>
-        */}
       </head>
       <body className="min-h-screen bg-primary text-white font-body antialiased">
         <Header />
