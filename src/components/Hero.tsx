@@ -23,7 +23,7 @@ export default function Hero({
   backgroundImage = 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1920&h=1080&fit=crop',
   ctaText = 'Bekijk Portfolio',
   ctaLink = '/portfolio/',
-  secondaryCtaText = 'Neem Contact Op',
+  secondaryCtaText = 'Verbeter je online uitstraling',
   secondaryCtaLink = '/contact/',
   overlayOpacity = 0.55,
 }: HeroProps) {
