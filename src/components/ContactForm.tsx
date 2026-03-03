@@ -12,6 +12,14 @@ interface ContactFormProps {
   apiEndpoint?: string;
 }
 
+const SERVICE_OPTIONS = [
+  { value: '', label: 'Selecteer een type' },
+  { value: 'website', label: 'Website Fotografie' },
+  { value: 'social-media', label: 'Social Media Content' },
+  { value: 'branding', label: 'Branding & Rebranding' },
+  { value: 'anders', label: 'Anders' },
+];
+
 export default function ContactForm({
   title = 'Neem Contact Op',
   subtitle = 'Laten we samenwerken',
@@ -23,32 +31,72 @@ export default function ContactForm({
     email: '',
     phone: '',
     service: '',
+    projectDescription: '',
+    preferredDate: '',
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
 
     try {
-      if (apiEndpoint) {
-        const response = await fetch(apiEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
+      if (!apiEndpoint) throw new Error('No endpoint configured');
 
-        if (!response.ok) throw new Error('Failed to send');
-      }
+      // Build an enriched message that includes all new fields,
+      // so the existing Lambda receives the full context
+      const enrichedMessage = [
+        formData.projectDescription
+          ? `Projectbeschrijving:\n${formData.projectDescription}`
+          : '',
+        formData.preferredDate
+          ? `Gewenste datum/periode: ${formData.preferredDate}`
+          : '',
+        formData.message ? `Aanvullend bericht:\n${formData.message}` : '',
+      ]
+        .filter(Boolean)
+        .join('\n\n');
+
+      const res = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: enrichedMessage || formData.message,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to send');
 
       setStatus('success');
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        projectDescription: '',
+        preferredDate: '',
+        message: '',
+      });
     } catch {
       setStatus('error');
     }
   };
+
+  const inputClass =
+    'w-full px-4 py-3 3xl:px-5 3xl:py-4 4xl:px-6 4xl:py-5 bg-surface border border-white/10 text-white text-sm 3xl:text-base 4xl:text-lg focus:border-accent focus:outline-none transition-colors';
+  const labelClass = 'block text-sm 3xl:text-base 4xl:text-lg text-gray-400 mb-2';
 
   return (
     <section ref={ref} className="py-20 3xl:py-28 4xl:py-36 bg-primary">
@@ -142,82 +190,122 @@ export default function ContactForm({
             className={showInfo ? 'lg:col-span-3' : ''}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Naam & E-mail */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm text-gray-400 mb-2">
+                  <label htmlFor="name" className={labelClass}>
                     Naam *
                   </label>
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 3xl:px-5 3xl:py-4 4xl:px-6 4xl:py-5 bg-surface border border-white/10 text-white text-sm 3xl:text-base 4xl:text-lg focus:border-accent focus:outline-none transition-colors"
+                    onChange={handleChange}
+                    className={inputClass}
                     placeholder="Uw naam"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm 3xl:text-base 4xl:text-lg text-gray-400 mb-2">
+                  <label htmlFor="email" className={labelClass}>
                     E-mail *
                   </label>
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-surface border border-white/10 text-white text-sm focus:border-accent focus:outline-none transition-colors"
+                    onChange={handleChange}
+                    className={inputClass}
                     placeholder="uw@email.be"
                   />
                 </div>
               </div>
 
+              {/* Telefoon & Type project */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-sm text-gray-400 mb-2">
+                  <label htmlFor="phone" className={labelClass}>
                     Telefoon
                   </label>
                   <input
                     type="tel"
                     id="phone"
+                    name="phone"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-surface border border-white/10 text-white text-sm focus:border-accent focus:outline-none transition-colors"
+                    onChange={handleChange}
+                    className={inputClass}
                     placeholder="+32 ..."
                   />
                 </div>
                 <div>
-                  <label htmlFor="service" className="block text-sm text-gray-400 mb-2">
-                    Type Fotoshoot
+                  <label htmlFor="service" className={labelClass}>
+                    Type project
                   </label>
                   <select
                     id="service"
+                    name="service"
                     value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 bg-surface border border-white/10 text-white text-sm focus:border-accent focus:outline-none transition-colors"
+                    onChange={handleChange}
+                    className={inputClass}
                   >
-                    <option value="">Selecteer een type</option>
-                    <option value="website">Website Fotografie</option>
-                    <option value="social-media">Social Media Content</option>
-                    <option value="branding">Branding & Rebranding</option>
-                    <option value="anders">Anders</option>
+                    {SERVICE_OPTIONS.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
 
+              {/* Projectbeschrijving */}
               <div>
-                <label htmlFor="message" className="block text-sm text-gray-400 mb-2">
-                  Bericht *
+                <label htmlFor="projectDescription" className={labelClass}>
+                  Korte projectbeschrijving
+                </label>
+                <textarea
+                  id="projectDescription"
+                  name="projectDescription"
+                  rows={3}
+                  value={formData.projectDescription}
+                  onChange={handleChange}
+                  className={`${inputClass} resize-none`}
+                  placeholder="Beschrijf kort je project, doelen en wensen..."
+                />
+              </div>
+
+              {/* Gewenste datum/periode */}
+              <div>
+                <label htmlFor="preferredDate" className={labelClass}>
+                  Gewenste datum/periode
+                </label>
+                <input
+                  type="text"
+                  id="preferredDate"
+                  name="preferredDate"
+                  value={formData.preferredDate}
+                  onChange={handleChange}
+                  className={inputClass}
+                  placeholder="Bv. maart 2026, eerste week april, flexibel..."
+                />
+              </div>
+
+              {/* Aanvullend bericht */}
+              <div>
+                <label htmlFor="message" className={labelClass}>
+                  Aanvullend bericht *
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   required
-                  rows={5}
+                  rows={4}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-surface border border-white/10 text-white text-sm focus:border-accent focus:outline-none transition-colors resize-none"
-                  placeholder="Vertel ons over uw project..."
+                  onChange={handleChange}
+                  className={`${inputClass} resize-none`}
+                  placeholder="Nog iets dat je wilt delen..."
                 />
               </div>
 
@@ -230,14 +318,22 @@ export default function ContactForm({
               </button>
 
               {status === 'success' && (
-                <p className="text-green-400 text-sm text-center">
-                  Bedankt! Uw bericht is succesvol verzonden. We nemen snel contact met u op.
-                </p>
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-green-400 text-sm text-center"
+                >
+                  Bedankt! Je bericht is verzonden. Je ontvangt een bevestiging per e-mail.
+                </motion.p>
               )}
               {status === 'error' && (
-                <p className="text-red-400 text-sm text-center">
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-sm text-center"
+                >
                   Er ging iets mis. Probeer het opnieuw of stuur een e-mail naar info@tigranmedia.be.
-                </p>
+                </motion.p>
               )}
             </form>
           </motion.div>

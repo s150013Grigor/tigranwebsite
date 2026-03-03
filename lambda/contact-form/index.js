@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const { getProjectTypeInfo, buildClientAutoReply, buildPhotographerNotification } = require('./templates');
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.hostinger.com',
@@ -26,7 +27,7 @@ exports.handler = async (event) => {
 
   try {
     const body = JSON.parse(event.body || '{}');
-    const { name, email, phone, service, message } = body;
+    const { name, email, phone, service, message, projectDescription, preferredDate } = body;
 
     // Validation
     if (!name || !email || !message) {
@@ -55,69 +56,44 @@ exports.handler = async (event) => {
 
     const contactEmail = process.env.CONTACT_EMAIL || 'info@tigranmedia.be';
     const senderEmail = process.env.SMTP_USER || 'info@tigranmedia.be';
+    const typeInfo = getProjectTypeInfo(service);
 
-    // Send notification email to photographer
-    const notificationHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ffffff; padding: 30px; border-radius: 10px;">
-        <div style="border-bottom: 2px solid #c8a97e; padding-bottom: 15px; margin-bottom: 20px;">
-          <h1 style="color: #c8a97e; margin: 0; font-size: 24px;">Tigran Media</h1>
-          <p style="color: #888; margin: 5px 0 0; font-size: 14px;">Nieuw bericht via contactformulier</p>
-        </div>
-        
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr>
-            <td style="padding: 10px 0; color: #c8a97e; font-weight: bold; width: 120px;">Naam:</td>
-            <td style="padding: 10px 0; color: #fff;">${name}</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px 0; color: #c8a97e; font-weight: bold;">Email:</td>
-            <td style="padding: 10px 0;"><a href="mailto:${email}" style="color: #c8a97e;">${email}</a></td>
-          </tr>
-          ${phone ? `<tr>
-            <td style="padding: 10px 0; color: #c8a97e; font-weight: bold;">Telefoon:</td>
-            <td style="padding: 10px 0;"><a href="tel:${phone}" style="color: #c8a97e;">${phone}</a></td>
-          </tr>` : ''}
-          ${service ? `<tr>
-            <td style="padding: 10px 0; color: #c8a97e; font-weight: bold;">Dienst:</td>
-            <td style="padding: 10px 0; color: #fff;">${service}</td>
-          </tr>` : ''}
-        </table>
-        
-        <div style="margin-top: 20px; padding: 15px; background: #1a1a1a; border-left: 3px solid #c8a97e; border-radius: 5px;">
-          <p style="color: #c8a97e; margin: 0 0 10px; font-weight: bold;">Bericht:</p>
-          <p style="color: #ccc; margin: 0; line-height: 1.6; white-space: pre-wrap;">${message}</p>
-        </div>
-        
-        <p style="color: #666; font-size: 12px; margin-top: 20px; text-align: center;">
-          Dit bericht is verstuurd via het contactformulier op tigranmedia.be
-        </p>
-      </div>
-    `;
+    // Generate HTML emails from templates
+    const notificationHtml = buildPhotographerNotification({
+      name, email, phone, service, message, projectDescription, preferredDate,
+    });
 
-    // Send confirmation email to visitor
-    const confirmationHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ffffff; padding: 30px; border-radius: 10px;">
-        <div style="text-align: center; border-bottom: 2px solid #c8a97e; padding-bottom: 20px; margin-bottom: 20px;">
-          <h1 style="color: #c8a97e; margin: 0; font-size: 28px;">Tigran Media</h1>
-          <p style="color: #888; margin: 5px 0 0;">Photography Studio</p>
-        </div>
-        
-        <h2 style="color: #fff; font-size: 20px;">Beste ${name},</h2>
-        <p style="color: #ccc; line-height: 1.6;">Bedankt voor je bericht! We hebben je aanvraag goed ontvangen en nemen zo snel mogelijk contact met je op, meestal binnen 24 uur.</p>
-        
-        <div style="margin: 25px 0; padding: 15px; background: #1a1a1a; border-radius: 5px;">
-          <p style="color: #c8a97e; font-weight: bold; margin: 0 0 10px;">Je bericht:</p>
-          <p style="color: #aaa; margin: 0; font-style: italic; line-height: 1.5;">"${message}"</p>
-        </div>
-        
-        <p style="color: #ccc; line-height: 1.6;">In tussentijd kun je onze <a href="https://www.tigranmedia.be/portfolio" style="color: #c8a97e;">portfolio</a> bekijken of ons volgen op social media.</p>
-        
-        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
-          <p style="color: #888; font-size: 13px; margin: 0;">Tigran Media — Professionele Fotografie</p>
-          <p style="color: #666; font-size: 12px; margin: 5px 0 0;">info@tigranmedia.be | +32 474 11 48 99</p>
-        </div>
-      </div>
-    `;
+    const confirmationHtml = buildClientAutoReply({
+      name, service, message, projectDescription, preferredDate,
+    });
+
+    // Plaintext fallbacks
+    const notifPlaintext = [
+      `Nieuwe aanvraag: ${name} — ${typeInfo.label}`,
+      '',
+      `Naam: ${name}`,
+      `E-mail: ${email}`,
+      phone ? `Telefoon: ${phone}` : '',
+      `Type: ${typeInfo.label}`,
+      preferredDate ? `Gewenste datum: ${preferredDate}` : '',
+      '',
+      projectDescription ? `Projectbeschrijving:\n${projectDescription}` : '',
+      '',
+      message ? `Aanvullend bericht:\n${message}` : '',
+    ].filter(Boolean).join('\n');
+
+    const clientPlaintext = [
+      `Beste ${name},`,
+      '',
+      `Bedankt voor je aanvraag voor ${typeInfo.label}. Ik heb je bericht goed ontvangen en neem binnen 24 uur contact op voor een vrijblijvend kennismakingsgesprek.`,
+      '',
+      projectDescription ? `Jouw projectbeschrijving: "${projectDescription}"` : '',
+      preferredDate ? `Gewenste datum/periode: ${preferredDate}` : '',
+      '',
+      'Met vriendelijke groeten,',
+      'Tigran Media',
+      'info@tigranmedia.be | +32 474 11 48 99',
+    ].filter(Boolean).join('\n');
 
     // Send both emails via Hostinger SMTP
     await Promise.all([
@@ -125,16 +101,16 @@ exports.handler = async (event) => {
         from: `"Tigran Media Website" <${senderEmail}>`,
         replyTo: email,
         to: contactEmail,
-        subject: `Nieuw contactformulier: ${name}${service ? ` — ${service}` : ''}`,
+        subject: `Nieuwe aanvraag: ${name} — ${typeInfo.label}`,
         html: notificationHtml,
-        text: `Nieuw contactformulier bericht\n\nNaam: ${name}\nEmail: ${email}\n${phone ? `Telefoon: ${phone}\n` : ''}${service ? `Dienst: ${service}\n` : ''}\nBericht:\n${message}`,
+        text: notifPlaintext,
       }),
       transporter.sendMail({
         from: `"Tigran Media" <${senderEmail}>`,
         to: email,
-        subject: 'Bedankt voor je bericht — Tigran Media',
+        subject: `Bedankt voor je aanvraag — ${typeInfo.label} — Tigran Media`,
         html: confirmationHtml,
-        text: `Beste ${name},\n\nBedankt voor je bericht! We hebben je aanvraag goed ontvangen en nemen zo snel mogelijk contact met je op, meestal binnen 24 uur.\n\nMet vriendelijke groeten,\nTigran Media\ninfo@tigranmedia.be | +32 474 11 48 99`,
+        text: clientPlaintext,
       }),
     ]);
 
