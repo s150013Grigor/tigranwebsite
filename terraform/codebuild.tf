@@ -103,9 +103,13 @@ resource "aws_codebuild_project" "website_deploy" {
   }
 
   source {
-    type     = "S3"
-    location = "${var.domain_name}/codebuild/source.zip"
+    type            = "GITHUB"
+    location        = "https://github.com/s150013Grigor/tigranwebsite.git"
+    buildspec       = "buildspec.yml"
+    git_clone_depth = 1
   }
+
+  source_version = "main"
 
   logs_config {
     cloudwatch_logs {
