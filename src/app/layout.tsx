@@ -2,42 +2,43 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CustomCursor from '@/components/CustomCursor';
 import { generateLocalBusinessSchema, generateWebsiteSchema } from '@/lib/structured-data';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Tigran Media — Professionele Fotograaf in Vlaanderen',
+    default: 'Tigran Media | Content Fotograaf Kempen & Turnhout',
     template: '%s | Tigran Media',
   },
   description:
-    'Professionele fotograaf in Vlaanderen. Gespecialiseerd in portretfotografie, zakelijke fotografie, evenementfotografie en meer. Boek nu uw fotoshoot bij Tigran Media.',
+    'Professionele content fotografie voor KMO\'s en ondernemers in de Kempen. Website foto\'s, social media content en branding shoots door Tigran.',
   metadataBase: new URL('https://www.tigranmedia.be'),
   alternates: {
     canonical: 'https://www.tigranmedia.be',
   },
   openGraph: {
-    title: 'Tigran Media — Professionele Fotograaf in Vlaanderen',
+    title: 'Tigran Media | Content Fotograaf Kempen & Turnhout',
     description:
-      'Professionele fotograaf in Vlaanderen. Portretten, evenementen, zakelijke shoots en meer.',
+      'Professionele content fotografie voor KMO\'s en ondernemers in de Kempen. Website foto\'s, social media content en branding shoots.',
     url: 'https://www.tigranmedia.be',
     siteName: 'Tigran Media',
     locale: 'nl_BE',
     type: 'website',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&h=630&fit=crop',
+        url: '/opengraph-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Tigran Media - Professionele Fotografie',
+        alt: 'Tigran Media — Content Fotograaf Kempen & Turnhout',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tigran Media — Professionele Fotograaf in Vlaanderen',
+    title: 'Tigran Media | Content Fotograaf Kempen & Turnhout',
     description:
-      'Professionele fotograaf in Vlaanderen. Portretten, evenementen, zakelijke shoots en meer.',
+      'Professionele content fotografie voor KMO\'s en ondernemers in de Kempen.',
   },
   robots: {
     index: true,
@@ -131,6 +132,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="min-h-screen bg-primary text-white font-body antialiased">
+        <CustomCursor />
         <Header />
         <main>{children}</main>
         <Footer />

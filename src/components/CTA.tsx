@@ -17,9 +17,9 @@ interface CTAProps {
 }
 
 export default function CTA({
-  title = 'Klaar om je merk visueel te versterken?',
-  description = 'Boek een kennismakingsgesprek en ontdek hoe professionele contentfoto\'s jouw bedrijf online laten groeien.',
-  ctaText = 'Neem Contact Op',
+  title = 'Klaar om te zien wat echte foto\'s doen voor je bedrijf?',
+  description = 'Plan een vrijblijvende kennismaking en ontdek of we matchen. Geen verkooppraatje, gewoon een eerlijk gesprek over jouw merk en hoe ik dat visueel kan versterken.',
+  ctaText = 'Plan een kennismaking',
   ctaLink = '/contact/',
   secondaryCtaText = 'Bekijk Portfolio',
   secondaryCtaLink = '/portfolio/',
@@ -36,7 +36,7 @@ export default function CTA({
         transition={{ duration: 0.6 }}
         className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
       >
-        Laten we samenwerken
+        Laten we praten
       </motion.p>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ export default function CTA({
       >
         <Link
           href={ctaLink}
-          className="px-8 py-4 3xl:px-10 3xl:py-5 4xl:px-12 4xl:py-6 bg-accent text-primary font-body text-sm 3xl:text-base 4xl:text-lg uppercase tracking-wider hover:bg-accent-light transition-all duration-300 inline-block"
+          className="px-8 py-4 3xl:px-10 3xl:py-5 4xl:px-12 4xl:py-6 bg-accent text-primary font-body text-sm 3xl:text-base 4xl:text-lg uppercase tracking-wider hover:bg-accent-light hover:scale-[1.02] transition-all duration-300 inline-block"
         >
           {ctaText}
         </Link>

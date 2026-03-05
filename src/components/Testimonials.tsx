@@ -1,8 +1,7 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FaStar } from 'react-icons/fa';
 import testimonialsData from '@/content/testimonials.json';
 
 interface Testimonial {
@@ -10,7 +9,8 @@ interface Testimonial {
   name: string;
   title: string;
   description: string;
-  rating: number;
+  role?: string;
+  company?: string;
 }
 
 interface TestimonialsProps {
@@ -26,12 +26,12 @@ export default function Testimonials({
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   const testimonials: Testimonial[] = testimonialsData;
 
-  // Duplicate items for seamless infinite scroll
+  // Duplicate for seamless infinite scroll
   const duplicated = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-surface-dark overflow-hidden relative">
-      {/* Warme gradient mesh overlay */}
+      {/* Warm gradient mesh overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -50,7 +50,6 @@ export default function Testimonials({
           >
             {subtitle}
           </motion.p>
-          {/* Gouden decoratieve lijn */}
           <motion.span
             initial={{ scaleX: 0, opacity: 0 }}
             animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
@@ -80,39 +79,36 @@ export default function Testimonials({
               key={`${testimonial.id}-${index}`}
               className="flex-shrink-0 w-[400px] 3xl:w-[480px] 4xl:w-[560px] 5xl:w-[640px] mx-4"
             >
-              <div className="bg-primary-light p-8 3xl:p-10 4xl:p-12 border border-white/5 hover:border-accent/20 transition-colors duration-300 h-full">
-                {/* Stars */}
-                <div className="flex space-x-1 mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <FaStar
-                      key={i}
-                      className={`w-4 h-4 ${
-                        i < testimonial.rating ? 'text-accent' : 'text-gray-600'
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                {/* Title */}
-                <h3 className="text-accent text-sm 3xl:text-base 4xl:text-lg font-semibold mb-3 uppercase tracking-wider">
-                  {testimonial.title}
-                </h3>
+              <div className="bg-primary-light p-8 3xl:p-10 4xl:p-12 border border-white/5 hover:border-accent/20 transition-all duration-300 h-full hover:shadow-[0_0_20px_-8px_rgba(200,169,126,0.1)]">
+                {/* Gold quote mark */}
+                <span
+                  className="block text-4xl 3xl:text-5xl font-heading text-accent/20 leading-none mb-4 select-none"
+                  aria-hidden="true"
+                >
+                  &ldquo;
+                </span>
 
                 {/* Content */}
                 <p className="text-gray-300 text-sm 3xl:text-base 4xl:text-lg leading-relaxed mb-6 italic">
                   &ldquo;{testimonial.description}&rdquo;
                 </p>
 
-                {/* Author */}
+                {/* Author with company/role */}
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-accent text-sm font-bold">
+                  <div className="w-10 h-10 bg-accent/15 rounded-full flex items-center justify-center mr-3 border border-accent/20">
+                    <span className="text-accent text-sm font-bold font-heading">
                       {testimonial.name.charAt(0)}
                     </span>
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold">
                       {testimonial.name}
+                    </p>
+                    {/* TODO: Tigran — voeg 'role' en 'company' toe aan testimonials.json voor elke klant */}
+                    <p className="text-gray-500 text-xs">
+                      {testimonial.role && testimonial.company
+                        ? `${testimonial.role}, ${testimonial.company}`
+                        : testimonial.company || testimonial.title}
                     </p>
                   </div>
                 </div>

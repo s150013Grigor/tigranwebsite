@@ -4,8 +4,8 @@ import { generateSEO } from '@/lib/seo';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Over Ons',
-  description: 'Leer meer over Tigran Media — professionele fotograaf in Vlaanderen. Uw verhaal, mijn passie.',
+  title: 'Wie ik ben',
+  description: 'Leer Tigran kennen — 18-jarige content fotograaf uit de Kempen. Ik maak foto\'s die jouw bedrijf versterken, niet decoreren.',
   url: '/over-ons',
 });
 

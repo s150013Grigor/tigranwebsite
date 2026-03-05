@@ -5,6 +5,7 @@ import ServicesSection from '@/components/ServicesSection';
 import MarqueeTicker from '@/components/MarqueeTicker';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
+import TestimonialSpotlight from '@/components/TestimonialSpotlight';
 import BlogCard from '@/components/BlogCard';
 import { getAlbums, getBlogPosts } from '@/lib/content';
 import { generatePhotographerSchema } from '@/lib/structured-data';
@@ -40,17 +41,17 @@ export default function HomePage() {
   const brandingServices = [
     {
       title: 'Website Fotografie',
-      description: 'Professionele beelden voor je homepage, over ons en dienstenpagina\'s. Eenmalig, hoogwaardig en tijdloos.',
+      description: 'Website bezoekers beslissen in 3 seconden. Geef ze een reden om te blijven. Professionele beelden voor je homepage, over ons en dienstenpagina\'s die vertrouwen wekken en converteren.',
       href: '/contact/',
     },
     {
       title: 'Social Media Content',
-      description: 'Maandelijkse contentfoto\'s voor Instagram en LinkedIn. Consistent, authentiek en on-brand.',
+      description: 'Je concurrent post stockfoto\'s. Jij post content die er écht uitziet. Maandelijkse foto\'s voor Instagram en LinkedIn die consistent, authentiek en on-brand zijn.',
       href: '/contact/',
     },
     {
       title: 'Branding & Rebranding',
-      description: 'Een volledig nieuw visueel verhaal voor je merk. Voor bedrijven die zich herpositioneren of willen groeien.',
+      description: 'Je merk verdient beelden die even sterk zijn als je ambities. Een volledig nieuw visueel verhaal voor bedrijven die zich herpositioneren of willen groeien.',
       href: '/contact/',
     },
   ];
@@ -79,7 +80,7 @@ export default function HomePage() {
           items={galleryItems}
           columns={3}
           title="Portfolio"
-          subtitle="Ons werk"
+          subtitle="Recent werk"
         />
 
         {/* Gouden accent lijn */}
@@ -90,6 +91,9 @@ export default function HomePage() {
 
         {/* Gouden accent lijn */}
         <div className="h-[1px] bg-gradient-to-r from-transparent via-accent/[0.18] to-transparent" />
+
+        {/* Testimonial spotlight — eerlijke social proof */}
+        <TestimonialSpotlight />
 
         {/* Divider — foto met quote */}
         <div className="relative overflow-hidden bg-[#1a1a1a]" style={{ height: '60vh' }}>
@@ -103,17 +107,17 @@ export default function HomePage() {
             />
           </div>
           <div className="absolute inset-0 bg-black z-10" style={{ opacity: 0.6 }} />
-          {/* Fade aan bovenkant: van gallery-achtergrond naar transparant */}
+          {/* Fade aan bovenkant */}
           <div className="absolute top-0 left-0 right-0 h-20 z-[15] pointer-events-none bg-gradient-to-b from-[#0a0a0a] to-transparent" />
-          {/* Fade aan onderkant: vervaagt naadloos in Testimonials achtergrond */}
+          {/* Fade aan onderkant */}
           <div className="absolute bottom-0 left-0 right-0 h-36 md:h-48 z-[15] pointer-events-none bg-gradient-to-b from-transparent to-[#1a1a1a]" />
           <div className="relative z-20 flex items-center justify-center w-full h-full">
             <div className="text-center px-4">
               <p className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
-                Kwaliteit & Passie
+                Mijn overtuiging
               </p>
               <h2 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl 3xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold tracking-[0.02em] text-gradient-gold max-w-3xl 4xl:max-w-5xl">
-                Elk Moment Verdient het om Vastgelegd te Worden
+                Goede foto&rsquo;s verkopen. Slechte foto&rsquo;s kosten.
               </h2>
             </div>
           </div>

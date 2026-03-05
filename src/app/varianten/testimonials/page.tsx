@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { FaStar, FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 
 const reviews = [
-  { name: 'Sophie & Thomas', role: 'Evenement', text: 'Tigran heeft ons evenement op de mooiste manier vastgelegd. Elke foto vertelt een verhaal.', rating: 5, avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop' },
-  { name: 'Jan De Vries', role: 'Portretfotografie', text: 'Professioneel, creatief en met oog voor detail. De portretten zijn werkelijk prachtig geworden.', rating: 5, avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop' },
-  { name: 'Lisa Janssens', role: 'Evenement', text: 'Fantastische samenwerking! De sfeer van het evenement is perfect gevangen in de foto\'s.', rating: 5, avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop' },
+  { name: 'Sophie & Thomas', role: 'Evenement', text: 'Tigran heeft ons evenement op de mooiste manier vastgelegd. Elke foto vertelt een verhaal.', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop' },
+  { name: 'Jan De Vries', role: 'Portretfotografie', text: 'Professioneel, creatief en met oog voor detail. De portretten zijn werkelijk prachtig geworden.', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop' },
+  { name: 'Lisa Janssens', role: 'Evenement', text: 'Fantastische samenwerking! De sfeer van het evenement is perfect gevangen in de foto\'s.', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop' },
 ];
 
 /* ═══════ V1: Classic Cards ═══════ */
@@ -17,7 +17,6 @@ function V1() {
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-8">
         {reviews.map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.15 }} className="bg-surface p-8 rounded-xl border border-white/10">
-            <div className="flex gap-1 mb-4">{[...Array(r.rating)].map((_, j) => <FaStar key={j} className="text-accent" />)}</div>
             <p className="text-gray-300 mb-6 italic">&ldquo;{r.text}&rdquo;</p>
             <div className="flex items-center gap-3">
               <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full object-cover" />
@@ -80,7 +79,6 @@ function V4() {
           {reviews.map((r, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2 }} className="flex-1 bg-primary p-8 rounded-2xl relative">
               <FaQuoteLeft className="text-accent/20 text-3xl absolute top-4 right-4" />
-              <div className="flex gap-1 text-xs mb-3">{[...Array(r.rating)].map((_, j) => <FaStar key={j} className="text-yellow-500" />)}</div>
               <p className="text-gray-300 text-sm mb-6">{r.text}</p>
               <div className="flex items-center gap-3 border-t border-white/10 pt-4">
                 <img src={r.avatar} alt={r.name} className="w-8 h-8 rounded-full" />
@@ -108,7 +106,6 @@ function V5() {
             <div className="flex items-center gap-3">
               <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full" />
               <div><p className="text-white text-sm font-semibold">{r.name}</p><p className="text-gray-500 text-xs">{r.role}</p></div>
-              <div className="ml-auto flex gap-0.5">{[...Array(r.rating)].map((_, j) => <FaStar key={j} className="text-accent text-xs" />)}</div>
             </div>
           </motion.div>
         ))}
@@ -124,7 +121,6 @@ function V6() {
       <div className="max-w-3xl mx-auto px-8 space-y-12">
         {reviews.map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-center">
-            <div className="flex gap-1 justify-center mb-4">{[...Array(r.rating)].map((_, j) => <FaStar key={j} className="text-accent" />)}</div>
             <p className="text-white text-xl font-heading italic">&ldquo;{r.text}&rdquo;</p>
             <p className="text-gray-500 mt-4">{r.name} — {r.role}</p>
             {i < reviews.length - 1 && <div className="w-16 h-[1px] bg-accent/30 mx-auto mt-8" />}
@@ -164,7 +160,6 @@ function V8() {
             <h3 className="text-white font-heading text-lg">{r.name}</h3>
             <p className="text-accent text-sm mb-4">{r.role}</p>
             <p className="text-gray-400 text-sm italic">&ldquo;{r.text}&rdquo;</p>
-            <div className="flex gap-1 justify-center mt-4">{[...Array(r.rating)].map((_, j) => <FaStar key={j} className="text-yellow-500 text-sm" />)}</div>
           </motion.div>
         ))}
       </div>
@@ -216,7 +211,7 @@ function V10() {
 
 /* ═══════ Page ═══════ */
 const variants = [
-  { component: <V1 />, name: 'Classic Cards', desc: 'Drie kaarten met sterren, quote en avatar' },
+  { component: <V1 />, name: 'Classic Cards', desc: 'Drie kaarten met quote en avatar' },
   { component: <V2 />, name: 'Large Quote', desc: 'Één grote uitgelichte quote met groot lettertype' },
   { component: <V3 />, name: 'Side by Side', desc: 'Titel links, reviews rechts met accent border' },
   { component: <V4 />, name: 'Dark Overlap', desc: 'Donkere overlappende kaarten met quote-icoon' },

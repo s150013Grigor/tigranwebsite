@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import BlogCard from '@/components/BlogCard';
-import Parallax from '@/components/Parallax';
 import { getBlogPosts } from '@/lib/content';
 import { generateSEO } from '@/lib/seo';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
@@ -31,13 +30,18 @@ export default function BlogPage() {
       />
 
       {/* Hero */}
-      <Parallax
-        backgroundImage="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&h=800&fit=crop"
-        speed={0.3}
-        overlayOpacity={0.65}
-        height="60vh"
-      >
-        <div className="text-center px-4">
+      <section className="relative overflow-hidden bg-[#0a0a0a] flex items-center justify-center" style={{ height: '60vh' }}>
+        {/* Noise overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{ backgroundImage: "url('/noise.svg')", backgroundRepeat: 'repeat' }}
+        />
+        {/* Subtle radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(200,169,126,0.06) 0%, transparent 70%)' }}
+        />
+        <div className="relative z-10 text-center px-4">
           <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
             Insights & Tips
           </p>
@@ -48,7 +52,7 @@ export default function BlogPage() {
             Tips, verhalen en inspiratie uit de wereld van professionele fotografie.
           </p>
         </div>
-      </Parallax>
+      </section>
 
       {/* Featured Post */}
       {featuredPost && (

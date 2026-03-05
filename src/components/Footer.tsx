@@ -6,11 +6,11 @@ import { cities } from '@/data/cities';
 const footerNavigation = {
   pages: [
     { name: 'Home', href: '/' },
-    { name: 'Portfolio', href: '/portfolio/' },
-    { name: 'Over Ons', href: '/over-ons/' },
+    { name: 'Wat ik doe', href: '/portfolio/' },
+    { name: 'Wie ik ben', href: '/over-ons/' },
     { name: 'Blog', href: '/blog/' },
     { name: 'FAQ', href: '/faq/' },
-    { name: 'Contact', href: '/contact/' },
+    { name: 'Samenwerken', href: '/contact/' },
   ],
   legal: [
     { name: 'Algemene Voorwaarden', href: '/terms-of-service/' },
@@ -45,7 +45,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 text-sm 3xl:text-base 4xl:text-lg leading-relaxed mb-6">
-              Content & branding fotograaf in Vlaanderen. Gespecialiseerd in website, social media en rebrandingfotografie voor bedrijven.
+              Content & branding fotograaf in de Kempen. Ik maak foto&rsquo;s die jouw bedrijf er online uitziet zoals het verdient — professioneel, menselijk, en herkenbaar.
             </p>
             <div className="space-y-3">
               <a

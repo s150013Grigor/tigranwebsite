@@ -21,8 +21,8 @@ const SERVICE_OPTIONS = [
 ];
 
 export default function ContactForm({
-  title = 'Neem Contact Op',
-  subtitle = 'Laten we samenwerken',
+  title = 'Plan een Kennismaking',
+  subtitle = 'Laten we praten',
   showInfo = true,
   apiEndpoint,
 }: ContactFormProps) {

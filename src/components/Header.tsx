@@ -8,8 +8,8 @@ import { HiMenu, HiX } from 'react-icons/hi';
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Portfolio', href: '/portfolio/' },
-  { label: 'Over Ons', href: '/over-ons/' },
+  { label: 'Wat ik doe', href: '/portfolio/' },
+  { label: 'Wie ik ben', href: '/over-ons/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'FAQ', href: '/faq/' },
 ];
@@ -75,18 +75,20 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm lg:text-[0.9rem] xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl font-body text-gray-300 hover:text-accent transition-colors duration-300 tracking-wider uppercase relative group"
+                className="text-sm lg:text-[0.9rem] xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl font-body text-gray-300 hover:text-accent transition-colors duration-300 tracking-wider uppercase relative group flex items-center gap-2"
               >
+                <span className="w-1.5 h-1.5 rounded-full bg-accent scale-0 group-hover:scale-100 transition-transform duration-300" />
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
-            <Link
-              href="/contact/"
-              className="ml-4 px-6 py-2 xl:px-8 xl:py-3 3xl:px-10 3xl:py-4 4xl:px-12 4xl:py-5 border border-accent text-accent text-sm lg:text-[0.9rem] xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl uppercase tracking-wider hover:bg-accent hover:text-primary transition-all duration-300"
-            >
-              Contact
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/contact/"
+                className="ml-4 px-6 py-2 xl:px-8 xl:py-3 3xl:px-10 3xl:py-4 4xl:px-12 4xl:py-5 border border-accent text-accent text-sm lg:text-[0.9rem] xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl uppercase tracking-wider hover:bg-accent hover:text-primary hover:scale-[1.02] transition-all duration-300"
+              >
+                Samenwerken
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -139,7 +141,7 @@ export default function Header() {
                   className="inline-block mt-4 px-6 py-3 border border-accent text-accent text-sm uppercase tracking-wider hover:bg-accent hover:text-primary transition-all duration-300"
                   onClick={() => setIsOpen(false)}
                 >
-                  Contact
+                  Samenwerken
                 </Link>
               </motion.div>
             </div>

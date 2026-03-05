@@ -5,8 +5,8 @@ import { generateSEO } from '@/lib/seo';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Contact',
-  description: 'Neem contact op met Tigran Media voor een vrijblijvende offerte. Bel +32 474 11 48 99 of mail naar info@tigranmedia.be.',
+  title: 'Samenwerken',
+  description: 'Plan een vrijblijvende kennismaking met Tigran Media. Bel +32 474 11 48 99 of mail naar info@tigranmedia.be.',
   url: '/contact',
 });
 
@@ -35,10 +35,10 @@ export default function ContactPage() {
             Laten we praten
           </p>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
-            Contact
+            Samenwerken
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Klaar om uw verhaal te laten vastleggen? Neem contact op voor een vrijblijvend gesprek.
+            Benieuwd of we matchen? Plan een vrijblijvend gesprek en ontdek wat professionele content voor jouw bedrijf kan doen.
           </p>
         </div>
       </Parallax>

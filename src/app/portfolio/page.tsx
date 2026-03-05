@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import CTA from '@/components/CTA';
-import Parallax from '@/components/Parallax';
 import { getAlbums } from '@/lib/content';
 import { generateSEO } from '@/lib/seo';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
@@ -28,13 +27,18 @@ export default function PortfolioPage() {
       />
 
       {/* Hero */}
-      <Parallax
-        backgroundImage="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1920&h=800&fit=crop"
-        speed={0.3}
-        overlayOpacity={0.65}
-        height="60vh"
-      >
-        <div className="text-center px-4">
+      <section className="relative overflow-hidden bg-[#0a0a0a] flex items-center justify-center" style={{ height: '60vh' }}>
+        {/* Noise overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{ backgroundImage: "url('/noise.svg')", backgroundRepeat: 'repeat' }}
+        />
+        {/* Subtle radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(200,169,126,0.06) 0%, transparent 70%)' }}
+        />
+        <div className="relative z-10 text-center px-4">
           <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
             Ons Werk
           </p>
@@ -45,7 +49,7 @@ export default function PortfolioPage() {
             Ontdek onze collectie van professionele fotografie. Kies een categorie om onze foto&apos;s te bekijken.
           </p>
         </div>
-      </Parallax>
+      </section>
 
       {/* Category Grid */}
       <section className="py-20 3xl:py-28 4xl:py-36 bg-primary">

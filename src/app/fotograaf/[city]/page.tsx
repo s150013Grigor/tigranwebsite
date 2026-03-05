@@ -4,7 +4,7 @@ import { cities, getCityBySlug } from '@/data/cities';
 import { getAlbums } from '@/lib/content';
 import { generateSEO } from '@/lib/seo';
 import { generateCityServiceSchema, generateBreadcrumbSchema, generateLocalBusinessSchema } from '@/lib/structured-data';
-import Hero from '@/components/Hero';
+import Hero from '@/components/CityHero';
 import ServicesSection from '@/components/ServicesSection';
 import Gallery from '@/components/Gallery';
 import CityAbout from '@/components/CityAbout';

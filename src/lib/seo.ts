@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 
 const SITE_URL = 'https://www.tigranmedia.be';
 const SITE_NAME = 'Tigran Media';
-const DEFAULT_DESCRIPTION = 'Professionele fotograaf in Vlaanderen. Gespecialiseerd in portretfotografie, zakelijke fotografie, evenementfotografie en meer. Boek nu uw fotoshoot bij Tigran Media.';
-const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&h=630&fit=crop';
+const DEFAULT_DESCRIPTION = 'Professionele content fotografie voor KMO\'s en ondernemers in de Kempen. Website foto\'s, social media content en branding shoots door Tigran.';
+const DEFAULT_IMAGE = '/opengraph-image.jpg';
 
 interface SEOProps {
   title?: string;
@@ -28,7 +28,7 @@ export function generateSEO({
   article,
   noIndex = false,
 }: SEOProps = {}): Metadata {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Professionele Fotograaf in Vlaanderen`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Content Fotograaf Kempen & Turnhout`;
   const fullUrl = `${SITE_URL}${url}`;
 
   return {

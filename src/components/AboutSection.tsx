@@ -2,20 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
 
-interface AboutSectionProps {
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  image?: string;
-}
-
-export default function AboutSection({
-  title = 'Over Tigran Media',
-  subtitle = 'Uw verhaal, mijn passie',
-  description = 'Als professionele fotograaf in Vlaanderen geloof ik dat elke foto een verhaal vertelt. Mijn passie ligt in het vastleggen van authentieke momenten — van zakelijke portretten tot bruisende evenementen. Met een persoonlijke, creatieve aanpak zorg ik ervoor dat elke shoot uniek is en uw verhaal op de mooiste manier verteld wordt. Ik werk in heel Vlaanderen en daarbuiten, altijd op zoek naar het perfecte licht en het juiste moment.',
-  image = '/zelfportret.webp',
-}: AboutSectionProps) {
+export default function AboutSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
@@ -30,20 +19,22 @@ export default function AboutSection({
             className="relative"
           >
             <div className="aspect-[4/5] relative overflow-hidden">
-              {/* WebP als primair formaat, JPG als fallback voor oudere browsers */}
+              {/* TODO: Tigran — zorg voor een hoge-kwaliteit portretfoto in /public/tigran-portret.jpg */}
               <picture className="block w-full h-full">
                 <source srcSet="/zelfportret.webp" type="image/webp" />
-                <img
+                <Image
                   src="/Zelfportret8feb2026.jpg"
-                  alt="Tigran - Fotograaf bij Tigran Media"
-                  className="w-full h-full object-cover"
+                  alt="Tigran — content fotograaf voor KMO's en ondernemers in de Kempen regio"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </picture>
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-accent" />
           </motion.div>
 
-          {/* Content */}
+          {/* Content — POV copy */}
           <div>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -51,7 +42,7 @@ export default function AboutSection({
               transition={{ duration: 0.6 }}
               className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
             >
-              {subtitle}
+              Wie ik ben
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -59,37 +50,64 @@ export default function AboutSection({
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-3xl md:text-4xl 2xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-heading font-bold text-white mb-6"
             >
-              {title}
+              Over Tigran
             </motion.h2>
+
+            {/* Provocative opening */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-gray-300 leading-relaxed mb-8 font-body text-base 2xl:text-lg 3xl:text-lg 4xl:text-xl 5xl:text-2xl"
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-accent font-heading text-xl md:text-2xl 2xl:text-3xl 4xl:text-4xl italic leading-snug mb-6"
             >
-              {description}
+              &ldquo;De meeste KMO&rsquo;s investeren duizenden euro&rsquo;s in hun website — en vullen hem dan met beelden die niets zeggen.&rdquo;
             </motion.p>
 
-            {/* Approach highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 4xl:gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-4"
+            >
+              <p className="text-gray-300 leading-relaxed font-body text-base 2xl:text-lg 3xl:text-lg 4xl:text-xl 5xl:text-2xl">
+                Ik ben Tigran, 18 jaar, content fotograaf vanuit de Kempen. Ik werk met KMO&rsquo;s en ondernemers die snappen dat hun beelden méér moeten doen dan &ldquo;er leuk uitzien&rdquo; — ze moeten klanten overtuigen, vertrouwen wekken, en je verhaal vertellen zonder dat je er een woord aan hoeft toe te voegen.
+              </p>
+
+              <p className="text-gray-300 leading-relaxed font-body text-base 2xl:text-lg 3xl:text-lg 4xl:text-xl 5xl:text-2xl">
+                Ik schiet met een Fujifilm X-M5, werk van dichtbij met je bedrijf, en begrijp het verschil tussen een mooie foto en een foto die converteert. Geen opgestelde stock-sfeer. Geen generieker-dan-generiek. Content die voelt alsof het écht bij jou hoort — want dat doet het.
+              </p>
+
+              <p className="text-gray-400 leading-relaxed font-body text-sm 2xl:text-base 3xl:text-base 4xl:text-lg">
+                Website foto&rsquo;s, social media content, branding shoots — ik maak het soort beelden waar je klanten bij blijven hangen. Letterlijk.
+              </p>
+            </motion.div>
+
+            {/* Approach highlights — compact, no bullet list */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 4xl:gap-6 mt-8"
+            >
               {[
-                { title: 'Persoonlijke Aanpak', text: 'Elke shoot wordt volledig afgestemd op uw wensen en stijl' },
-                { title: 'Creatieve Visie', text: 'Artistieke beelden die opvallen en een verhaal vertellen' },
-                { title: 'Snelle Levering', text: 'Professioneel bewerkte foto\u2019s binnen afgesproken termijn' },
-                { title: 'Heel Vlaanderen', text: 'Beschikbaar in elke stad en gemeente in Vlaanderen' },
+                { title: 'Persoonlijk', text: 'Ik werk rechtstreeks met jou — geen account managers, geen omwegen' },
+                { title: 'Resultaatgericht', text: 'Foto\'s die niet alleen mooi zijn, maar je bedrijf ook echt verder helpen' },
+                { title: 'Kempen & Antwerpen', text: 'Lokaal gevestigd, persoonlijk contact, snel inzetbaar' },
+                { title: 'Op maat', text: 'Geen standaardpakketten — elke shoot wordt afgestemd op jouw merk' },
               ].map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                  className="p-4 3xl:p-6 4xl:p-8 bg-primary/50 border border-white/5"
+                  transition={{ duration: 0.6, delay: 0.35 + index * 0.08 }}
+                  whileHover={{ y: -2 }}
+                  className="p-4 3xl:p-6 4xl:p-8 bg-primary/50 border border-white/5 hover:border-accent/20 transition-all duration-300"
                 >
                   <p className="text-white font-heading font-semibold text-sm 3xl:text-base 4xl:text-lg mb-1">{item.title}</p>
                   <p className="text-gray-400 text-xs 3xl:text-sm 4xl:text-base">{item.text}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
