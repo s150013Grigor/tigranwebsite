@@ -60,6 +60,8 @@ export default function AdminPage() {
   const [photoUploading, setPhotoUploading] = useState(false);
   const [photoSourceMode, setPhotoSourceMode] = useState<'url' | 'upload'>('upload');
   const [blogForm, setBlogForm] = useState({ title: '', slug: '', excerpt: '', coverImage: '', category: '', tags: '', content: '' });
+  const [blogCoverFile, setBlogCoverFile] = useState<File | null>(null);
+  const [blogCoverUploading, setBlogCoverUploading] = useState(false);
   const [testimonialForm, setTestimonialForm] = useState({ id: '', name: '', title: '', description: '', rating: 5 });
   const [faqForm, setFaqForm] = useState({ id: '', question: '', answer: '' });
 
@@ -452,6 +454,18 @@ export default function AdminPage() {
   };
 
   const saveBlog = async () => {
+    let coverUrl = blogForm.coverImage;
+    if (blogCoverFile) {
+      setBlogCoverUploading(true);
+      const url = await uploadFileToS3(blogCoverFile, `blog-cover-${blogForm.title || 'cover'}`);
+      setBlogCoverUploading(false);
+      if (url) {
+        coverUrl = url;
+      } else {
+        notify('Fout bij uploaden cover afbeelding.');
+        return;
+      }
+    }
     try {
       const method = editType === 'edit' ? 'PUT' : 'POST';
       const url = editType === 'edit' ? `${apiBase}/blog/${editingItem.slug}` : `${apiBase}/blog`;
@@ -460,6 +474,7 @@ export default function AdminPage() {
         headers: authHeaders(),
         body: JSON.stringify({
           ...blogForm,
+          coverImage: coverUrl,
           slug: blogForm.slug || blogForm.title.toLowerCase().replace(/\s+/g, '-'),
           tags: typeof blogForm.tags === 'string' ? blogForm.tags.split(',').map((t) => t.trim()).filter(Boolean) : blogForm.tags,
         }),
@@ -609,7 +624,7 @@ export default function AdminPage() {
 
   const resetAlbumForm = () => { setAlbumForm({ id: '', title: '', slug: '', description: '', coverImage: '', category: '', featured: false, order: albums.length + 1 }); setAlbumCoverFile(null); setEditType(null); setEditingItem(null); };
   const resetPhotoForm = () => { setPhotoForm({ id: '', title: '', slug: '', description: '', albumId: '', src: '', alt: '', width: 1920, height: 1280, tags: '' }); setPhotoFile(null); setPhotoSourceMode('upload'); setEditType(null); setEditingItem(null); };
-  const resetBlogForm = () => { setBlogForm({ title: '', slug: '', excerpt: '', coverImage: '', category: '', tags: '', content: '' }); setEditType(null); setEditingItem(null); };
+  const resetBlogForm = () => { setBlogForm({ title: '', slug: '', excerpt: '', coverImage: '', category: '', tags: '', content: '' }); setBlogCoverFile(null); setEditType(null); setEditingItem(null); };
   const resetTestimonialForm = () => { setTestimonialForm({ id: '', name: '', title: '', description: '', rating: 5 }); setEditType(null); setEditingItem(null); };
   const resetFaqForm = () => { setFaqForm({ id: '', question: '', answer: '' }); setEditType(null); setEditingItem(null); };
 
@@ -1054,7 +1069,19 @@ export default function AdminPage() {
                   <div><label className={labelClass}>Categorie</label><input type="text" className={inputClass} placeholder="Tips, Locaties, Zakelijk" value={blogForm.category} onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value })} /></div>
                 </div>
                 <div><label className={labelClass}>Excerpt *</label><textarea className={inputClass} rows={2} placeholder="Korte samenvatting..." value={blogForm.excerpt} onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })} /></div>
-                <div><label className={labelClass}>Cover Afbeelding URL</label><input type="url" className={inputClass} placeholder="https://..." value={blogForm.coverImage} onChange={(e) => setBlogForm({ ...blogForm, coverImage: e.target.value })} /></div>
+                <div>
+                  <label className={labelClass}>Cover Afbeelding</label>
+                  <input type="url" className={`${inputClass} mb-2`} placeholder="https://... of upload hieronder" value={blogForm.coverImage} onChange={(e) => { setBlogForm({ ...blogForm, coverImage: e.target.value }); if (e.target.value) setBlogCoverFile(null); }} />
+                  <input type="file" accept="image/jpeg,image/jpg,image/png,image/webp" className={inputClass}
+                    onChange={(e) => {
+                      const f = e.target.files?.[0] || null;
+                      setBlogCoverFile(f);
+                      if (f) setBlogForm({ ...blogForm, coverImage: '' });
+                    }} />
+                  {blogCoverFile && <p className="text-xs text-accent mt-1">Geselecteerd: {blogCoverFile.name}</p>}
+                  {blogCoverUploading && <p className="text-xs text-blue-400 mt-1 flex items-center gap-1"><HiRefresh className="w-3 h-3 animate-spin" />Cover wordt ge&uuml;pload...</p>}
+                  {blogForm.coverImage && !blogCoverFile && <img src={blogForm.coverImage} alt="cover preview" className="mt-2 h-24 object-cover border border-white/10" onError={(e) => (e.currentTarget.style.display='none')} />}
+                </div>
                 <div><label className={labelClass}>Tags (komma-gescheiden)</label><input type="text" className={inputClass} placeholder="fotografie, tips, zakelijk" value={blogForm.tags} onChange={(e) => setBlogForm({ ...blogForm, tags: e.target.value })} /></div>
                 <div>
                   <label className={labelClass}>Content (Markdown) *</label>
