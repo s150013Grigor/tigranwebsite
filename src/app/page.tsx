@@ -100,9 +100,11 @@ export default function HomePage() {
           <div className="absolute inset-0 w-full h-full">
             <div
               className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+              role="img"
+              aria-label="Kineworks Turnhout — gefotografeerd door Tigran Media"
               style={{
                 backgroundImage:
-                  'url(https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=1920&h=600&fit=crop)',
+                  "url('/Kineworks13jan2026-114.jpg')",
               }}
             />
           </div>
