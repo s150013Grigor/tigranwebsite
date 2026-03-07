@@ -92,6 +92,21 @@ export default function RootLayout({
   return (
     <html lang="nl-BE" className={`${playfair.variable} ${inter.variable}`}>
       <head>
+        {/* Preload hero image — mobile and desktop variants */}
+        <link
+          rel="preload"
+          as="image"
+          href="/zelfportret-mobile.webp"
+          type="image/webp"
+          media="(max-width: 1023px)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/zelfportret-desktop.webp"
+          type="image/webp"
+          media="(min-width: 1024px)"
+        />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: light)" />
         <link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: dark)" />

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import { getAlbums, getBlogPosts } from '@/lib/content';
 import { generatePhotographerSchema } from '@/lib/structured-data';
@@ -100,17 +101,14 @@ export default function HomePage() {
 
         {/* Divider — foto met quote */}
         <div className="relative overflow-hidden bg-[#1a1a1a]" style={{ height: '60vh' }}>
-          <div className="absolute inset-0 w-full h-full">
-            <div
-              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-              role="img"
-              aria-label="Kineworks Turnhout — gefotografeerd door Tigran Media"
-              style={{
-                backgroundImage:
-                  "url('/Kineworks13jan2026-114.webp')",
-              }}
-            />
-          </div>
+          <Image
+            src="/Kineworks13jan2026-114.webp"
+            alt="Kineworks Turnhout — gefotografeerd door Tigran Media"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            loading="lazy"
+          />
           <div className="absolute inset-0 bg-black z-10" style={{ opacity: 0.6 }} />
           {/* Fade aan bovenkant */}
           <div className="absolute top-0 left-0 right-0 h-20 z-[15] pointer-events-none bg-gradient-to-b from-[#0a0a0a] to-transparent" />

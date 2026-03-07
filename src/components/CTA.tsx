@@ -23,7 +23,7 @@ export default function CTA({
   ctaLink = '/contact/',
   secondaryCtaText = 'Bekijk Portfolio',
   secondaryCtaLink = '/portfolio/',
-  backgroundImage = '/DSCF6090-2.jpg',
+  backgroundImage = '/DSCF6090-2.webp',
   variant = 'parallax',
 }: CTAProps) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });

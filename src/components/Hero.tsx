@@ -99,14 +99,32 @@ export default function Hero() {
             <div className="lg:col-span-5 xl:col-span-5 relative">
               <div className="relative">
                 <div className="relative aspect-[3/4] lg:aspect-[3/4] overflow-hidden">
-                  <Image
-                    src="/zelfportret.webp"
-                    alt="Tigran — content fotograaf gespecialiseerd in commerciële fotografie voor KMO's in de Kempen"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 42vw"
-                    priority
-                  />                  {/* Subtle gold border accent */}
+                  {/*
+                    Mobile gets zelfportret-mobile.webp (14 KB, 800×1067)
+                    Desktop gets zelfportret-desktop.webp (179 KB, 3120×4160)
+                    Both are 3:4 portrait crops from the original RAW.
+                  */}
+                  <picture>
+                    <source
+                      media="(max-width: 1023px)"
+                      srcSet="/zelfportret-mobile.webp"
+                      type="image/webp"
+                    />
+                    <source
+                      media="(min-width: 1024px)"
+                      srcSet="/zelfportret-desktop.webp"
+                      type="image/webp"
+                    />
+                    <Image
+                      src="/zelfportret-desktop.webp"
+                      alt="Tigran — content fotograaf gespecialiseerd in commerciële fotografie voor KMO's in de Kempen"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1023px) 100vw, 42vw"
+                      priority
+                      fetchPriority="high"
+                    />
+                  </picture>                  {/* Subtle gold border accent */}
                   <div className="absolute inset-0 border border-accent/10" />
 
                   {/* Bottom gradient */}
