@@ -99,19 +99,14 @@ export default function Hero() {
             <div className="lg:col-span-5 xl:col-span-5 relative">
               <div className="relative">
                 <div className="relative aspect-[3/4] lg:aspect-[3/4] overflow-hidden">
-                  <picture className="block w-full h-full">
-                    <source srcSet="/zelfportret.webp" type="image/webp" />
-                    <Image
-                      src="/Zelfportret8feb2026.jpg"
-                      alt="Tigran — content fotograaf gespecialiseerd in commerciële fotografie voor KMO's in de Kempen"
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                      priority
-                    />
-                  </picture>
-
-                  {/* Subtle gold border accent */}
+                  <Image
+                    src="/zelfportret.webp"
+                    alt="Tigran — content fotograaf gespecialiseerd in commerciële fotografie voor KMO's in de Kempen"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    priority
+                  />                  {/* Subtle gold border accent */}
                   <div className="absolute inset-0 border border-accent/10" />
 
                   {/* Bottom gradient */}

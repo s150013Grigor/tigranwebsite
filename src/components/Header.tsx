@@ -60,7 +60,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <Image
-              src="/WEBLOGO.png"
+              src="/WEBLOGO.webp"
               alt="Tigran Media"
               width={160}
               height={50}

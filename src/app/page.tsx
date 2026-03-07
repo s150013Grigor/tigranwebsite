@@ -1,15 +1,18 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
-import Gallery from '@/components/Gallery';
-import ServicesSection from '@/components/ServicesSection';
-import MarqueeTicker from '@/components/MarqueeTicker';
-import Testimonials from '@/components/Testimonials';
-import CTA from '@/components/CTA';
-import TestimonialSpotlight from '@/components/TestimonialSpotlight';
-import BlogCard from '@/components/BlogCard';
 import { getAlbums, getBlogPosts } from '@/lib/content';
 import { generatePhotographerSchema } from '@/lib/structured-data';
 import { generateSEO } from '@/lib/seo';
+
+// Below-fold components — loaded after initial paint
+const Gallery = dynamic(() => import('@/components/Gallery'));
+const ServicesSection = dynamic(() => import('@/components/ServicesSection'));
+const MarqueeTicker = dynamic(() => import('@/components/MarqueeTicker'));
+const Testimonials = dynamic(() => import('@/components/Testimonials'));
+const CTA = dynamic(() => import('@/components/CTA'));
+const TestimonialSpotlight = dynamic(() => import('@/components/TestimonialSpotlight'));
+const BlogCard = dynamic(() => import('@/components/BlogCard'));
 
 export const metadata: Metadata = generateSEO({
   url: '/',
@@ -104,7 +107,7 @@ export default function HomePage() {
               aria-label="Kineworks Turnhout — gefotografeerd door Tigran Media"
               style={{
                 backgroundImage:
-                  "url('/Kineworks13jan2026-114.jpg')",
+                  "url('/Kineworks13jan2026-114.webp')",
               }}
             />
           </div>
