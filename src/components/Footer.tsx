@@ -50,14 +50,14 @@ export default function Footer() {
             <div className="space-y-3">
               <a
                 href="mailto:info@tigranmedia.be"
-                className="flex items-center text-gray-400 hover:text-accent transition-colors text-sm 3xl:text-base 4xl:text-lg"
+                className="flex items-center text-gray-400 hover:text-accent transition-colors duration-[150ms] ease-out text-sm 3xl:text-base 4xl:text-lg"
               >
                 <HiMail className="w-4 h-4 3xl:w-5 3xl:h-5 4xl:w-6 4xl:h-6 mr-3 text-accent" />
                 info@tigranmedia.be
               </a>
               <a
                 href="tel:+32474114899"
-                className="flex items-center text-gray-400 hover:text-accent transition-colors text-sm 3xl:text-base 4xl:text-lg"
+                className="flex items-center text-gray-400 hover:text-accent transition-colors duration-[150ms] ease-out text-sm 3xl:text-base 4xl:text-lg"
               >
                 <HiPhone className="w-4 h-4 3xl:w-5 3xl:h-5 4xl:w-6 4xl:h-6 mr-3 text-accent" />
                 +32 474 11 48 99

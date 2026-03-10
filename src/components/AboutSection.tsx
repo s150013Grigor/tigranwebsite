@@ -1,21 +1,22 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 
 export default function AboutSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section ref={ref} id="about" className="py-20 3xl:py-28 4xl:py-36 bg-primary-light">
+    <section ref={ref} id="about" className="py-24 md:py-32 3xl:py-28 4xl:py-36 bg-primary-light">
       <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 4xl:gap-24 items-center">
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, x: -30 }}
+            animate={inView ? (shouldReduceMotion ? {} : { opacity: 1, x: 0 }) : {}}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
             <div className="aspect-[4/5] relative overflow-hidden">

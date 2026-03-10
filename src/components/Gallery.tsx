@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface GalleryItem {
   id: string;
@@ -22,13 +21,15 @@ interface GalleryProps {
   subtitle?: string;
 }
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export default function Gallery({
   items,
   columns = 3,
   title,
   subtitle,
 }: GalleryProps) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const shouldReduceMotion = useReducedMotion();
 
   const gridCols = {
     2: 'grid-cols-1 md:grid-cols-2',
@@ -36,8 +37,38 @@ export default function Gallery({
     4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
   };
 
+  const headingVariants = shouldReduceMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: { opacity: 0, y: 32 },
+        visible: { opacity: 1, y: 0 },
+      };
+
+  const containerVariants = shouldReduceMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.08,
+            delayChildren: 0.1,
+          },
+        },
+      };
+
+  const itemVariants = shouldReduceMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: { opacity: 0, y: 32 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.45, ease: EASE_OUT_EXPO },
+        },
+      };
+
   return (
-    <section ref={ref} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-primary">
+    <section className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-primary">
       <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
         {(title || subtitle) && (
           <div className="relative text-center mb-20 md:mb-24 4xl:mb-32 overflow-hidden">
@@ -52,9 +83,11 @@ export default function Gallery({
             )}
             {subtitle && (
               <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6 }}
+                variants={headingVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
                 className="relative z-10 text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
               >
                 {subtitle}
@@ -62,9 +95,11 @@ export default function Gallery({
             )}
             {title && (
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                variants={headingVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.45, delay: 0.08, ease: EASE_OUT_EXPO }}
                 className="relative z-10 text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold"
               >
                 {title}
@@ -73,13 +108,21 @@ export default function Gallery({
           </div>
         )}
 
-        <div className={`grid ${gridCols[columns]} gap-6 4xl:gap-10`}>
+        <motion.div
+          className={`grid ${gridCols[columns]} gap-6 4xl:gap-10`}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
           {items.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              variants={index < 5 ? itemVariants : undefined}
+              initial={index >= 5 && !shouldReduceMotion ? { opacity: 0, y: 32 } : undefined}
+              whileInView={index >= 5 && !shouldReduceMotion ? { opacity: 1, y: 0 } : undefined}
+              viewport={index >= 5 ? { once: true, margin: '-80px' } : undefined}
+              transition={index >= 5 ? { duration: 0.45, ease: EASE_OUT_EXPO } : undefined}
             >
               <Link href={item.href} className="group block relative overflow-hidden">
                 <div className="aspect-[4/3] relative overflow-hidden">
@@ -87,31 +130,24 @@ export default function Gallery({
                     src={item.coverImage}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="object-cover transition-transform duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  {/* Caption inschuif — standaard transition zonder arbitrary easing */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms] ease-out" />
+                  {/* Hover text — fade up */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms] ease-out">
                     {item.category && (
-                      <span className="text-accent text-xs tracking-[0.2em] uppercase mb-2 block font-body">
+                      <span className="text-accent text-xs tracking-[0.2em] uppercase mb-2 font-body translate-y-2 group-hover:translate-y-0 transition-transform duration-[250ms] ease-out">
                         {item.category}
                       </span>
                     )}
-                    {/* Dunne gouden lijn */}
-                    <span className="block w-0 h-[1px] bg-accent mb-3 transition-all duration-500 ease-out group-hover:w-8" />
-                    <h3 className="text-white text-xl 3xl:text-2xl 4xl:text-3xl font-heading font-semibold">
-                      {item.title}
-                    </h3>
-                    {item.description && (
-                      <p className="text-gray-300 text-sm mt-2 line-clamp-2 font-body">
-                        {item.description}
-                      </p>
-                    )}
+                    <span className="text-white text-sm font-body tracking-wider translate-y-2 group-hover:translate-y-0 transition-transform duration-[250ms] ease-out delay-[50ms]">
+                      Bekijk project →
+                    </span>
                   </div>
                 </div>
-                <div className="bg-surface p-4 3xl:p-6 4xl:p-8 group-hover:bg-surface-light transition-colors duration-300">
+                <div className="bg-surface p-4 3xl:p-6 4xl:p-8 group-hover:bg-surface-light transition-colors duration-[250ms] group-hover:shadow-[0_4px_24px_-6px_rgba(0,0,0,0.4)]">
                   <h3 className="text-white font-heading text-lg 3xl:text-xl 4xl:text-2xl">{item.title}</h3>
                   {item.category && (
                     <p className="text-accent text-xs tracking-wider uppercase mt-1 font-body">
@@ -122,7 +158,7 @@ export default function Gallery({
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

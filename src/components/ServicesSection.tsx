@@ -1,7 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 
 interface Service {
@@ -25,13 +24,15 @@ interface ServicesSectionProps {
   subtitle?: string;
 }
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export default function ServicesSection({
   albums = [],
   services: servicesProp,
   title = 'Wat ik doe',
   subtitle = 'Diensten',
 }: ServicesSectionProps) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
+  const shouldReduceMotion = useReducedMotion();
 
   const services: Service[] = servicesProp
     ? servicesProp
@@ -43,30 +44,64 @@ export default function ServicesSection({
         })),
       ];
 
+  const fadeUp = shouldReduceMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: { opacity: 0, y: 32 },
+        visible: { opacity: 1, y: 0 },
+      };
+
+  const containerVariants = shouldReduceMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.08,
+          },
+        },
+      };
+
+  const itemVariants = shouldReduceMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: { opacity: 0, y: 32 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.45, ease: EASE_OUT_EXPO },
+        },
+      };
+
   return (
-    <section ref={ref} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-mesh-warm relative overflow-hidden">
+    <section className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-mesh-warm relative overflow-hidden">
       <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
 
         {/* Section header */}
         <div className="mb-20 md:mb-24 4xl:mb-32">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
             className="text-accent text-sm 3xl:text-base 4xl:text-lg 5xl:text-xl tracking-[0.5em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
           <motion.span
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={inView ? { scaleX: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.12, ease: [0.25, 0.4, 0.25, 1] }}
+            initial={shouldReduceMotion ? {} : { scaleX: 0, opacity: 0 }}
+            whileInView={shouldReduceMotion ? {} : { scaleX: 1, opacity: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, delay: 0.08, ease: [0.25, 0.4, 0.25, 1] }}
             className="block w-10 h-[1px] bg-accent/40 mb-5 origin-left"
           />
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.45, delay: 0.08, ease: EASE_OUT_EXPO }}
             className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold"
           >
             {title}
@@ -74,13 +109,17 @@ export default function ServicesSection({
         </div>
 
         {/* Asymmetric layout: 1 featured large + 2 smaller stacked */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 4xl:gap-10">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 4xl:gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
           {/* Featured service — large */}
           {services.length > 0 && (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0, ease: [0.25, 0.4, 0.25, 1] }}
+              variants={itemVariants}
               className="lg:row-span-2"
             >
               <Link href={services[0].href} className="group block relative h-full">
@@ -129,13 +168,7 @@ export default function ServicesSection({
             {services.slice(1).map((service, index) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.15 + (index + 1) * 0.1,
-                  ease: [0.25, 0.4, 0.25, 1],
-                }}
+                variants={itemVariants}
                 className="flex-1"
               >
                 <Link href={service.href} className="group block relative h-full">
@@ -175,7 +208,7 @@ export default function ServicesSection({
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

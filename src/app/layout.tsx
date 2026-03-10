@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Playfair_Display, Tenor_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -18,10 +18,10 @@ const playfair = Playfair_Display({
   preload: true,
 });
 
-const inter = Inter({
+const tenorSans = Tenor_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-inter',
+  weight: ['400'],
+  variable: '--font-tenor-sans',
   display: 'swap',
   preload: true,
 });
@@ -90,7 +90,7 @@ export default function RootLayout({
   const websiteSchema = generateWebsiteSchema();
 
   return (
-    <html lang="nl-BE" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="nl-BE" className={`${playfair.variable} ${tenorSans.variable}`}>
       <head>
         {/* Preload hero image — mobile and desktop variants */}
         <link

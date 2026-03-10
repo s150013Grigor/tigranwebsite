@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Hero from '@/components/Hero';
+import ScrollReveal from '@/components/ScrollReveal';
 import { getAlbums, getBlogPosts } from '@/lib/content';
 import { generatePhotographerSchema } from '@/lib/structured-data';
 import { generateSEO } from '@/lib/seo';
@@ -116,12 +117,12 @@ export default function HomePage() {
           <div className="absolute bottom-0 left-0 right-0 h-36 md:h-48 z-[15] pointer-events-none bg-gradient-to-b from-transparent to-[#1a1a1a]" />
           <div className="relative z-20 flex items-center justify-center w-full h-full">
             <div className="text-center px-4">
-              <p className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
+              <ScrollReveal as="p" className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
                 Mijn overtuiging
-              </p>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl 3xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold tracking-[0.02em] text-gradient-gold max-w-3xl 4xl:max-w-5xl">
+              </ScrollReveal>
+              <ScrollReveal as="h2" delay={0.08} className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl 3xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold tracking-[0.02em] text-gradient-gold max-w-3xl 4xl:max-w-5xl">
                 Goede foto&rsquo;s verkopen. Slechte foto&rsquo;s kosten.
-              </h2>
+              </ScrollReveal>
             </div>
           </div>
         </div>
@@ -134,12 +135,12 @@ export default function HomePage() {
           <section className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-primary-light">
             <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
               <div className="text-center mb-20 md:mb-24 4xl:mb-32">
-                <p className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
+                <ScrollReveal as="p" className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
                   Blog
-                </p>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl font-heading font-bold tracking-[0.02em] text-gradient-gold">
+                </ScrollReveal>
+                <ScrollReveal as="h2" delay={0.08} className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl font-heading font-bold tracking-[0.02em] text-gradient-gold">
                   Laatste Berichten
-                </h2>
+                </ScrollReveal>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 4xl:gap-12">
                 {blogPosts.map((post, index) => (

@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion, useReducedMotion } from 'framer-motion';
 import { HiCalendar, HiArrowRight } from 'react-icons/hi';
 
 interface BlogCardProps {
@@ -16,6 +15,8 @@ interface BlogCardProps {
   index?: number;
 }
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export default function BlogCard({
   title,
   excerpt,
@@ -25,14 +26,14 @@ export default function BlogCard({
   category,
   index = 0,
 }: BlogCardProps) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.article
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      initial={shouldReduceMotion ? {} : { opacity: 0, y: 32 }}
+      whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.45, delay: index < 5 ? index * 0.08 : 0, ease: EASE_OUT_EXPO }}
       className="group"
     >
       <Link href={`/blog/${slug}/`} className="block">
@@ -41,7 +42,7 @@ export default function BlogCard({
             src={coverImage}
             alt={title}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            className="object-cover transition-transform duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute top-4 left-4">

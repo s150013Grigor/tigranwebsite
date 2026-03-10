@@ -1,7 +1,31 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, useReducedMotion } from 'framer-motion';
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const fadeUp = (delay: number) =>
+    shouldReduceMotion
+      ? { initial: {}, animate: {} }
+      : {
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.5, delay, ease: EASE_OUT_EXPO },
+        };
+
+  const imageSettle = shouldReduceMotion
+    ? { initial: {}, animate: {} }
+    : {
+        initial: { scale: 1.03 },
+        animate: { scale: 1 },
+        transition: { duration: 1.2, ease: EASE_OUT_EXPO },
+      };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-primary">
 
@@ -38,15 +62,24 @@ export default function Hero() {
             <div className="lg:col-span-7 xl:col-span-7">
 
               {/* Label */}
-              <p className="text-accent text-xs md:text-sm 2xl:text-base tracking-[0.5em] uppercase mb-6 font-body">
+              <motion.p
+                {...fadeUp(0)}
+                className="text-accent text-xs md:text-sm 2xl:text-base tracking-[0.5em] uppercase mb-6 font-body"
+              >
                 Content & Branding Fotografie
-              </p>
+              </motion.p>
 
               {/* Decorative line */}
-              <span className="block w-12 h-[1px] bg-accent/50 mb-8" />
+              <motion.span
+                {...fadeUp(0)}
+                className="block w-12 h-[1px] bg-accent/50 mb-8"
+              />
 
               {/* H1 */}
-              <h1 className="font-heading font-bold leading-[1.05] tracking-[-0.02em] mb-2">
+              <motion.h1
+                {...fadeUp(0)}
+                className="font-heading font-bold leading-[1.05] tracking-[-0.02em] mb-2"
+              >
                 <span className="block text-white
                   text-[2.5rem]
                   sm:text-5xl
@@ -71,28 +104,34 @@ export default function Hero() {
                   5xl:text-[8.5rem] mt-1">
                   Echte foto&apos;s brengen ze.
                 </span>
-              </h1>
+              </motion.h1>
 
               {/* Description */}
-              <p className="text-gray-400 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl max-w-xl 2xl:max-w-2xl mt-8 mb-10 font-body leading-relaxed">
+              <motion.p
+                {...fadeUp(0.08)}
+                className="text-gray-400 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl max-w-xl 2xl:max-w-2xl mt-8 mb-10 font-body leading-relaxed"
+              >
                 Ik maak content die jouw bedrijf er zo uitziet als het eigenlijk is — professioneel, menselijk, en herkenbaar.
-              </p>
+              </motion.p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 4xl:gap-6">
+              <motion.div
+                {...fadeUp(0.16)}
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-4 4xl:gap-6"
+              >
                 <Link
                   href="/contact/"
-                  className="shimmer px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 bg-accent text-primary font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:bg-accent-light hover:scale-[1.02] transition-all duration-300 inline-block"
+                  className="shimmer px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 bg-accent text-primary font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:bg-accent-light transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block"
                 >
                   Bekijk of we matchen →
                 </Link>
                 <Link
                   href="/portfolio/"
-                  className="shimmer px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 border border-white/20 text-white font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:border-accent hover:text-accent transition-all duration-300 inline-block"
+                  className="shimmer px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 border border-white/20 text-white font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:border-accent hover:text-accent transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block"
                 >
                   Bekijk Portfolio
                 </Link>
-              </div>
+              </motion.div>
             </div>
 
             {/* ── Right: Portrait photo ── */}
@@ -104,27 +143,33 @@ export default function Hero() {
                     Desktop gets zelfportret-desktop.webp (179 KB, 3120×4160)
                     Both are 3:4 portrait crops from the original RAW.
                   */}
-                  <picture>
-                    <source
-                      media="(max-width: 1023px)"
-                      srcSet="/zelfportret-mobile.webp"
-                      type="image/webp"
-                    />
-                    <source
-                      media="(min-width: 1024px)"
-                      srcSet="/zelfportret-desktop.webp"
-                      type="image/webp"
-                    />
-                    <Image
-                      src="/zelfportret-desktop.webp"
-                      alt="Tigran — content fotograaf gespecialiseerd in commerciële fotografie voor KMO's in de Kempen"
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 1023px) 100vw, 42vw"
-                      priority
-                      fetchPriority="high"
-                    />
-                  </picture>                  {/* Subtle gold border accent */}
+                  <motion.div
+                    {...imageSettle}
+                    className="absolute inset-0"
+                  >
+                    <picture>
+                      <source
+                        media="(max-width: 1023px)"
+                        srcSet="/zelfportret-mobile.webp"
+                        type="image/webp"
+                      />
+                      <source
+                        media="(min-width: 1024px)"
+                        srcSet="/zelfportret-desktop.webp"
+                        type="image/webp"
+                      />
+                      <Image
+                        src="/zelfportret-desktop.webp"
+                        alt="Tigran — content fotograaf gespecialiseerd in commerciële fotografie voor KMO's in de Kempen"
+                        fill
+                        className="object-cover object-center"
+                        sizes="(max-width: 1023px) 100vw, 42vw"
+                        priority
+                        fetchPriority="high"
+                      />
+                    </picture>
+                  </motion.div>
+                  {/* Subtle gold border accent */}
                   <div className="absolute inset-0 border border-accent/10" />
 
                   {/* Bottom gradient */}

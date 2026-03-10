@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 
@@ -14,6 +14,7 @@ const testimonial = {
 
 export default function TestimonialSpotlight() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
+  const shouldReduceMotion = useReducedMotion();
 
   const words = testimonial.quote.split(' ');
   const showImage = !!testimonial.imageSrc;
@@ -36,8 +37,8 @@ export default function TestimonialSpotlight() {
       <div className="relative z-10 max-w-4xl xl:max-w-5xl 2xl:max-w-6xl 4xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
         {/* Decorative gold quote mark */}
         <motion.span
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.6 }}
+          animate={inView ? (shouldReduceMotion ? {} : { opacity: 1, scale: 1 }) : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="block text-accent/20 font-heading text-[8rem] md:text-[12rem] 3xl:text-[14rem] 4xl:text-[16rem] leading-none select-none -mb-16 md:-mb-24 3xl:-mb-28"
           aria-hidden="true"
@@ -51,11 +52,11 @@ export default function TestimonialSpotlight() {
             {words.map((word, i) => (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, y: 8 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                initial={shouldReduceMotion ? {} : { opacity: 0, y: 8 }}
+                animate={inView ? (shouldReduceMotion ? {} : { opacity: 1, y: 0 }) : {}}
                 transition={{
                   duration: 0.4,
-                  delay: 0.3 + i * 0.06,
+                  delay: shouldReduceMotion ? 0 : 0.3 + i * 0.06,
                   ease: [0.25, 0.4, 0.25, 1],
                 }}
                 className="inline-block mr-[0.3em]"
@@ -68,11 +69,11 @@ export default function TestimonialSpotlight() {
 
         {/* Author */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
+          animate={inView ? (shouldReduceMotion ? {} : { opacity: 1, y: 0 }) : {}}
           transition={{
             duration: 0.6,
-            delay: 0.3 + words.length * 0.06 + 0.2,
+            delay: shouldReduceMotion ? 0 : 0.3 + words.length * 0.06 + 0.2,
             ease: [0.25, 0.4, 0.25, 1],
           }}
           className="mt-10 md:mt-14 flex items-center gap-4"

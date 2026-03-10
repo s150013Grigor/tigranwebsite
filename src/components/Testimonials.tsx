@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import testimonialsData from '@/content/testimonials.json';
 
 interface Testimonial {
@@ -18,16 +18,26 @@ interface TestimonialsProps {
   subtitle?: string;
 }
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export default function Testimonials({
   title = 'Wat Klanten Zeggen',
   subtitle = 'Getuigenissen',
 }: TestimonialsProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const shouldReduceMotion = useReducedMotion();
   const testimonials: Testimonial[] = testimonialsData;
 
   // Duplicate for seamless infinite scroll
   const duplicated = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
+
+  const fadeUp = shouldReduceMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: { opacity: 0, y: 32 },
+        visible: { opacity: 1, y: 0 },
+      };
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-surface-dark overflow-hidden relative">
@@ -43,23 +53,28 @@ export default function Testimonials({
       <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
         <div className="text-center mb-20 md:mb-24 4xl:mb-32">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
             className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.5em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
           <motion.span
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.12, ease: [0.25, 0.4, 0.25, 1] }}
+            initial={shouldReduceMotion ? {} : { scaleX: 0, opacity: 0 }}
+            whileInView={shouldReduceMotion ? {} : { scaleX: 1, opacity: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, delay: 0.08, ease: [0.25, 0.4, 0.25, 1] }}
             className="block w-10 h-[1px] bg-accent/40 mx-auto mb-5 origin-center"
           />
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.45, delay: 0.08, ease: EASE_OUT_EXPO }}
             className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold"
           >
             {title}
