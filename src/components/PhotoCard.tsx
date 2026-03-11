@@ -49,7 +49,7 @@ export default function PhotoCard({
                 {tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] text-accent/80 uppercase tracking-wider"
+                    className="text-[10px] text-white/60 uppercase tracking-wider"
                   >
                     #{tag}
                   </span>

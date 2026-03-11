@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Tenor_Sans } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -9,19 +9,11 @@ import Script from 'next/script';
 
 const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: false });
 
-const playfair = Playfair_Display({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-playfair',
-  display: 'swap',
-  preload: true,
-});
-
-const tenorSans = Tenor_Sans({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-tenor-sans',
+  variable: '--font-dm-sans',
   display: 'swap',
   preload: true,
 });
@@ -90,23 +82,8 @@ export default function RootLayout({
   const websiteSchema = generateWebsiteSchema();
 
   return (
-    <html lang="nl-BE" className={`${playfair.variable} ${tenorSans.variable}`}>
+    <html lang="nl-BE" className={dmSans.variable}>
       <head>
-        {/* Preload hero image — mobile and desktop variants */}
-        <link
-          rel="preload"
-          as="image"
-          href="/zelfportret-mobile.webp"
-          type="image/webp"
-          media="(max-width: 1023px)"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/zelfportret-desktop.webp"
-          type="image/webp"
-          media="(min-width: 1024px)"
-        />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: light)" />
         <link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: dark)" />
@@ -114,7 +91,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-dark-96x96.png" type="image/png" sizes="96x96" media="(prefers-color-scheme: dark)" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="theme-color" content="#000000" />
 
         {/* Structured Data */}
         <script

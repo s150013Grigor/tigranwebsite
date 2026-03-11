@@ -20,10 +20,10 @@ function V1() {
             <div className="aspect-[4/3] overflow-hidden rounded-xl mb-4">
               <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
-            <span className="text-accent text-xs uppercase tracking-widest">{p.cat}</span>
-            <h3 className="font-heading text-xl text-white mt-1 mb-2 group-hover:text-accent transition">{p.title}</h3>
-            <p className="text-gray-400 text-sm mb-3">{p.excerpt}</p>
-            <span className="text-gray-500 text-xs flex items-center gap-1"><FaCalendar /> {p.date}</span>
+            <span className="text-white/50 text-xs uppercase tracking-widest">{p.cat}</span>
+            <h3 className="font-heading text-xl text-white mt-1 mb-2 group-hover:text-white transition">{p.title}</h3>
+            <p className="text-white/60 text-sm mb-3">{p.excerpt}</p>
+            <span className="text-white/50 text-xs flex items-center gap-1"><FaCalendar /> {p.date}</span>
           </motion.div>
         ))}
       </div>
@@ -37,17 +37,17 @@ function V2() {
     <section className="bg-primary py-16">
       <div className="max-w-4xl mx-auto px-8 space-y-6">
         {posts.map((p, i) => (
-          <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="group flex gap-6 bg-surface rounded-xl overflow-hidden cursor-pointer hover:ring-1 hover:ring-accent/30 transition">
+          <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="group flex gap-6 bg-surface rounded-xl overflow-hidden cursor-pointer hover:ring-1 hover:ring-white/30 transition">
             <div className="w-64 flex-shrink-0">
               <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="py-6 pr-6 flex flex-col justify-center">
-              <div className="flex items-center gap-3 text-xs text-gray-500 mb-2">
-                <span className="bg-accent/20 text-accent px-2 py-0.5 rounded">{p.cat}</span>
+              <div className="flex items-center gap-3 text-xs text-white/50 mb-2">
+                <span className="bg-white/20 text-white/50 px-2 py-0.5 rounded">{p.cat}</span>
                 <span>{p.date}</span>
               </div>
-              <h3 className="font-heading text-xl text-white group-hover:text-accent transition">{p.title}</h3>
-              <p className="text-gray-400 text-sm mt-2">{p.excerpt}</p>
+              <h3 className="font-heading text-xl text-white group-hover:text-white transition">{p.title}</h3>
+              <p className="text-white/60 text-sm mt-2">{p.excerpt}</p>
             </div>
           </motion.div>
         ))}
@@ -66,9 +66,9 @@ function V3() {
             <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6">
-              <span className="text-accent text-xs uppercase tracking-widest">{p.cat}</span>
+              <span className="text-white/50 text-xs uppercase tracking-widest">{p.cat}</span>
               <h3 className="font-heading text-xl text-white mt-1">{p.title}</h3>
-              <p className="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity">{p.excerpt}</p>
+              <p className="text-white/80 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity">{p.excerpt}</p>
             </div>
           </motion.div>
         ))}
@@ -86,9 +86,9 @@ function V4() {
           <div className="aspect-[4/3] overflow-hidden rounded-xl mb-4">
             <img src={posts[0].image} alt={posts[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
-          <span className="text-accent text-xs uppercase">{posts[0].cat}</span>
-          <h3 className="font-heading text-2xl text-white mt-1 mb-2 group-hover:text-accent transition">{posts[0].title}</h3>
-          <p className="text-gray-400 text-sm">{posts[0].excerpt}</p>
+          <span className="text-white/50 text-xs uppercase">{posts[0].cat}</span>
+          <h3 className="font-heading text-2xl text-white mt-1 mb-2 group-hover:text-white transition">{posts[0].title}</h3>
+          <p className="text-white/60 text-sm">{posts[0].excerpt}</p>
         </motion.div>
         <div className="space-y-6 flex flex-col justify-center">
           {posts.slice(1).map((p, i) => (
@@ -97,9 +97,9 @@ function V4() {
                 <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
               </div>
               <div>
-                <span className="text-accent text-xs">{p.cat}</span>
-                <h3 className="text-white font-semibold group-hover:text-accent transition text-sm">{p.title}</h3>
-                <span className="text-gray-500 text-xs mt-1 flex items-center gap-1"><FaCalendar /> {p.date}</span>
+                <span className="text-white/50 text-xs">{p.cat}</span>
+                <h3 className="text-white font-semibold group-hover:text-white transition text-sm">{p.title}</h3>
+                <span className="text-white/50 text-xs mt-1 flex items-center gap-1"><FaCalendar /> {p.date}</span>
               </div>
             </motion.div>
           ))}
@@ -116,14 +116,14 @@ function V5() {
       <div className="max-w-3xl mx-auto px-8 space-y-8">
         {posts.map((p, i) => (
           <motion.div key={i} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="group cursor-pointer border-b border-white/5 pb-8">
-            <div className="flex items-center gap-4 text-xs text-gray-500 mb-2">
+            <div className="flex items-center gap-4 text-xs text-white/50 mb-2">
               <span>{p.date}</span>
-              <span className="text-accent">{p.cat}</span>
+              <span className="text-white/50">{p.cat}</span>
               <span className="flex items-center gap-1"><FaClock /> {p.reading}</span>
             </div>
-            <h3 className="font-heading text-2xl text-white group-hover:text-accent transition">{p.title}</h3>
-            <p className="text-gray-400 mt-2">{p.excerpt}</p>
-            <span className="text-accent text-sm mt-3 inline-flex items-center gap-1 group-hover:gap-2 transition-all">Lees meer <FaArrowRight className="text-xs" /></span>
+            <h3 className="font-heading text-2xl text-white group-hover:text-white transition">{p.title}</h3>
+            <p className="text-white/60 mt-2">{p.excerpt}</p>
+            <span className="text-white/50 text-sm mt-3 inline-flex items-center gap-1 group-hover:gap-2 transition-all">Lees meer <FaArrowRight className="text-xs" /></span>
           </motion.div>
         ))}
       </div>
@@ -137,18 +137,18 @@ function V6() {
     <section className="bg-primary py-16">
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-6">
         {posts.map((p, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="border border-white/10 rounded-xl overflow-hidden group cursor-pointer hover:border-accent/30 transition">
+          <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="border border-white/10 rounded-xl overflow-hidden group cursor-pointer hover:border-white/30/30 transition">
             <div className="aspect-video overflow-hidden">
               <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
             </div>
             <div className="p-6">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-accent text-xs font-semibold uppercase">{p.cat}</span>
-                <span className="text-gray-600">•</span>
-                <span className="text-gray-500 text-xs">{p.date}</span>
+                <span className="text-white/50 text-xs font-semibold uppercase">{p.cat}</span>
+                <span className="text-white/40">•</span>
+                <span className="text-white/50 text-xs">{p.date}</span>
               </div>
-              <h3 className="font-heading text-lg text-white group-hover:text-accent transition">{p.title}</h3>
-              <p className="text-gray-400 text-sm mt-2">{p.excerpt}</p>
+              <h3 className="font-heading text-lg text-white group-hover:text-white transition">{p.title}</h3>
+              <p className="text-white/60 text-sm mt-2">{p.excerpt}</p>
             </div>
           </motion.div>
         ))}
@@ -168,8 +168,8 @@ function V7() {
             <div className="aspect-video rounded-lg overflow-hidden mb-4">
               <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
             </div>
-            <span className="text-accent text-xs">{p.cat} — {p.date}</span>
-            <h3 className="text-white font-heading text-lg mt-1 group-hover:text-accent transition">{p.title}</h3>
+            <span className="text-white/50 text-xs">{p.cat} — {p.date}</span>
+            <h3 className="text-white font-heading text-lg mt-1 group-hover:text-white transition">{p.title}</h3>
           </motion.div>
         ))}
       </div>
@@ -187,9 +187,9 @@ function V8() {
             <img src={posts[0].image} alt={posts[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent" />
             <div className="absolute bottom-0 p-8">
-              <span className="bg-accent text-primary px-3 py-1 rounded text-xs font-bold uppercase">{posts[0].cat}</span>
+              <span className="bg-white text-black px-3 py-1 rounded text-xs font-bold uppercase">{posts[0].cat}</span>
               <h3 className="font-heading text-3xl text-white mt-3">{posts[0].title}</h3>
-              <p className="text-gray-300 mt-2 max-w-xl">{posts[0].excerpt}</p>
+              <p className="text-white/80 mt-2 max-w-xl">{posts[0].excerpt}</p>
             </div>
           </motion.div>
           <div className="col-span-4 space-y-6">
@@ -198,8 +198,8 @@ function V8() {
                 <div className="aspect-video overflow-hidden rounded-lg mb-3">
                   <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                 </div>
-                <span className="text-accent text-xs">{p.cat}</span>
-                <h3 className="text-white text-sm font-semibold group-hover:text-accent transition">{p.title}</h3>
+                <span className="text-white/50 text-xs">{p.cat}</span>
+                <h3 className="text-white text-sm font-semibold group-hover:text-white transition">{p.title}</h3>
               </motion.div>
             ))}
           </div>
@@ -216,13 +216,13 @@ function V9() {
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-8">
         {posts.map((p, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="group cursor-pointer relative">
-            <div className="absolute -top-3 -left-3 z-10 w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">{i + 1}</div>
+            <div className="absolute -top-3 -left-3 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary font-bold">{i + 1}</div>
             <div className="bg-primary p-6 rounded-xl">
               <div className="aspect-video overflow-hidden rounded-lg mb-4">
                 <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
               </div>
-              <div className="flex items-center gap-2 text-xs text-gray-500 mb-2"><FaTag className="text-accent" /> {p.cat}<FaClock /> {p.reading}</div>
-              <h3 className="text-white font-heading text-lg group-hover:text-accent transition">{p.title}</h3>
+              <div className="flex items-center gap-2 text-xs text-white/50 mb-2"><FaTag className="text-white/50" /> {p.cat}<FaClock /> {p.reading}</div>
+              <h3 className="text-white font-heading text-lg group-hover:text-white transition">{p.title}</h3>
             </div>
           </motion.div>
         ))}
@@ -243,14 +243,14 @@ function V10() {
                 <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-white text-sm font-semibold group-hover:text-accent transition truncate">{p.title}</h3>
-                <p className="text-gray-500 text-xs mt-0.5 truncate">{p.excerpt}</p>
+                <h3 className="text-white text-sm font-semibold group-hover:text-white transition truncate">{p.title}</h3>
+                <p className="text-white/50 text-xs mt-0.5 truncate">{p.excerpt}</p>
               </div>
               <div className="flex-shrink-0 text-right">
-                <span className="text-accent text-xs font-semibold">{p.cat}</span>
-                <p className="text-gray-600 text-xs">{p.date}</p>
+                <span className="text-white/50 text-xs font-semibold">{p.cat}</span>
+                <p className="text-white/40 text-xs">{p.date}</p>
               </div>
-              <FaArrowRight className="text-gray-600 group-hover:text-accent transition flex-shrink-0" />
+              <FaArrowRight className="text-white/40 group-hover:text-white transition flex-shrink-0" />
             </motion.div>
           ))}
         </div>
@@ -277,16 +277,16 @@ export default function BlogCardsVariantenPage() {
   return (
     <main className="min-h-screen bg-primary pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <Link href="/varianten" className="text-accent hover:underline text-sm">← Terug naar varianten</Link>
-        <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">Blog Cards <span className="text-accent">Varianten</span></h1>
-        <p className="text-gray-400 mt-2">10 unieke blog kaart stijlen om uit te kiezen</p>
+        <Link href="/varianten" className="text-white/50 hover:underline text-sm">← Terug naar varianten</Link>
+        <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">Blog Cards <span className="text-white/50">Varianten</span></h1>
+        <p className="text-white/60 mt-2">10 unieke blog kaart stijlen om uit te kiezen</p>
       </div>
       {variants.map((v, i) => (
         <div key={i} className="mb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-            <span className="text-accent font-mono text-sm">Variant {i + 1}</span>
+            <span className="text-white/50 font-mono text-sm">Variant {i + 1}</span>
             <h2 className="font-heading text-2xl text-white">{v.name}</h2>
-            <p className="text-gray-500 text-sm">{v.desc}</p>
+            <p className="text-white/50 text-sm">{v.desc}</p>
           </div>
           {v.component}
         </div>

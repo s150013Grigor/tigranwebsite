@@ -17,10 +17,10 @@ function V1() {
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-8">
         {reviews.map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.15 }} className="bg-surface p-8 rounded-xl border border-white/10">
-            <p className="text-gray-300 mb-6 italic">&ldquo;{r.text}&rdquo;</p>
+            <p className="text-white/80 mb-6 italic">&ldquo;{r.text}&rdquo;</p>
             <div className="flex items-center gap-3">
               <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full object-cover" />
-              <div><p className="text-white font-semibold text-sm">{r.name}</p><p className="text-accent text-xs">{r.role}</p></div>
+              <div><p className="text-white font-semibold text-sm">{r.name}</p><p className="text-white/50 text-xs">{r.role}</p></div>
             </div>
           </motion.div>
         ))}
@@ -35,11 +35,11 @@ function V2() {
   return (
     <section className="bg-primary py-20">
       <div className="max-w-4xl mx-auto px-8 text-center">
-        <FaQuoteLeft className="text-accent/30 text-5xl mx-auto mb-6" />
+        <FaQuoteLeft className="text-white/30 text-5xl mx-auto mb-6" />
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="font-heading text-3xl md:text-4xl text-white leading-relaxed mb-8">{r.text}</motion.p>
         <div className="flex items-center justify-center gap-4">
-          <img src={r.avatar} alt={r.name} className="w-14 h-14 rounded-full border-2 border-accent" />
-          <div className="text-left"><p className="text-white font-semibold">{r.name}</p><p className="text-accent text-sm">{r.role}</p></div>
+          <img src={r.avatar} alt={r.name} className="w-14 h-14 rounded-full border-2 border-white/20" />
+          <div className="text-left"><p className="text-white font-semibold">{r.name}</p><p className="text-white/50 text-sm">{r.role}</p></div>
         </div>
       </div>
     </section>
@@ -52,15 +52,15 @@ function V3() {
     <section className="bg-primary py-16">
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <span className="text-accent uppercase tracking-widest text-sm">Wat klanten zeggen</span>
+          <span className="text-white/50 uppercase tracking-widest text-sm">Wat klanten zeggen</span>
           <h2 className="font-heading text-4xl text-white mt-2">Onze Klanten Spreken</h2>
         </div>
         <div className="space-y-6">
           {reviews.map((r, i) => (
-            <motion.div key={i} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="flex gap-4 items-start border-l-2 border-accent pl-6">
+            <motion.div key={i} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="flex gap-4 items-start border-l-2 border-white/20 pl-6">
               <div>
-                <p className="text-gray-300 text-sm italic">&ldquo;{r.text}&rdquo;</p>
-                <p className="text-white text-sm mt-2 font-semibold">{r.name} <span className="text-accent font-normal">— {r.role}</span></p>
+                <p className="text-white/80 text-sm italic">&ldquo;{r.text}&rdquo;</p>
+                <p className="text-white text-sm mt-2 font-semibold">{r.name} <span className="text-white/50 font-normal">— {r.role}</span></p>
               </div>
             </motion.div>
           ))}
@@ -78,8 +78,8 @@ function V4() {
         <div className="flex flex-col md:flex-row gap-6">
           {reviews.map((r, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2 }} className="flex-1 bg-primary p-8 rounded-2xl relative">
-              <FaQuoteLeft className="text-accent/20 text-3xl absolute top-4 right-4" />
-              <p className="text-gray-300 text-sm mb-6">{r.text}</p>
+              <FaQuoteLeft className="text-white/10 text-3xl absolute top-4 right-4" />
+              <p className="text-white/80 text-sm mb-6">{r.text}</p>
               <div className="flex items-center gap-3 border-t border-white/10 pt-4">
                 <img src={r.avatar} alt={r.name} className="w-8 h-8 rounded-full" />
                 <p className="text-white text-sm">{r.name}</p>
@@ -102,10 +102,10 @@ function V5() {
       <div className="flex gap-6 px-8 overflow-x-auto pb-4">
         {[...reviews, ...reviews].map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="flex-shrink-0 w-96 bg-surface p-6 rounded-xl border border-white/5">
-            <p className="text-gray-300 italic mb-4">&ldquo;{r.text}&rdquo;</p>
+            <p className="text-white/80 italic mb-4">&ldquo;{r.text}&rdquo;</p>
             <div className="flex items-center gap-3">
               <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full" />
-              <div><p className="text-white text-sm font-semibold">{r.name}</p><p className="text-gray-500 text-xs">{r.role}</p></div>
+              <div><p className="text-white text-sm font-semibold">{r.name}</p><p className="text-white/50 text-xs">{r.role}</p></div>
             </div>
           </motion.div>
         ))}
@@ -122,8 +122,8 @@ function V6() {
         {reviews.map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-center">
             <p className="text-white text-xl font-heading italic">&ldquo;{r.text}&rdquo;</p>
-            <p className="text-gray-500 mt-4">{r.name} — {r.role}</p>
-            {i < reviews.length - 1 && <div className="w-16 h-[1px] bg-accent/30 mx-auto mt-8" />}
+            <p className="text-white/50 mt-4">{r.name} — {r.role}</p>
+            {i < reviews.length - 1 && <div className="w-16 h-[1px] bg-white/30 mx-auto mt-8" />}
           </motion.div>
         ))}
       </div>
@@ -140,8 +140,8 @@ function V7() {
       <div className="relative z-10 max-w-5xl mx-auto px-8 grid md:grid-cols-3 gap-6">
         {reviews.map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.15 }} className="backdrop-blur-sm bg-white/5 p-6 rounded-lg border border-white/10">
-            <p className="text-gray-200 text-sm italic mb-4">&ldquo;{r.text}&rdquo;</p>
-            <p className="text-accent text-sm font-semibold">{r.name}</p>
+            <p className="text-white/90 text-sm italic mb-4">&ldquo;{r.text}&rdquo;</p>
+            <p className="text-white text-sm font-semibold">{r.name}</p>
           </motion.div>
         ))}
       </div>
@@ -156,10 +156,10 @@ function V8() {
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-12">
         {reviews.map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.15 }} className="text-center">
-            <img src={r.avatar} alt={r.name} className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-accent/30 object-cover" />
+            <img src={r.avatar} alt={r.name} className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white/20/30 object-cover" />
             <h3 className="text-white font-heading text-lg">{r.name}</h3>
-            <p className="text-accent text-sm mb-4">{r.role}</p>
-            <p className="text-gray-400 text-sm italic">&ldquo;{r.text}&rdquo;</p>
+            <p className="text-white/50 text-sm mb-4">{r.role}</p>
+            <p className="text-white/60 text-sm italic">&ldquo;{r.text}&rdquo;</p>
           </motion.div>
         ))}
       </div>
@@ -169,7 +169,7 @@ function V8() {
 
 /* ═══════ V9: Gradient Cards ═══════ */
 function V9() {
-  const gradients = ['from-accent/20 to-transparent', 'from-blue-500/20 to-transparent', 'from-purple-500/20 to-transparent'];
+  const gradients = ['from-white/20 to-transparent', 'from-blue-500/20 to-transparent', 'from-purple-500/20 to-transparent'];
   return (
     <section className="bg-primary py-16">
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-6">
@@ -179,7 +179,7 @@ function V9() {
             <p className="text-white mb-6">{r.text}</p>
             <div className="flex items-center gap-3">
               <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full" />
-              <div><p className="text-white text-sm font-bold">{r.name}</p><p className="text-gray-400 text-xs">{r.role}</p></div>
+              <div><p className="text-white text-sm font-bold">{r.name}</p><p className="text-white/60 text-xs">{r.role}</p></div>
             </div>
           </motion.div>
         ))}
@@ -195,12 +195,12 @@ function V10() {
       <div className="max-w-2xl mx-auto px-8">
         {reviews.map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} className="relative pl-8 pb-10 border-l border-white/10">
-            <div className="absolute left-0 top-0 w-3 h-3 bg-accent rounded-full -translate-x-[7px]" />
-            <p className="text-gray-300 italic text-sm">&ldquo;{r.text}&rdquo;</p>
+            <div className="absolute left-0 top-0 w-3 h-3 bg-white rounded-full -translate-x-[7px]" />
+            <p className="text-white/80 italic text-sm">&ldquo;{r.text}&rdquo;</p>
             <div className="flex items-center gap-2 mt-3">
               <img src={r.avatar} alt={r.name} className="w-6 h-6 rounded-full" />
               <p className="text-white text-sm">{r.name}</p>
-              <span className="text-accent text-xs ml-auto">{r.role}</span>
+              <span className="text-white/50 text-xs ml-auto">{r.role}</span>
             </div>
           </motion.div>
         ))}
@@ -213,7 +213,7 @@ function V10() {
 const variants = [
   { component: <V1 />, name: 'Classic Cards', desc: 'Drie kaarten met quote en avatar' },
   { component: <V2 />, name: 'Large Quote', desc: 'Één grote uitgelichte quote met groot lettertype' },
-  { component: <V3 />, name: 'Side by Side', desc: 'Titel links, reviews rechts met accent border' },
+  { component: <V3 />, name: 'Side by Side', desc: 'Titel links, reviews rechts met witte border' },
   { component: <V4 />, name: 'Dark Overlap', desc: 'Donkere overlappende kaarten met quote-icoon' },
   { component: <V5 />, name: 'Horizontal Scroll', desc: 'Horizontaal scrollbare review kaarten' },
   { component: <V6 />, name: 'Minimal List', desc: 'Minimalistische gestapelde quotes met scheidingslijnen' },
@@ -227,16 +227,16 @@ export default function TestimonialsVariantenPage() {
   return (
     <main className="min-h-screen bg-primary pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <Link href="/varianten" className="text-accent hover:underline text-sm">← Terug naar varianten</Link>
-        <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">Testimonials <span className="text-accent">Varianten</span></h1>
-        <p className="text-gray-400 mt-2">10 unieke testimonial secties om uit te kiezen</p>
+        <Link href="/varianten" className="text-white/50 hover:underline text-sm">← Terug naar varianten</Link>
+        <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">Testimonials <span className="text-white/50">Varianten</span></h1>
+        <p className="text-white/60 mt-2">10 unieke testimonial secties om uit te kiezen</p>
       </div>
       {variants.map((v, i) => (
         <div key={i} className="mb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-            <span className="text-accent font-mono text-sm">Variant {i + 1}</span>
+            <span className="text-white/50 font-mono text-sm">Variant {i + 1}</span>
             <h2 className="font-heading text-2xl text-white">{v.name}</h2>
-            <p className="text-gray-500 text-sm">{v.desc}</p>
+            <p className="text-white/50 text-sm">{v.desc}</p>
           </div>
           {v.component}
         </div>

@@ -31,7 +31,7 @@ export default function MarqueeTicker() {
             <span className="text-[0.55rem] md:text-[0.65rem] 2xl:text-xs 3xl:text-sm font-body uppercase tracking-[0.55em] text-white/20 px-7 md:px-10 3xl:px-14 4xl:px-18">
               {word}
             </span>
-            <span className="text-accent/20 text-[0.5rem] md:text-xs">◆</span>
+            <span className="text-white/10 text-[0.5rem] md:text-xs">◆</span>
           </span>
         ))}
       </div>

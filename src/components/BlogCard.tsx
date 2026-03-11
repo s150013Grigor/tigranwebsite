@@ -46,13 +46,13 @@ export default function BlogCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 3xl:px-4 3xl:py-1.5 bg-accent text-primary text-xs 3xl:text-sm 4xl:text-base uppercase tracking-wider">
+            <span className="px-3 py-1 3xl:px-4 3xl:py-1.5 bg-white text-primary text-xs 3xl:text-sm 4xl:text-base uppercase tracking-wider">
               {category}
             </span>
           </div>
         </div>
         <div className="space-y-3 4xl:space-y-4">
-          <div className="flex items-center text-gray-500 text-xs 3xl:text-sm 4xl:text-base">
+          <div className="flex items-center text-white/50 text-xs 3xl:text-sm 4xl:text-base">
             <HiCalendar className="w-3.5 h-3.5 3xl:w-4 3xl:h-4 4xl:w-5 4xl:h-5 mr-1.5" />
             {new Date(date).toLocaleDateString('nl-BE', {
               year: 'numeric',
@@ -60,13 +60,13 @@ export default function BlogCard({
               day: 'numeric',
             })}
           </div>
-          <h3 className="text-xl 3xl:text-2xl 4xl:text-3xl font-heading font-semibold text-white group-hover:text-accent transition-colors">
+          <h3 className="text-xl 3xl:text-2xl 4xl:text-3xl font-heading font-semibold text-white group-hover:text-white transition-colors">
             {title}
           </h3>
-          <p className="text-gray-400 text-sm 3xl:text-base 4xl:text-lg leading-relaxed line-clamp-2">
+          <p className="text-white/60 text-sm 3xl:text-base 4xl:text-lg leading-relaxed line-clamp-2">
             {excerpt}
           </p>
-          <span className="inline-flex items-center text-accent text-sm 3xl:text-base 4xl:text-lg group-hover:gap-3 gap-2 transition-all">
+          <span className="inline-flex items-center text-white text-sm 3xl:text-base 4xl:text-lg group-hover:gap-3 gap-2 transition-all">
             Lees meer <HiArrowRight className="w-4 h-4" />
           </span>
         </div>

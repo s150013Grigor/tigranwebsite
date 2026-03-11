@@ -12,13 +12,13 @@ function HeroV1() {
       <div className="absolute inset-0 bg-black/60" />
       <div className="relative text-center px-4 z-10">
         <motion.h1 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} className="font-heading text-5xl md:text-7xl text-white mb-4">
-          Tigran <span className="text-accent">Media</span>
+          Tigran <span className="text-white/50">Media</span>
         </motion.h1>
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-gray-300 text-xl mb-8 max-w-xl mx-auto">
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-white/80 text-xl mb-8 max-w-xl mx-auto">
           Professionele fotografie voor elk moment
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-          <button className="bg-accent text-primary px-8 py-3 rounded font-semibold hover:bg-accent/90 transition">
+          <button className="bg-white text-black px-8 py-3 rounded font-semibold hover:bg-white/90 transition">
             Ontdek Meer
           </button>
         </motion.div>
@@ -33,10 +33,10 @@ function HeroV2() {
     <section className="relative h-[600px] flex overflow-hidden">
       <div className="w-1/2 bg-primary flex items-center justify-end pr-16 pl-8">
         <div className="max-w-md">
-          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} className="border-l-4 border-accent pl-6">
+          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} className="border-l-4 border-white/20 pl-6">
             <h1 className="font-heading text-5xl text-white mb-4">Jouw Verhaal in Beeld</h1>
-            <p className="text-gray-400 mb-6">Elk moment verdient een professionele blik. Wij vangen emoties, details en schoonheid.</p>
-            <button className="border border-accent text-accent px-6 py-2 hover:bg-accent hover:text-primary transition">
+            <p className="text-white/60 mb-6">Elk moment verdient een professionele blik. Wij vangen emoties, details en schoonheid.</p>
+            <button className="border border-white/20 text-white/50 px-6 py-2 hover:bg-white hover:text-primary transition">
               Portfolio Bekijken
             </button>
           </motion.div>
@@ -55,10 +55,10 @@ function HeroV3() {
       <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
       <div className="relative z-10 w-full max-w-7xl mx-auto px-8 pb-16">
         <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}>
-          <span className="text-accent uppercase tracking-[0.3em] text-sm mb-4 block">Professionele Fotografie</span>
+          <span className="text-white/50 uppercase tracking-[0.3em] text-sm mb-4 block">Professionele Fotografie</span>
           <h1 className="font-heading text-6xl text-white mb-4">Momenten die<br />Blijven</h1>
           <div className="flex gap-4 mt-6">
-            <button className="bg-white text-primary px-8 py-3 font-semibold hover:bg-gray-100 transition">Boek Nu</button>
+            <button className="bg-white text-primary px-8 py-3 font-semibold hover:bg-white/90 transition">Boek Nu</button>
             <button className="border border-white/30 text-white px-8 py-3 hover:border-white transition">Meer Info</button>
           </div>
         </motion.div>
@@ -77,10 +77,10 @@ function HeroV4() {
       <div className="relative text-center z-10">
         <motion.div initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }}>
           <h1 className="font-heading text-8xl md:text-9xl text-white tracking-tight">
-            T<span className="text-accent">.</span>M
+            T<span className="text-white/50">.</span>M
           </h1>
-          <div className="w-24 h-[1px] bg-accent mx-auto my-6" />
-          <p className="text-gray-400 tracking-[0.5em] uppercase text-sm">Photography Studio</p>
+          <div className="w-24 h-[1px] bg-white mx-auto my-6" />
+          <p className="text-white/60 tracking-[0.5em] uppercase text-sm">Photography Studio</p>
         </motion.div>
       </div>
     </section>
@@ -101,8 +101,8 @@ function HeroV5() {
       <motion.div style={{ y: y2 }} className="relative z-10 h-full flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-heading text-6xl text-white mb-6">Zakelijke Fotografie</h1>
-          <p className="text-gray-300 text-lg mb-8">Met passie en oog voor detail</p>
-          <button className="bg-accent/20 border border-accent text-accent px-10 py-4 rounded-full hover:bg-accent hover:text-primary transition-all">
+          <p className="text-white/80 text-lg mb-8">Met passie en oog voor detail</p>
+          <button className="bg-white/20 border border-white/20 text-white/50 px-10 py-4 rounded-full hover:bg-white hover:text-primary transition-all">
             Ontdek Onze Stijl
           </button>
         </div>
@@ -118,10 +118,10 @@ function HeroV6() {
       <div className="max-w-7xl mx-auto px-8 w-full grid grid-cols-12 gap-4 items-center">
         <div className="col-span-5">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}>
-            <span className="text-accent text-sm uppercase tracking-widest">Sinds 2018</span>
+            <span className="text-white/50 text-sm uppercase tracking-widest">Sinds 2018</span>
             <h1 className="font-heading text-5xl text-white mt-4 mb-6">Fotografie<br />met Ziel</h1>
-            <p className="text-gray-400 mb-8">Authentieke beelden die het hart raken.</p>
-            <button className="bg-accent text-primary px-6 py-3 font-semibold">Contact</button>
+            <p className="text-white/60 mb-8">Authentieke beelden die het hart raken.</p>
+            <button className="bg-white text-black px-6 py-3 font-semibold">Contact</button>
           </motion.div>
         </div>
         <div className="col-span-7 grid grid-cols-2 gap-3">
@@ -141,20 +141,20 @@ function HeroV7() {
       <div className="absolute inset-0 bg-primary/80" />
       <div className="relative z-10 text-center">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-          <div className="w-20 h-20 border-2 border-accent rounded-full flex items-center justify-center mx-auto mb-8">
-            <span className="text-accent text-2xl">TM</span>
+          <div className="w-20 h-20 border-2 border-white/20 rounded-full flex items-center justify-center mx-auto mb-8">
+            <span className="text-white/50 text-2xl">TM</span>
           </div>
           <h1 className="font-heading text-5xl text-white mb-4">Tigran Media</h1>
-          <div className="flex items-center justify-center gap-4 text-gray-400 text-sm">
-            <span>Portretten</span><span className="text-accent">•</span>
-            <span>Portretten</span><span className="text-accent">•</span>
+          <div className="flex items-center justify-center gap-4 text-white/60 text-sm">
+            <span>Portretten</span><span className="text-white/50">•</span>
+            <span>Portretten</span><span className="text-white/50">•</span>
             <span>Evenementen</span>
           </div>
         </motion.div>
       </div>
       <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-2 bg-accent rounded-full" />
+          <div className="w-1 h-2 bg-white rounded-full" />
         </div>
       </motion.div>
     </section>
@@ -170,11 +170,11 @@ function HeroV8() {
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-8 w-full">
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} className="max-w-md">
-            <h1 className="font-heading text-6xl text-white mb-4">Creatieve<br /><span className="text-accent">Fotografie</span></h1>
-            <p className="text-gray-400 mb-6">Unieke perspectieven voor memorabele momenten.</p>
+            <h1 className="font-heading text-6xl text-white mb-4">Creatieve<br /><span className="text-white/50">Fotografie</span></h1>
+            <p className="text-white/60 mb-6">Unieke perspectieven voor memorabele momenten.</p>
             <div className="flex gap-3">
-              <button className="bg-accent text-primary px-6 py-3 font-semibold">Portfolio</button>
-              <button className="text-white px-6 py-3 border border-white/20 hover:border-accent transition">Info</button>
+              <button className="bg-white text-black px-6 py-3 font-semibold">Portfolio</button>
+              <button className="text-white px-6 py-3 border border-white/20 hover:border-white/30 transition">Info</button>
             </div>
           </motion.div>
         </div>
@@ -192,10 +192,10 @@ function HeroV9() {
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
           {['FOTO', 'GRA', 'FIE'].map((word, i) => (
             <motion.h1 key={word} initial={{ x: -50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: i * 0.15 }} className="font-heading text-7xl md:text-8xl text-white leading-none">
-              {word}<span className="text-accent">.</span>
+              {word}<span className="text-white/50">.</span>
             </motion.h1>
           ))}
-          <p className="text-gray-400 mt-6 max-w-sm">Met Tigran Media leg je elk belangrijk moment vast in tijdloze beelden.</p>
+          <p className="text-white/60 mt-6 max-w-sm">Met Tigran Media leg je elk belangrijk moment vast in tijdloze beelden.</p>
         </motion.div>
       </div>
     </section>
@@ -213,11 +213,11 @@ function HeroV10() {
       <div className="relative z-20 h-full flex items-center justify-center">
         <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} className="text-center">
           <h1 className="font-heading text-6xl md:text-7xl text-white">
-            THE <span className="text-accent italic">ART</span> OF LIGHT
+            THE <span className="text-white/50 italic">ART</span> OF LIGHT
           </h1>
           <div className="mt-6 flex items-center justify-center gap-8 text-white/60 text-sm uppercase tracking-widest">
             <span>Tigran Media</span>
-            <span className="w-8 h-[1px] bg-accent" />
+            <span className="w-8 h-[1px] bg-white" />
             <span>Belgium</span>
           </div>
         </motion.div>
@@ -244,19 +244,19 @@ export default function HeroVariantenPage() {
   return (
     <main className="min-h-screen bg-primary pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <Link href="/varianten" className="text-accent hover:underline text-sm">← Terug naar varianten</Link>
+        <Link href="/varianten" className="text-white/50 hover:underline text-sm">← Terug naar varianten</Link>
         <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">
-          Hero <span className="text-accent">Varianten</span>
+          Hero <span className="text-white/50">Varianten</span>
         </h1>
-        <p className="text-gray-400 mt-2">10 unieke hero secties om uit te kiezen</p>
+        <p className="text-white/60 mt-2">10 unieke hero secties om uit te kiezen</p>
       </div>
 
       {variants.map((v, i) => (
         <div key={i} className="mb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-            <span className="text-accent font-mono text-sm">Variant {i + 1}</span>
+            <span className="text-white/50 font-mono text-sm">Variant {i + 1}</span>
             <h2 className="font-heading text-2xl text-white">{v.name}</h2>
-            <p className="text-gray-500 text-sm">{v.desc}</p>
+            <p className="text-white/50 text-sm">{v.desc}</p>
           </div>
           {v.component}
         </div>

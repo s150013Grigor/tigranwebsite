@@ -14,14 +14,7 @@ const stats = [
 export default function StatsSection() {
   return (
     <section className="py-20 md:py-28 3xl:py-36 4xl:py-44 bg-primary relative overflow-hidden">
-      {/* Subtle gold accent gradient */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200, 169, 126, 0.04) 0%, transparent 70%)',
-        }}
-      />
+      
 
       {/* Grain overlay */}
       <div
@@ -43,10 +36,10 @@ export default function StatsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 md:mb-20 4xl:mb-28"
         >
-          <p className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.5em] uppercase mb-4 font-body">
+          <p className="text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.5em] uppercase mb-4 font-body">
             In cijfers
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl font-heading font-bold tracking-[0.02em] text-gradient-gold">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl font-heading font-bold tracking-[0.02em] text-white">
             Resultaten die tellen
           </h2>
         </motion.div>
@@ -64,7 +57,7 @@ export default function StatsSection() {
         </div>
 
         {/* Decorative divider */}
-        <div className="mt-16 md:mt-20 h-[1px] bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+        <div className="mt-16 md:mt-20 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
     </section>
   );

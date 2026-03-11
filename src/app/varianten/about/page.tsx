@@ -21,15 +21,15 @@ function V1() {
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
         <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} className="relative">
           <img src={avatar} alt="Tigran" className="rounded-lg w-full aspect-[3/4] object-cover" />
-          <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-accent rounded-lg" />
+          <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-white/20 rounded-lg" />
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}>
-          <span className="text-accent uppercase tracking-widest text-sm">Over Ons</span>
+          <span className="text-white/50 uppercase tracking-widest text-sm">Over Ons</span>
           <h2 className="font-heading text-4xl text-white mt-2 mb-6">Het Verhaal Achter de Lens</h2>
-          <p className="text-gray-400 mb-8 leading-relaxed">{bio}</p>
+          <p className="text-white/60 mb-8 leading-relaxed">{bio}</p>
           <div className="grid grid-cols-2 gap-6">
             {stats.map((s, i) => (
-              <div key={i}><p className="text-accent font-heading text-2xl">{s.value}</p><p className="text-gray-500 text-sm">{s.label}</p></div>
+              <div key={i}><p className="text-white/50 font-heading text-2xl">{s.value}</p><p className="text-white/50 text-sm">{s.label}</p></div>
             ))}
           </div>
         </motion.div>
@@ -45,12 +45,12 @@ function V2() {
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1920&h=600&fit=crop')] bg-cover bg-center opacity-10" />
       <div className="relative z-10 max-w-3xl mx-auto px-8 text-center">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}>
-          <img src={avatar} alt="Tigran" className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-accent object-cover" />
+          <img src={avatar} alt="Tigran" className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-white/20 object-cover" />
           <h2 className="font-heading text-4xl text-white mb-4">Tigran — Fotograaf</h2>
-          <p className="text-gray-400 leading-relaxed mb-8">{bio}</p>
+          <p className="text-white/60 leading-relaxed mb-8">{bio}</p>
           <div className="flex justify-center gap-8">
             {stats.slice(0, 3).map((s, i) => (
-              <div key={i} className="text-center"><p className="text-accent font-heading text-3xl">{s.value}</p><p className="text-gray-500 text-xs">{s.label}</p></div>
+              <div key={i} className="text-center"><p className="text-white/50 font-heading text-3xl">{s.value}</p><p className="text-white/50 text-xs">{s.label}</p></div>
             ))}
           </div>
         </motion.div>
@@ -70,18 +70,18 @@ function V3() {
   return (
     <section className="bg-primary py-20">
       <div className="max-w-4xl mx-auto px-8">
-        <h2 className="font-heading text-4xl text-white text-center mb-16">Ons <span className="text-accent">Verhaal</span></h2>
+        <h2 className="font-heading text-4xl text-white text-center mb-16">Ons <span className="text-white/50">Verhaal</span></h2>
         <div className="space-y-0">
           {events.map((e, i) => (
             <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} className="flex gap-6 items-start pb-12 relative">
               <div className="flex-shrink-0 w-20 text-right">
-                <span className="text-accent font-heading text-xl">{e.year}</span>
+                <span className="text-white/50 font-heading text-xl">{e.year}</span>
               </div>
               <div className="relative">
-                <div className="w-3 h-3 bg-accent rounded-full" />
+                <div className="w-3 h-3 bg-white rounded-full" />
                 {i < events.length - 1 && <div className="absolute top-3 left-[5px] w-[2px] h-full bg-white/10" />}
               </div>
-              <p className="text-gray-400 pt-0">{e.text}</p>
+              <p className="text-white/60 pt-0">{e.text}</p>
             </motion.div>
           ))}
         </div>
@@ -98,14 +98,14 @@ function V4() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} className="bg-primary rounded-2xl overflow-hidden grid md:grid-cols-5">
           <div className="col-span-2 bg-[url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop')] bg-cover bg-center min-h-[400px]" />
           <div className="col-span-3 p-12">
-            <span className="text-accent text-sm uppercase tracking-widest">De Fotograaf</span>
+            <span className="text-white/50 text-sm uppercase tracking-widest">De Fotograaf</span>
             <h2 className="font-heading text-3xl text-white mt-2 mb-4">Tigran</h2>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">{bio}</p>
+            <p className="text-white/60 text-sm leading-relaxed mb-6">{bio}</p>
             <div className="flex gap-6">
               {stats.slice(0, 3).map((s, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <span className="text-accent">{s.icon}</span>
-                  <div><p className="text-white text-sm font-bold">{s.value}</p><p className="text-gray-500 text-xs">{s.label}</p></div>
+                  <span className="text-white/50">{s.icon}</span>
+                  <div><p className="text-white text-sm font-bold">{s.value}</p><p className="text-white/50 text-xs">{s.label}</p></div>
                 </div>
               ))}
             </div>
@@ -128,14 +128,14 @@ function V5() {
     <section className="bg-primary py-20">
       <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 className="font-heading text-4xl text-white mb-6">Expertise & <span className="text-accent">Vaardigheden</span></h2>
-          <p className="text-gray-400 mb-8">{bio}</p>
+          <h2 className="font-heading text-4xl text-white mb-6">Expertise & <span className="text-white/50">Vaardigheden</span></h2>
+          <p className="text-white/60 mb-8">{bio}</p>
           <div className="space-y-4">
             {skills.map((s, i) => (
               <div key={i}>
-                <div className="flex justify-between text-sm mb-1"><span className="text-white">{s.name}</span><span className="text-accent">{s.pct}%</span></div>
+                <div className="flex justify-between text-sm mb-1"><span className="text-white">{s.name}</span><span className="text-white/50">{s.pct}%</span></div>
                 <div className="h-2 bg-surface rounded-full overflow-hidden">
-                  <motion.div initial={{ width: 0 }} whileInView={{ width: `${s.pct}%` }} transition={{ duration: 1, delay: i * 0.15 }} className="h-full bg-accent rounded-full" />
+                  <motion.div initial={{ width: 0 }} whileInView={{ width: `${s.pct}%` }} transition={{ duration: 1, delay: i * 0.15 }} className="h-full bg-white rounded-full" />
                 </div>
               </div>
             ))}
@@ -159,15 +159,15 @@ function V6() {
             <img src={avatar} alt="Tigran" className="w-full h-full object-cover rounded-lg" />
           </motion.div>
           <div className="col-span-7 bg-surface p-12 rounded-lg">
-            <h2 className="font-heading text-4xl text-white mb-4">Over <span className="text-accent">Tigran Media</span></h2>
-            <p className="text-gray-400 leading-relaxed">{bio}</p>
+            <h2 className="font-heading text-4xl text-white mb-4">Over <span className="text-white/50">Tigran Media</span></h2>
+            <p className="text-white/60 leading-relaxed">{bio}</p>
           </div>
           <div className="col-span-7 grid grid-cols-4 gap-4">
             {stats.map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-surface p-4 rounded-lg text-center">
-                <span className="text-accent text-xl">{s.icon}</span>
+                <span className="text-white/50 text-xl">{s.icon}</span>
                 <p className="text-white font-heading text-xl mt-2">{s.value}</p>
-                <p className="text-gray-500 text-xs">{s.label}</p>
+                <p className="text-white/50 text-xs">{s.label}</p>
               </motion.div>
             ))}
           </div>
@@ -184,13 +184,13 @@ function V7() {
       <div className="max-w-5xl mx-auto px-8 grid md:grid-cols-2 gap-12">
         <div>
           <h2 className="font-heading text-4xl text-white mb-6">Wie Is Tigran?</h2>
-          <p className="text-gray-400 leading-relaxed mb-6">{bio}</p>
-          <button className="bg-accent text-primary px-6 py-3 font-semibold">Meer Weten</button>
+          <p className="text-white/60 leading-relaxed mb-6">{bio}</p>
+          <button className="bg-white text-black px-6 py-3 font-semibold">Meer Weten</button>
         </div>
         <div className="flex items-center">
-          <blockquote className="border-l-4 border-accent pl-6">
+          <blockquote className="border-l-4 border-white/20 pl-6">
             <p className="text-white font-heading text-2xl italic leading-relaxed">&ldquo;Fotografie is niet wat je ziet, maar wat je voelt.&rdquo;</p>
-            <cite className="text-accent text-sm mt-4 block not-italic">— Tigran, Fotograaf</cite>
+            <cite className="text-white/50 text-sm mt-4 block not-italic">— Tigran, Fotograaf</cite>
           </blockquote>
         </div>
       </div>
@@ -206,11 +206,11 @@ function V8() {
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
           <div className="w-32 h-32 mx-auto mb-8 relative">
             <img src={avatar} alt="Tigran" className="w-full h-full rounded-full object-cover" />
-            <div className="absolute inset-0 rounded-full border-2 border-accent border-dashed animate-spin-slow" style={{ animationDuration: '20s' }} />
+            <div className="absolute inset-0 rounded-full border-2 border-white/20 border-dashed animate-spin-slow" style={{ animationDuration: '20s' }} />
           </div>
           <h2 className="font-heading text-3xl text-white">Tigran</h2>
-          <p className="text-accent text-sm uppercase tracking-widest mt-1 mb-6">Professioneel Fotograaf</p>
-          <p className="text-gray-400 leading-relaxed">{bio}</p>
+          <p className="text-white/50 text-sm uppercase tracking-widest mt-1 mb-6">Professioneel Fotograaf</p>
+          <p className="text-white/60 leading-relaxed">{bio}</p>
         </motion.div>
       </div>
     </section>
@@ -224,16 +224,16 @@ function V9() {
       <div className="max-w-7xl mx-auto px-8">
         <div className="grid md:grid-cols-3 gap-12">
           <div>
-            <h2 className="font-heading text-4xl text-white mb-4">Onze <span className="text-accent">Missie</span></h2>
-            <p className="text-gray-400 text-sm leading-relaxed">Wij geloven dat elk moment het verdient om op een authentieke en artistieke manier vastgelegd te worden. Onze missie is om emoties te vertalen naar tijdloze beelden.</p>
+            <h2 className="font-heading text-4xl text-white mb-4">Onze <span className="text-white/50">Missie</span></h2>
+            <p className="text-white/60 text-sm leading-relaxed">Wij geloven dat elk moment het verdient om op een authentieke en artistieke manier vastgelegd te worden. Onze missie is om emoties te vertalen naar tijdloze beelden.</p>
           </div>
           <div>
-            <h2 className="font-heading text-4xl text-white mb-4">Onze <span className="text-accent">Visie</span></h2>
-            <p className="text-gray-400 text-sm leading-relaxed">De toonaangevende fotograaf worden in Vlaanderen, bekend om onze unieke stijl en persoonlijke aanpak. Kwalitatieve fotografie toegankelijk maken voor iedereen.</p>
+            <h2 className="font-heading text-4xl text-white mb-4">Onze <span className="text-white/50">Visie</span></h2>
+            <p className="text-white/60 text-sm leading-relaxed">De toonaangevende fotograaf worden in Vlaanderen, bekend om onze unieke stijl en persoonlijke aanpak. Kwalitatieve fotografie toegankelijk maken voor iedereen.</p>
           </div>
           <div>
-            <h2 className="font-heading text-4xl text-white mb-4">Onze <span className="text-accent">Waarden</span></h2>
-            <p className="text-gray-400 text-sm leading-relaxed">Authenticiteit, creativiteit en klantgerichtheid staan centraal in alles wat we doen. We bouwen aan langdurige relaties met onze klanten.</p>
+            <h2 className="font-heading text-4xl text-white mb-4">Onze <span className="text-white/50">Waarden</span></h2>
+            <p className="text-white/60 text-sm leading-relaxed">Authenticiteit, creativiteit en klantgerichtheid staan centraal in alles wat we doen. We bouwen aan langdurige relaties met onze klanten.</p>
           </div>
         </div>
       </div>
@@ -248,17 +248,17 @@ function V10() {
       <div className="max-w-5xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
         <div className="relative aspect-video bg-surface rounded-xl flex items-center justify-center group cursor-pointer">
           <img src={studio} alt="Studio" className="absolute inset-0 w-full h-full object-cover rounded-xl opacity-50" />
-          <div className="relative z-10 w-16 h-16 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+          <div className="relative z-10 w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
             <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-primary ml-1" />
           </div>
         </div>
         <div>
-          <span className="text-accent text-sm uppercase tracking-widest">Behind The Scenes</span>
+          <span className="text-white/50 text-sm uppercase tracking-widest">Behind The Scenes</span>
           <h2 className="font-heading text-3xl text-white mt-2 mb-4">Bekijk Hoe Wij Werken</h2>
-          <p className="text-gray-400 leading-relaxed mb-6">Ontdek onze werkwijze, van het eerste gesprek tot de finale levering. Transparantie en kwaliteit staan centraal.</p>
-          <ul className="space-y-2 text-gray-400 text-sm">
+          <p className="text-white/60 leading-relaxed mb-6">Ontdek onze werkwijze, van het eerste gesprek tot de finale levering. Transparantie en kwaliteit staan centraal.</p>
+          <ul className="space-y-2 text-white/60 text-sm">
             {['Persoonlijk kennismakingsgesprek', 'Moodboard en stijlbepaling', 'Professionele fotosessie', 'Beeldbewerking en levering'].map((t, i) => (
-              <li key={i} className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-accent rounded-full" />{t}</li>
+              <li key={i} className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-white rounded-full" />{t}</li>
             ))}
           </ul>
         </div>
@@ -285,16 +285,16 @@ export default function AboutVariantenPage() {
   return (
     <main className="min-h-screen bg-primary pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <Link href="/varianten" className="text-accent hover:underline text-sm">← Terug naar varianten</Link>
-        <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">About <span className="text-accent">Varianten</span></h1>
-        <p className="text-gray-400 mt-2">10 unieke over-ons secties om uit te kiezen</p>
+        <Link href="/varianten" className="text-white/50 hover:underline text-sm">← Terug naar varianten</Link>
+        <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">About <span className="text-white/50">Varianten</span></h1>
+        <p className="text-white/60 mt-2">10 unieke over-ons secties om uit te kiezen</p>
       </div>
       {variants.map((v, i) => (
         <div key={i} className="mb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-            <span className="text-accent font-mono text-sm">Variant {i + 1}</span>
+            <span className="text-white/50 font-mono text-sm">Variant {i + 1}</span>
             <h2 className="font-heading text-2xl text-white">{v.name}</h2>
-            <p className="text-gray-500 text-sm">{v.desc}</p>
+            <p className="text-white/50 text-sm">{v.desc}</p>
           </div>
           {v.component}
         </div>

@@ -31,7 +31,7 @@ export default function FAQPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] flex items-center justify-center" style={{ height: '50vh' }}>
+      <section className="relative overflow-hidden bg-black flex items-center justify-center" style={{ height: '50vh' }}>
         {/* Noise overlay */}
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -40,16 +40,16 @@ export default function FAQPage() {
         {/* Subtle radial glow */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(200,169,126,0.06) 0%, transparent 70%)' }}
+          style={{ background: 'transparent' }}
         />
         <div className="relative z-10 text-center px-4">
-          <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
+          <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
             Hulp nodig?
           </p>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
             Veelgestelde Vragen
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-white/80 text-lg max-w-2xl mx-auto">
             Vind hier antwoorden op de meest gestelde vragen over onze diensten.
           </p>
         </div>

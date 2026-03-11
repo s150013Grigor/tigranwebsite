@@ -79,21 +79,21 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 relative z-10">
           {/* Meta */}
           <div className="mb-8">
-            <nav className="flex items-center space-x-2 text-sm text-gray-400 mb-6">
-              <Link href="/" className="hover:text-accent transition-colors">Home</Link>
+            <nav className="flex items-center space-x-2 text-sm text-white/60 mb-6">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
-              <Link href="/blog/" className="hover:text-accent transition-colors">Blog</Link>
+              <Link href="/blog/" className="hover:text-white transition-colors">Blog</Link>
               <span>/</span>
               <span className="text-white truncate">{post.title}</span>
             </nav>
 
-            <span className="text-accent text-sm tracking-wider uppercase">
+            <span className="text-white/50 text-sm tracking-wider uppercase">
               {post.category}
             </span>
             <h1 className="text-3xl md:text-5xl font-heading font-bold text-white mt-2 mb-4">
               {post.title}
             </h1>
-            <div className="flex items-center space-x-4 text-gray-500 text-sm">
+            <div className="flex items-center space-x-4 text-white/50 text-sm">
               <span>Door {post.author}</span>
               <span>•</span>
               <time dateTime={post.date}>
@@ -109,7 +109,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-1 bg-surface text-accent text-xs uppercase tracking-wider border border-white/5"
+                    className="px-2 py-1 bg-surface text-white/50 text-xs uppercase tracking-wider border border-white/5"
                   >
                     {tag}
                   </span>
@@ -126,12 +126,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           {/* Author Bio */}
           <div className="border-t border-white/10 py-8 mb-16">
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center">
-                <span className="text-accent text-xl font-bold">T</span>
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                <span className="text-white text-xl font-bold">T</span>
               </div>
               <div>
                 <p className="text-white font-heading text-lg">Tigran</p>
-                <p className="text-gray-400 text-sm">
+                <p className="text-white/60 text-sm">
                   Professionele fotograaf in Vlaanderen. Gepassioneerd door het vastleggen van momenten.
                 </p>
               </div>
@@ -162,10 +162,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
-                    <h3 className="text-white font-heading text-lg group-hover:text-accent transition-colors">
+                    <h3 className="text-white font-heading text-lg group-hover:text-white transition-colors">
                       {relPost.title}
                     </h3>
-                    <p className="text-gray-500 text-sm mt-1">
+                    <p className="text-white/50 text-sm mt-1">
                       {new Date(relPost.date).toLocaleDateString('nl-BE', {
                         year: 'numeric',
                         month: 'long',

@@ -88,7 +88,7 @@ export default function Gallery({
                 whileInView="visible"
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
-                className="relative z-10 text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
+                className="relative z-10 text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
               >
                 {subtitle}
               </motion.p>
@@ -100,7 +100,7 @@ export default function Gallery({
                 whileInView="visible"
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.45, delay: 0.08, ease: EASE_OUT_EXPO }}
-                className="relative z-10 text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold"
+                className="relative z-10 text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-white"
               >
                 {title}
               </motion.h2>
@@ -138,7 +138,7 @@ export default function Gallery({
                   {/* Hover text — fade up */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms] ease-out">
                     {item.category && (
-                      <span className="text-accent text-xs tracking-[0.2em] uppercase mb-2 font-body translate-y-2 group-hover:translate-y-0 transition-transform duration-[250ms] ease-out">
+                      <span className="text-white/50 text-xs tracking-[0.2em] uppercase mb-2 font-body translate-y-2 group-hover:translate-y-0 transition-transform duration-[250ms] ease-out">
                         {item.category}
                       </span>
                     )}
@@ -150,7 +150,7 @@ export default function Gallery({
                 <div className="bg-surface p-4 3xl:p-6 4xl:p-8 group-hover:bg-surface-light transition-colors duration-[250ms] group-hover:shadow-[0_4px_24px_-6px_rgba(0,0,0,0.4)]">
                   <h3 className="text-white font-heading text-lg 3xl:text-xl 4xl:text-2xl">{item.title}</h3>
                   {item.category && (
-                    <p className="text-accent text-xs tracking-wider uppercase mt-1 font-body">
+                    <p className="text-white/50 text-xs tracking-wider uppercase mt-1 font-body">
                       {item.category}
                     </p>
                   )}

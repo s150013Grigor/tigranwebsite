@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
 
@@ -58,15 +57,8 @@ export default function Header() {
       <nav className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
         <div className="flex items-center justify-between h-20 xl:h-22 2xl:h-24 3xl:h-28 4xl:h-32 5xl:h-36">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <Image
-              src="/WEBLOGO.webp"
-              alt="Tigran Media"
-              width={160}
-              height={50}
-              className="h-10 xl:h-12 2xl:h-14 3xl:h-16 4xl:h-20 5xl:h-24 w-auto object-contain group-hover:opacity-80 transition-opacity"
-              priority
-            />
+          <Link href="/" className="text-white font-heading font-bold text-xl xl:text-2xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl 5xl:text-6xl tracking-tight hover:opacity-80 transition-opacity">
+            Tigran Media
           </Link>
 
           {/* Desktop Navigation */}
@@ -75,17 +67,15 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm lg:text-[0.9rem] xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl font-body text-gray-300 hover:text-accent transition-colors duration-[150ms] ease-out tracking-wider uppercase relative group flex items-center gap-2"
+                className="text-sm lg:text-[0.9rem] xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl font-body text-white/60 hover:text-white transition-colors duration-[150ms] ease-out tracking-wider uppercase"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-accent scale-0 group-hover:scale-100 transition-transform duration-[150ms] ease-out" />
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-200 ease-out" />
               </Link>
             ))}
             <div className="flex items-center gap-4">
               <Link
                 href="/contact/"
-                className="ml-4 px-6 py-2 xl:px-8 xl:py-3 3xl:px-10 3xl:py-4 4xl:px-12 4xl:py-5 border border-accent text-accent text-sm lg:text-[0.9rem] xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl uppercase tracking-wider hover:bg-accent hover:text-primary transition-all duration-[250ms] ease-out active:scale-[0.98]"
+                className="ml-4 px-6 py-2 xl:px-8 xl:py-3 3xl:px-10 3xl:py-4 4xl:px-12 4xl:py-5 border border-white/30 text-white text-sm lg:text-[0.9rem] xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-[250ms] ease-out active:scale-[0.98]"
               >
                 Samenwerken
               </Link>
@@ -125,7 +115,7 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="block text-lg font-body text-gray-300 hover:text-accent transition-colors py-2 tracking-wider"
+                    className="block text-lg font-body text-white/60 hover:text-white transition-colors py-2 tracking-wider"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}
@@ -139,7 +129,7 @@ export default function Header() {
               >
                 <Link
                   href="/contact/"
-                  className="inline-block mt-4 px-6 py-3 border border-accent text-accent text-sm uppercase tracking-wider hover:bg-accent hover:text-primary transition-all duration-300"
+                  className="inline-block mt-4 px-6 py-3 border border-white/30 text-white text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
                   onClick={() => setIsOpen(false)}
                 >
                   Samenwerken

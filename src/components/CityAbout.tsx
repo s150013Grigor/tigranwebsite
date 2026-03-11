@@ -44,13 +44,13 @@ export default function CityAbout({
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
+            <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
               Lokale Expertise
             </p>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
               Mijn Werk in {cityName}
             </h2>
-            <div className="text-gray-300 leading-relaxed space-y-4">
+            <div className="text-white/80 leading-relaxed space-y-4">
               {text.split('\n\n').map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}

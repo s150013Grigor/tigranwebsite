@@ -9,7 +9,7 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
+  const springConfig = { damping: 35, stiffness: 700, mass: 0.3 };
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
 
@@ -71,9 +71,9 @@ export default function CustomCursor() {
         transition={{ opacity: { duration: 0.2 }, scale: { duration: 0.3, ease: 'easeOut' } }}
       >
         <div
-          className="w-4 h-4 rounded-full border border-accent/80 bg-accent/20"
+          className="w-4 h-4 rounded-full border border-white/60 bg-white/15"
           style={{
-            boxShadow: '0 0 8px rgba(200, 169, 126, 0.3)',
+            boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)',
           }}
         />
       </motion.div>

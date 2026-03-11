@@ -27,25 +27,25 @@ export default function TestimonialCard({
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
       whileHover={{ y: -4 }}
-      className="group relative bg-primary-light p-8 3xl:p-10 4xl:p-12 border border-white/5 hover:border-accent/30 transition-all duration-500 hover:shadow-[0_0_30px_-10px_rgba(200,169,126,0.15)] h-full flex flex-col"
+      className="group relative bg-primary-light p-8 3xl:p-10 4xl:p-12 border border-white/5 hover:border-white/15 transition-all duration-500 h-full flex flex-col"
     >
       {/* Gold quote mark */}
       <span
-        className="absolute top-6 right-8 text-6xl 3xl:text-7xl 4xl:text-8xl font-heading text-accent/10 leading-none select-none pointer-events-none"
+        className="absolute top-6 right-8 text-6xl 3xl:text-7xl 4xl:text-8xl font-heading text-white/10 leading-none select-none pointer-events-none"
         aria-hidden="true"
       >
         &ldquo;
       </span>
 
       {/* Quote */}
-      <p className="text-gray-300 text-sm 3xl:text-base 4xl:text-lg leading-relaxed mb-8 italic relative z-10 flex-1">
+      <p className="text-white/80 text-sm 3xl:text-base 4xl:text-lg leading-relaxed mb-8 italic relative z-10 flex-1">
         &ldquo;{quote}&rdquo;
       </p>
 
       {/* Author */}
       <div className="flex items-center gap-4 relative z-10">
         {imageSrc ? (
-          <div className="w-12 h-12 3xl:w-14 3xl:h-14 4xl:w-16 4xl:h-16 rounded-full overflow-hidden border border-accent/20 flex-shrink-0">
+          <div className="w-12 h-12 3xl:w-14 3xl:h-14 4xl:w-16 4xl:h-16 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
             <Image
               src={imageSrc}
               alt={`Foto van ${name}`}
@@ -55,8 +55,8 @@ export default function TestimonialCard({
             />
           </div>
         ) : (
-          <div className="w-12 h-12 3xl:w-14 3xl:h-14 4xl:w-16 4xl:h-16 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0 border border-accent/20">
-            <span className="text-accent text-sm 3xl:text-base font-bold font-heading">
+          <div className="w-12 h-12 3xl:w-14 3xl:h-14 4xl:w-16 4xl:h-16 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/20">
+            <span className="text-white text-sm 3xl:text-base font-bold font-heading">
               {name.charAt(0)}
             </span>
           </div>
@@ -66,7 +66,7 @@ export default function TestimonialCard({
             {name}
           </p>
           {(role || company) && (
-            <p className="text-gray-500 text-xs 3xl:text-sm font-body">
+            <p className="text-white/50 text-xs 3xl:text-sm font-body">
               {role && company ? `${role}, ${company}` : role || company}
             </p>
           )}

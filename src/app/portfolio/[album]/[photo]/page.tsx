@@ -83,12 +83,12 @@ export default function PhotoPage({
       <div className="pt-24 pb-16 bg-primary min-h-screen">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-sm text-gray-400 mb-8">
-            <Link href="/" className="hover:text-accent transition-colors">Home</Link>
+          <nav className="flex items-center space-x-2 text-sm text-white/60 mb-8">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/portfolio/" className="hover:text-accent transition-colors">Portfolio</Link>
+            <Link href="/portfolio/" className="hover:text-white transition-colors">Portfolio</Link>
             <span>/</span>
-            <Link href={`/portfolio/${album.slug}/`} className="hover:text-accent transition-colors">
+            <Link href={`/portfolio/${album.slug}/`} className="hover:text-white transition-colors">
               {album.title}
             </Link>
             <span>/</span>
@@ -113,7 +113,7 @@ export default function PhotoPage({
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
                 {photo.title}
               </h1>
-              <p className="text-gray-300 leading-relaxed mb-6">
+              <p className="text-white/80 leading-relaxed mb-6">
                 {photo.description}
               </p>
               {photo.tags.length > 0 && (
@@ -121,7 +121,7 @@ export default function PhotoPage({
                   {photo.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-surface text-accent text-xs uppercase tracking-wider border border-white/5"
+                      className="px-3 py-1 bg-surface text-white/50 text-xs uppercase tracking-wider border border-white/5"
                     >
                       #{tag}
                     </span>
@@ -135,11 +135,11 @@ export default function PhotoPage({
                 <h3 className="text-white font-heading text-lg mb-4">Details</h3>
                 <dl className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <dt className="text-gray-400">Album</dt>
+                    <dt className="text-white/60">Album</dt>
                     <dd className="text-white">{album.title}</dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt className="text-gray-400">Fotograaf</dt>
+                    <dt className="text-white/60">Fotograaf</dt>
                     <dd className="text-white">Tigran</dd>
                   </div>
                 </dl>
@@ -147,7 +147,7 @@ export default function PhotoPage({
 
               <Link
                 href="/contact/"
-                className="block w-full text-center px-6 py-3 bg-accent text-primary text-sm uppercase tracking-wider hover:bg-accent-light transition-colors"
+                className="block w-full text-center px-6 py-3 bg-white text-black text-sm uppercase tracking-wider hover:bg-white/85 transition-colors"
               >
                 Interesse? Neem contact op
               </Link>
@@ -159,7 +159,7 @@ export default function PhotoPage({
             {prevPhoto ? (
               <Link
                 href={`/portfolio/${album.slug}/${prevPhoto.slug}/`}
-                className="text-gray-400 hover:text-accent transition-colors text-sm"
+                className="text-white/60 hover:text-white transition-colors text-sm"
               >
                 ← {prevPhoto.title}
               </Link>
@@ -168,14 +168,14 @@ export default function PhotoPage({
             )}
             <Link
               href={`/portfolio/${album.slug}/`}
-              className="text-accent text-sm hover:underline"
+              className="text-white/50 text-sm hover:underline"
             >
               Terug naar album
             </Link>
             {nextPhoto ? (
               <Link
                 href={`/portfolio/${album.slug}/${nextPhoto.slug}/`}
-                className="text-gray-400 hover:text-accent transition-colors text-sm"
+                className="text-white/60 hover:text-white transition-colors text-sm"
               >
                 {nextPhoto.title} →
               </Link>

@@ -43,7 +43,7 @@ export default function StatCounter({
   return (
     <div ref={ref} className="text-center">
       <motion.span
-        className="block text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl 4xl:text-9xl font-heading font-bold text-accent leading-none mb-3"
+        className="block text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl 4xl:text-9xl font-heading font-bold text-white leading-none mb-3"
       >
         {isInView ? (
           <motion.span>{display}</motion.span>
@@ -51,7 +51,7 @@ export default function StatCounter({
           <span>{prefix}0{suffix}</span>
         )}
       </motion.span>
-      <span className="text-gray-400 text-sm 3xl:text-base 4xl:text-lg font-body tracking-wider uppercase">
+      <span className="text-white/60 text-sm 3xl:text-base 4xl:text-lg font-body tracking-wider uppercase">
         {label}
       </span>
     </div>

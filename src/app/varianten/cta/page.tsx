@@ -7,7 +7,7 @@ import { FaArrowRight, FaCamera, FaPhone } from 'react-icons/fa';
 /* ═══════ V1: Classic CTA ═══════ */
 function V1() {
   return (
-    <section className="bg-accent py-20">
+    <section className="bg-white py-20">
       <div className="max-w-4xl mx-auto px-8 text-center">
         <h2 className="font-heading text-4xl text-primary mb-4">Klaar voor Jouw Fotoshoot?</h2>
         <p className="text-primary/70 mb-8 max-w-xl mx-auto">Neem vandaag nog contact met ons op en laten we samen prachtige beelden maken.</p>
@@ -26,9 +26,9 @@ function V2() {
       <div className="relative z-10 max-w-4xl mx-auto px-8 text-center">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}>
           <h2 className="font-heading text-4xl text-white mb-4">Laat Ons Jouw Verhaal Vertellen</h2>
-          <p className="text-gray-300 mb-8">Professionele fotografie voor elk moment dat telt.</p>
+          <p className="text-white/80 mb-8">Professionele fotografie voor elk moment dat telt.</p>
           <div className="flex gap-4 justify-center">
-            <button className="bg-accent text-primary px-8 py-3 font-semibold">Boek Nu</button>
+            <button className="bg-white text-black px-8 py-3 font-semibold">Boek Nu</button>
             <button className="border border-white text-white px-8 py-3 hover:bg-white hover:text-primary transition">Meer Info</button>
           </div>
         </motion.div>
@@ -41,7 +41,7 @@ function V2() {
 function V3() {
   return (
     <section className="grid md:grid-cols-2">
-      <div className="bg-accent p-16 flex items-center">
+      <div className="bg-white p-16 flex items-center">
         <div>
           <h2 className="font-heading text-3xl text-primary mb-4">Zakelijke Fotografie</h2>
           <p className="text-primary/70 mb-6">De mooiste dag verdient de mooiste foto&apos;s.</p>
@@ -51,8 +51,8 @@ function V3() {
       <div className="bg-surface p-16 flex items-center">
         <div>
           <h2 className="font-heading text-3xl text-white mb-4">Portretfotografie</h2>
-          <p className="text-gray-400 mb-6">Professionele portretten voor elk doel.</p>
-          <button className="border border-accent text-accent px-6 py-3 font-semibold flex items-center gap-2 hover:bg-accent hover:text-primary transition">Boek Nu <FaArrowRight /></button>
+          <p className="text-white/60 mb-6">Professionele portretten voor elk doel.</p>
+          <button className="border border-white/20 text-white/50 px-6 py-3 font-semibold flex items-center gap-2 hover:bg-white hover:text-black transition">Boek Nu <FaArrowRight /></button>
         </div>
       </div>
     </section>
@@ -65,13 +65,13 @@ function V4() {
     <section className="bg-primary py-20">
       <div className="max-w-4xl mx-auto px-8">
         <div className="border border-white/10 p-12 text-center">
-          <span className="text-accent uppercase tracking-[0.3em] text-sm">Contact</span>
+          <span className="text-white/50 uppercase tracking-[0.3em] text-sm">Contact</span>
           <h2 className="font-heading text-4xl text-white mt-4 mb-8">Interesse? Laten We Praten.</h2>
-          <div className="w-16 h-[1px] bg-accent mx-auto mb-8" />
+          <div className="w-16 h-[1px] bg-white mx-auto mb-8" />
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:info@tigranmedia.be" className="text-accent hover:underline">info@tigranmedia.be</a>
+            <a href="mailto:info@tigranmedia.be" className="text-white/50 hover:underline">info@tigranmedia.be</a>
             <span className="text-white/20 hidden sm:inline">|</span>
-            <a href="tel:+32474114899" className="text-accent hover:underline">+32 474 11 48 99</a>
+            <a href="tel:+32474114899" className="text-white/50 hover:underline">+32 474 11 48 99</a>
           </div>
         </div>
       </div>
@@ -82,13 +82,13 @@ function V4() {
 /* ═══════ V5: Gradient Banner ═══════ */
 function V5() {
   return (
-    <section className="bg-gradient-to-r from-accent/20 via-primary to-accent/20 py-16">
+    <section className="bg-gradient-to-r from-white/20 via-primary to-white/20 py-16">
       <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-8">
         <div>
           <h2 className="font-heading text-3xl text-white">Begin Vandaag Nog</h2>
-          <p className="text-gray-400 mt-2">Vraag een gratis en vrijblijvend gesprek aan.</p>
+          <p className="text-white/60 mt-2">Vraag een gratis en vrijblijvend gesprek aan.</p>
         </div>
-        <button className="bg-accent text-primary px-10 py-4 font-semibold rounded-full hover:scale-105 transition-transform flex items-center gap-2 whitespace-nowrap">
+        <button className="bg-white text-black px-10 py-4 font-semibold rounded-full hover:scale-105 transition-transform flex items-center gap-2 whitespace-nowrap">
           <FaPhone /> Bel Ons
         </button>
       </div>
@@ -105,8 +105,8 @@ function V6() {
           <div className="bg-[url('https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=400&fit=crop')] bg-cover bg-center min-h-[300px]" />
           <div className="p-12 flex flex-col justify-center">
             <h2 className="font-heading text-3xl text-white mb-4">Gratis Kennismaking</h2>
-            <p className="text-gray-400 mb-6">Plan een vrijblijvend gesprek en ontdek hoe we samen jouw visie kunnen realiseren.</p>
-            <button className="bg-accent text-primary px-6 py-3 font-semibold w-fit">Plan Afspraak</button>
+            <p className="text-white/60 mb-6">Plan een vrijblijvend gesprek en ontdek hoe we samen jouw visie kunnen realiseren.</p>
+            <button className="bg-white text-black px-6 py-3 font-semibold w-fit">Plan Afspraak</button>
           </div>
         </div>
       </div>
@@ -122,13 +122,13 @@ function V7() {
         <div className="grid grid-cols-3 gap-8 mb-12">
           {[{ n: '500+', l: 'Tevreden Klanten' }, { n: '10K+', l: "Foto's Geleverd" }, { n: '8+', l: 'Jaar Ervaring' }].map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
-              <p className="text-accent font-heading text-4xl">{s.n}</p>
-              <p className="text-gray-400 text-sm mt-1">{s.l}</p>
+              <p className="text-white/50 font-heading text-4xl">{s.n}</p>
+              <p className="text-white/60 text-sm mt-1">{s.l}</p>
             </motion.div>
           ))}
         </div>
         <h2 className="font-heading text-3xl text-white mb-4">Word Onze Volgende Tevreden Klant</h2>
-        <button className="bg-accent text-primary px-8 py-3 font-semibold mt-4">Start Nu</button>
+        <button className="bg-white text-black px-8 py-3 font-semibold mt-4">Start Nu</button>
       </div>
     </section>
   );
@@ -137,7 +137,7 @@ function V7() {
 /* ═══════ V8: Sticky Ribbon ═══════ */
 function V8() {
   return (
-    <section className="bg-accent">
+    <section className="bg-white">
       <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <FaCamera className="text-primary text-xl" />
@@ -155,12 +155,12 @@ function V9() {
     <section className="bg-primary py-24 border-y border-white/5">
       <div className="max-w-3xl mx-auto px-8 text-center">
         <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}>
-          <span className="text-accent text-6xl font-heading">&ldquo;</span>
+          <span className="text-white/50 text-6xl font-heading">&ldquo;</span>
           <h2 className="font-heading text-3xl text-white -mt-4 mb-6">Ieder Moment Verdient Het Om Vastgelegd Te Worden</h2>
-          <p className="text-gray-400 mb-8">Ontdek onze diensten en plannen. Wij staan klaar om jouw bijzondere momenten vast te leggen.</p>
+          <p className="text-white/60 mb-8">Ontdek onze diensten en plannen. Wij staan klaar om jouw bijzondere momenten vast te leggen.</p>
           <div className="flex gap-4 justify-center">
-            <button className="bg-accent text-primary px-8 py-3 font-semibold rounded-full">Diensten</button>
-            <button className="border border-accent text-accent px-8 py-3 rounded-full hover:bg-accent hover:text-primary transition">Prijzen</button>
+            <button className="bg-white text-black px-8 py-3 font-semibold rounded-full">Diensten</button>
+            <button className="border border-white/20 text-white/50 px-8 py-3 rounded-full hover:bg-white hover:text-black transition">Prijzen</button>
           </div>
         </motion.div>
       </div>
@@ -174,12 +174,12 @@ function V10() {
     <section className="bg-surface py-16">
       <div className="max-w-xl mx-auto px-8 text-center">
         <h2 className="font-heading text-3xl text-white mb-2">Blijf Op De Hoogte</h2>
-        <p className="text-gray-400 mb-6 text-sm">Ontvang tips, achter-de-schermen content en exclusieve aanbiedingen.</p>
+        <p className="text-white/60 mb-6 text-sm">Ontvang tips, achter-de-schermen content en exclusieve aanbiedingen.</p>
         <div className="flex gap-2">
-          <input type="email" placeholder="jouw@email.be" className="flex-1 bg-primary border border-white/10 px-4 py-3 rounded text-white placeholder:text-gray-600 focus:border-accent outline-none" />
-          <button className="bg-accent text-primary px-6 py-3 font-semibold rounded whitespace-nowrap">Aanmelden</button>
+          <input type="email" placeholder="jouw@email.be" className="flex-1 bg-primary border border-white/10 px-4 py-3 rounded text-white placeholder:text-white/40 focus:border-white/50 outline-none" />
+          <button className="bg-white text-black px-6 py-3 font-semibold rounded whitespace-nowrap">Aanmelden</button>
         </div>
-        <p className="text-gray-600 text-xs mt-3">Geen spam, je kunt je op elk moment uitschrijven.</p>
+        <p className="text-white/40 text-xs mt-3">Geen spam, je kunt je op elk moment uitschrijven.</p>
       </div>
     </section>
   );
@@ -203,16 +203,16 @@ export default function CTAVariantenPage() {
   return (
     <main className="min-h-screen bg-primary pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <Link href="/varianten" className="text-accent hover:underline text-sm">← Terug naar varianten</Link>
-        <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">CTA <span className="text-accent">Varianten</span></h1>
-        <p className="text-gray-400 mt-2">10 unieke call-to-action secties om uit te kiezen</p>
+        <Link href="/varianten" className="text-white/50 hover:underline text-sm">← Terug naar varianten</Link>
+        <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">CTA <span className="text-white/50">Varianten</span></h1>
+        <p className="text-white/60 mt-2">10 unieke call-to-action secties om uit te kiezen</p>
       </div>
       {variants.map((v, i) => (
         <div key={i} className="mb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-            <span className="text-accent font-mono text-sm">Variant {i + 1}</span>
+            <span className="text-white/50 font-mono text-sm">Variant {i + 1}</span>
             <h2 className="font-heading text-2xl text-white">{v.name}</h2>
-            <p className="text-gray-500 text-sm">{v.desc}</p>
+            <p className="text-white/50 text-sm">{v.desc}</p>
           </div>
           {v.component}
         </div>

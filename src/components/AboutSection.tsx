@@ -14,8 +14,8 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 4xl:gap-24 items-center">
           {/* Image */}
           <motion.div
-            initial={shouldReduceMotion ? {} : { opacity: 0, x: -30 }}
-            animate={inView ? (shouldReduceMotion ? {} : { opacity: 1, x: 0 }) : {}}
+            initial={shouldReduceMotion ? {} : { x: -30 }}
+            animate={inView ? (shouldReduceMotion ? {} : { x: 0 }) : {}}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
@@ -32,22 +32,22 @@ export default function AboutSection() {
                 />
               </picture>
             </div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-accent" />
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-white/20" />
           </motion.div>
 
           {/* Content — POV copy */}
           <div>
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ y: 10 }}
+              animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
+              className="text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
             >
               Wie ik ben
             </motion.p>
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ y: 20 }}
+              animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-3xl md:text-4xl 2xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-heading font-bold text-white mb-6"
             >
@@ -56,37 +56,37 @@ export default function AboutSection() {
 
             {/* Provocative opening */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ y: 20 }}
+              animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-accent font-heading text-xl md:text-2xl 2xl:text-3xl 4xl:text-4xl italic leading-snug mb-6"
+              className="text-white font-heading text-xl md:text-2xl 2xl:text-3xl 4xl:text-4xl italic leading-snug mb-6"
             >
               &ldquo;De meeste KMO&rsquo;s investeren duizenden euro&rsquo;s in hun website — en vullen hem dan met beelden die niets zeggen.&rdquo;
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ y: 20 }}
+              animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-4"
             >
-              <p className="text-gray-300 leading-relaxed font-body text-base 2xl:text-lg 3xl:text-lg 4xl:text-xl 5xl:text-2xl">
+              <p className="text-white/80 leading-relaxed font-body text-base 2xl:text-lg 3xl:text-lg 4xl:text-xl 5xl:text-2xl">
                 Ik ben Tigran, 18 jaar, content fotograaf vanuit de Kempen. Ik werk met KMO&rsquo;s en ondernemers die snappen dat hun beelden méér moeten doen dan &ldquo;er leuk uitzien&rdquo; — ze moeten klanten overtuigen, vertrouwen wekken, en je verhaal vertellen zonder dat je er een woord aan hoeft toe te voegen.
               </p>
 
-              <p className="text-gray-300 leading-relaxed font-body text-base 2xl:text-lg 3xl:text-lg 4xl:text-xl 5xl:text-2xl">
+              <p className="text-white/80 leading-relaxed font-body text-base 2xl:text-lg 3xl:text-lg 4xl:text-xl 5xl:text-2xl">
                 Ik schiet met een Fujifilm X-M5, werk van dichtbij met je bedrijf, en begrijp het verschil tussen een mooie foto en een foto die converteert. Geen opgestelde stock-sfeer. Geen generieker-dan-generiek. Content die voelt alsof het écht bij jou hoort — want dat doet het.
               </p>
 
-              <p className="text-gray-400 leading-relaxed font-body text-sm 2xl:text-base 3xl:text-base 4xl:text-lg">
+              <p className="text-white/60 leading-relaxed font-body text-sm 2xl:text-base 3xl:text-base 4xl:text-lg">
                 Website foto&rsquo;s, social media content, branding shoots — ik maak het soort beelden waar je klanten bij blijven hangen. Letterlijk.
               </p>
             </motion.div>
 
             {/* Approach highlights — compact, no bullet list */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ y: 20 }}
+              animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 4xl:gap-6 mt-8"
             >
@@ -98,14 +98,14 @@ export default function AboutSection() {
               ].map((item, index) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ y: 20 }}
+                  animate={inView ? { y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.35 + index * 0.08 }}
                   whileHover={{ y: -2 }}
-                  className="p-4 3xl:p-6 4xl:p-8 bg-primary/50 border border-white/5 hover:border-accent/20 transition-all duration-300"
+                  className="p-4 3xl:p-6 4xl:p-8 bg-primary/50 border border-white/5 hover:border-white/20 transition-all duration-300"
                 >
                   <p className="text-white font-heading font-semibold text-sm 3xl:text-base 4xl:text-lg mb-1">{item.title}</p>
-                  <p className="text-gray-400 text-xs 3xl:text-sm 4xl:text-base">{item.text}</p>
+                  <p className="text-white/60 text-xs 3xl:text-sm 4xl:text-base">{item.text}</p>
                 </motion.div>
               ))}
             </motion.div>

@@ -31,13 +31,13 @@ export default function ContactPage() {
         height="50vh"
       >
         <div className="text-center px-4">
-          <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
+          <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
             Laten we praten
           </p>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
             Samenwerken
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-white/80 text-lg max-w-2xl mx-auto">
             Benieuwd of we matchen? Plan een vrijblijvend gesprek en ontdek wat professionele content voor jouw bedrijf kan doen.
           </p>
         </div>

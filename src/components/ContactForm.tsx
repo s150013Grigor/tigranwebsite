@@ -95,8 +95,8 @@ export default function ContactForm({
   };
 
   const inputClass =
-    'w-full px-4 py-3 3xl:px-5 3xl:py-4 4xl:px-6 4xl:py-5 bg-surface border border-white/10 text-white text-sm 3xl:text-base 4xl:text-lg focus:border-accent focus:outline-none transition-colors';
-  const labelClass = 'block text-sm 3xl:text-base 4xl:text-lg text-gray-400 mb-2';
+    'w-full px-4 py-3 3xl:px-5 3xl:py-4 4xl:px-6 4xl:py-5 bg-surface border border-white/10 text-white text-sm 3xl:text-base 4xl:text-lg focus:border-white/50 focus:outline-none transition-colors';
+  const labelClass = 'block text-sm 3xl:text-base 4xl:text-lg text-white/60 mb-2';
 
   return (
     <section ref={ref} className="py-20 3xl:py-28 4xl:py-36 bg-primary">
@@ -106,7 +106,7 @@ export default function ContactForm({
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
+            className="text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
@@ -136,9 +136,9 @@ export default function ContactForm({
                 <div className="space-y-4">
                   <a
                     href="mailto:info@tigranmedia.be"
-                    className="flex items-start text-gray-300 hover:text-accent transition-colors group"
+                    className="flex items-start text-white/80 hover:text-white transition-colors group"
                   >
-                    <HiMail className="w-5 h-5 mr-4 mt-0.5 text-accent" />
+                    <HiMail className="w-5 h-5 mr-4 mt-0.5 text-white/50" />
                     <div>
                       <p className="text-sm font-semibold text-white">E-mail</p>
                       <p className="text-sm">info@tigranmedia.be</p>
@@ -146,23 +146,23 @@ export default function ContactForm({
                   </a>
                   <a
                     href="tel:+32474114899"
-                    className="flex items-start text-gray-300 hover:text-accent transition-colors group"
+                    className="flex items-start text-white/80 hover:text-white transition-colors group"
                   >
-                    <HiPhone className="w-5 h-5 mr-4 mt-0.5 text-accent" />
+                    <HiPhone className="w-5 h-5 mr-4 mt-0.5 text-white/50" />
                     <div>
                       <p className="text-sm font-semibold text-white">Telefoon</p>
                       <p className="text-sm">+32 474 11 48 99</p>
                     </div>
                   </a>
-                  <div className="flex items-start text-gray-300">
-                    <HiLocationMarker className="w-5 h-5 mr-4 mt-0.5 text-accent" />
+                  <div className="flex items-start text-white/80">
+                    <HiLocationMarker className="w-5 h-5 mr-4 mt-0.5 text-white/50" />
                     <div>
                       <p className="text-sm font-semibold text-white">Locatie</p>
                       <p className="text-sm">Vlaanderen, België</p>
                     </div>
                   </div>
-                  <div className="flex items-start text-gray-300">
-                    <HiClock className="w-5 h-5 mr-4 mt-0.5 text-accent" />
+                  <div className="flex items-start text-white/80">
+                    <HiClock className="w-5 h-5 mr-4 mt-0.5 text-white/50" />
                     <div>
                       <p className="text-sm font-semibold text-white">Beschikbaarheid</p>
                       <p className="text-sm">Ma-Vr: 9:00 - 18:00</p>
@@ -174,7 +174,7 @@ export default function ContactForm({
 
               <div className="p-6 bg-surface border border-white/5">
                 <h4 className="text-white font-heading text-lg mb-3">Snelle Reactie</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-white/60 text-sm leading-relaxed">
                   Ik reageer meestal binnen 24 uur op uw bericht. Voor dringende
                   vragen kunt u mij ook telefonisch bereiken.
                 </p>
@@ -312,7 +312,7 @@ export default function ContactForm({
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full px-8 py-4 3xl:px-10 3xl:py-5 4xl:px-12 4xl:py-6 bg-accent text-primary font-body text-sm 3xl:text-base 4xl:text-lg uppercase tracking-wider hover:bg-accent-light transition-all duration-300 disabled:opacity-50"
+                className="w-full px-8 py-4 3xl:px-10 3xl:py-5 4xl:px-12 4xl:py-6 bg-white text-primary font-body text-sm 3xl:text-base 4xl:text-lg uppercase tracking-wider hover:bg-white/85 transition-all duration-300 disabled:opacity-50"
               >
                 {status === 'sending' ? 'Verzenden...' : 'Verstuur Bericht'}
               </button>

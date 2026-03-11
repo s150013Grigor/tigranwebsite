@@ -72,7 +72,7 @@ export default function CityHero({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
-            className="text-accent text-xs md:text-sm 2xl:text-base 3xl:text-lg tracking-[0.5em] uppercase mb-4 font-body"
+            className="text-white/50 text-xs md:text-sm 2xl:text-base 3xl:text-lg tracking-[0.5em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
@@ -81,7 +81,7 @@ export default function CityHero({
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="block w-10 h-[1px] bg-accent/45 mx-auto mb-8 origin-center"
+            className="block w-10 h-[1px] bg-white/20 mx-auto mb-8 origin-center"
           />
 
           <h1
@@ -119,7 +119,7 @@ export default function CityHero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.78, ease: [0.25, 0.4, 0.25, 1] }}
-            className="text-gray-400 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl 5xl:text-4xl max-w-2xl 2xl:max-w-3xl 4xl:max-w-4xl mx-auto mb-12 4xl:mb-16 font-body leading-relaxed tracking-wide"
+            className="text-white/60 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl 5xl:text-4xl max-w-2xl 2xl:max-w-3xl 4xl:max-w-4xl mx-auto mb-12 4xl:mb-16 font-body leading-relaxed tracking-wide"
           >
             {description}
           </motion.p>
@@ -132,13 +132,13 @@ export default function CityHero({
           >
             <Link
               href={ctaLink}
-              className="shimmer px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 bg-accent text-primary font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:bg-accent-light hover:scale-[1.02] transition-all duration-300 inline-block"
+              className="shimmer px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 bg-white text-primary font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:bg-white/85 hover:scale-[1.02] transition-all duration-300 inline-block"
             >
               {ctaText}
             </Link>
             <Link
               href={secondaryCtaLink}
-              className="shimmer px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 border border-white/20 text-white font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:border-accent hover:text-accent transition-all duration-300 inline-block"
+              className="shimmer px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 border border-white/20 text-white font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:border-white/30 hover:text-white transition-all duration-300 inline-block"
             >
               {secondaryCtaText}
             </Link>

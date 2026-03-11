@@ -15,24 +15,25 @@ const config: Config = {
       },
       colors: {
         primary: {
-          DEFAULT: '#0a0a0a',
-          light: '#1a1a1a',
-          dark: '#050505',
+          DEFAULT: '#000000',
+          light: '#111111',
+          dark: '#000000',
         },
         accent: {
-          DEFAULT: '#c8a97e',
-          light: '#d4b896',
-          dark: '#b8956a',
+          DEFAULT: '#ffffff',
+          light: '#e0e0e0',
+          dark: '#cccccc',
         },
         surface: {
-          DEFAULT: '#2a2a2a',
-          light: '#3a3a3a',
-          dark: '#1a1a1a',
+          DEFAULT: '#111111',
+          light: '#1a1a1a',
+          dark: '#0a0a0a',
         },
       },
       fontFamily: {
-        heading: ['var(--font-playfair)', 'serif'],
-        body: ['var(--font-tenor-sans)', 'sans-serif'],
+        sans: ['var(--font-dm-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['var(--font-dm-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        body: ['var(--font-dm-sans)', 'system-ui', '-apple-system', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',

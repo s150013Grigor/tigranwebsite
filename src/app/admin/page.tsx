@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { HiPhotograph, HiDocumentText, HiCollection, HiCog, HiHome, HiStar, HiUpload, HiPencil, HiTrash, HiX, HiInformationCircle, HiCloudUpload, HiExternalLink, HiRefresh, HiCheck, HiExclamation, HiEye, HiRewind, HiChevronUp, HiChevronDown, HiQuestionMarkCircle } from 'react-icons/hi';
@@ -634,8 +634,8 @@ export default function AdminPage() {
   const editTestimonial = (t: any) => { setTestimonialForm(t); setEditingItem(t); setEditType('edit'); };
   const editFaq = (faq: any) => { setFaqForm(faq); setEditingItem(faq); setEditType('edit'); };
 
-  const inputClass = 'w-full px-4 py-3 bg-surface border border-white/10 text-white text-sm focus:border-accent focus:outline-none transition-colors';
-  const labelClass = 'block text-sm text-gray-400 mb-2';
+  const inputClass = 'w-full px-4 py-3 bg-surface border border-white/10 text-white text-sm focus:border-white/50 focus:outline-none transition-colors';
+  const labelClass = 'block text-sm text-white/60 mb-2';
 
   // Sort albums by order for display
   const sortedAlbums = [...albums].sort((a, b) => (a.order || 999) - (b.order || 999));
@@ -653,14 +653,14 @@ export default function AdminPage() {
 
   const AltTextLabel = ({ required = true }: { required?: boolean }) => (
     <div className="flex items-center gap-2 mb-2">
-      <label className="text-sm text-gray-400">Alt tekst (SEO) {required && <span className="text-red-400">*</span>}</label>
+      <label className="text-sm text-white/60">Alt tekst (SEO) {required && <span className="text-red-400">*</span>}</label>
       <div className="relative group">
-        <HiInformationCircle className="w-4 h-4 text-gray-500 hover:text-accent cursor-help transition-colors" />
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-4 bg-[#1a1a2e] border border-accent/20 text-xs text-gray-300 hidden group-hover:block z-50 shadow-xl">
-          <p className="font-semibold text-accent mb-2">Waarom is alt tekst belangrijk?</p>
+        <HiInformationCircle className="w-4 h-4 text-white/50 hover:text-white cursor-help transition-colors" />
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-4 bg-[#1a1a2e] border border-white/10 text-xs text-white/80 hidden group-hover:block z-50 shadow-xl">
+          <p className="font-semibold text-white/50 mb-2">Waarom is alt tekst belangrijk?</p>
           <p className="mb-2">Alt tekst helpt zoekmachines (Google) begrijpen wat er op uw foto staat. Dit verbetert uw vindbaarheid in <strong className="text-white">Google Afbeeldingen</strong>.</p>
-          <p className="text-gray-400"><strong className="text-white">Tip:</strong> Beschrijf kort wat er op de foto te zien is, bijv. &quot;Portretfoto van zakenman in moderne kantooromgeving&quot;</p>
-          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-accent/20"></div>
+          <p className="text-white/60"><strong className="text-white">Tip:</strong> Beschrijf kort wat er op de foto te zien is, bijv. &quot;Portretfoto van zakenman in moderne kantooromgeving&quot;</p>
+          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-white/10"></div>
         </div>
       </div>
     </div>
@@ -689,7 +689,7 @@ export default function AdminPage() {
         <div className="w-full max-w-md px-4">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-heading font-bold text-white mb-2">Admin Login</h1>
-            <p className="text-gray-400 text-sm">Log in om de content te beheren</p>
+            <p className="text-white/60 text-sm">Log in om de content te beheren</p>
           </div>
           <div className="bg-primary-light p-8 border border-white/10 space-y-6">
             {loginError && <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-400 text-sm">{loginError}</div>}
@@ -701,10 +701,10 @@ export default function AdminPage() {
               <label className={labelClass}>Wachtwoord</label>
               <input type="password" className={inputClass} value={loginForm.password} onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })} onKeyDown={(e) => e.key === 'Enter' && handleLogin()} />
             </div>
-            <button onClick={handleLogin} className="w-full px-6 py-3 bg-accent text-primary font-body text-sm uppercase tracking-wider hover:bg-accent-light transition-all duration-300">Inloggen</button>
+            <button onClick={handleLogin} className="w-full px-6 py-3 bg-white text-black font-body text-sm uppercase tracking-wider hover:bg-white/85 transition-all duration-300">Inloggen</button>
           </div>
           <div className="text-center mt-6">
-            <Link href="/" className="text-gray-500 text-sm hover:text-accent transition-colors">&larr; Terug naar site</Link>
+            <Link href="/" className="text-white/50 text-sm hover:text-white transition-colors">&larr; Terug naar site</Link>
           </div>
         </div>
       </div>
@@ -728,16 +728,16 @@ export default function AdminPage() {
       {/* Custom Confirm Modal */}
       {confirmModal && (
         <div className="fixed inset-0 bg-black/60 z-[9999] flex items-center justify-center p-4" onClick={() => setConfirmModal(null)}>
-          <div className="bg-[#1a1a2e] border border-gray-700 rounded-xl p-6 max-w-md w-full shadow-2xl" onClick={e => e.stopPropagation()}>
+          <div className="bg-[#1a1a2e] border border-white/20 rounded-xl p-6 max-w-md w-full shadow-2xl" onClick={e => e.stopPropagation()}>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
                 <HiExclamation className="w-5 h-5 text-red-400" />
               </div>
               <h3 className="text-white font-semibold text-lg">Bevestiging</h3>
             </div>
-            <p className="text-gray-300 mb-6">{confirmModal.message}</p>
+            <p className="text-white/80 mb-6">{confirmModal.message}</p>
             <div className="flex justify-end gap-3">
-              <button onClick={() => setConfirmModal(null)} className="px-4 py-2 text-sm rounded-lg bg-gray-700 text-gray-300 hover:bg-gray-600 transition-colors">Annuleren</button>
+              <button onClick={() => setConfirmModal(null)} className="px-4 py-2 text-sm rounded-lg bg-white/20 text-white/80 hover:bg-white/30 transition-colors">Annuleren</button>
               <button onClick={() => { setConfirmModal(null); confirmModal.onConfirm(); }} className="px-4 py-2 text-sm rounded-lg bg-red-600 text-white hover:bg-red-500 transition-colors">Verwijderen</button>
             </div>
           </div>
@@ -748,25 +748,25 @@ export default function AdminPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-heading font-bold text-white">Admin CMS</h1>
-            <p className="text-gray-400 text-sm mt-1">Beheer uw content &mdash; albums, foto&apos;s, blog en getuigenissen</p>
+            <p className="text-white/60 text-sm mt-1">Beheer uw content &mdash; albums, foto&apos;s, blog en getuigenissen</p>
           </div>
           <div className="flex items-center space-x-4">
-            <a href="https://tigranmedia.be" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-accent text-sm hover:underline">
+            <a href="https://tigranmedia.be" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-white/50 text-sm hover:underline">
               <HiExternalLink className="w-4 h-4" />
               Live site
             </a>
-            <button onClick={handleLogout} className="text-gray-400 text-sm hover:text-red-400 transition-colors">Uitloggen</button>
+            <button onClick={handleLogout} className="text-white/60 text-sm hover:text-red-400 transition-colors">Uitloggen</button>
           </div>
         </div>
 
         {/* Notification */}
-        {notification && <div className="mb-6 p-4 bg-accent/10 border border-accent/30 text-accent text-sm">{notification}</div>}
+        {notification && <div className="mb-6 p-4 bg-white/10 border border-white/20 text-white/50 text-sm">{notification}</div>}
 
         {/* Navigation */}
         <div className="flex space-x-1 mb-8 overflow-x-auto">
           {tabs.map((tab) => (
             <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center space-x-2 px-6 py-3 text-sm transition-colors whitespace-nowrap ${activeTab === tab.id ? 'bg-accent text-primary' : 'bg-surface text-gray-400 hover:text-white'}`}>
+              className={`flex items-center space-x-2 px-6 py-3 text-sm transition-colors whitespace-nowrap ${activeTab === tab.id ? 'bg-white text-black' : 'bg-surface text-white/60 hover:text-white'}`}>
               <tab.icon className="w-4 h-4" /><span>{tab.label}</span>
             </button>
           ))}
@@ -779,8 +779,8 @@ export default function AdminPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[{ n: albums.length, l: 'Albums' }, { n: photos.length, l: "Foto's" }, { n: blogPosts.length, l: 'Blogposts' }, { n: testimonials.length, l: 'Getuigenissen' }, { n: faqs.length, l: 'FAQ' }].map(s => (
                 <div key={s.l} className="p-6 bg-surface border border-white/5 text-center">
-                  <p className="text-3xl font-heading font-bold text-accent">{s.n}</p>
-                  <p className="text-gray-400 text-sm mt-1">{s.l}</p>
+                  <p className="text-3xl font-heading font-bold text-white">{s.n}</p>
+                  <p className="text-white/60 text-sm mt-1">{s.l}</p>
                 </div>
               ))}
             </div>
@@ -790,7 +790,7 @@ export default function AdminPage() {
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h3 className="text-white font-heading text-xl mb-1 flex items-center gap-2"><HiEye className="w-5 h-5 text-blue-400" />Preview</h3>
-                  <p className="text-gray-400 text-sm">Bouw een preview van de site om uw wijzigingen te controleren voordat u publiceert.</p>
+                  <p className="text-white/60 text-sm">Bouw een preview van de site om uw wijzigingen te controleren voordat u publiceert.</p>
                 </div>
                 {previewStatus === 'success' && (
                   <a href="https://tigranmedia.be/preview/" target="_blank" rel="noopener noreferrer"
@@ -802,7 +802,7 @@ export default function AdminPage() {
               </div>
               <div className="flex items-center gap-6">
                 <button onClick={previewSite} disabled={previewing}
-                  className={`flex items-center gap-3 px-6 py-3 text-sm font-body uppercase tracking-wider transition-all duration-300 ${previewing ? 'bg-gray-700 text-gray-400 cursor-wait' : 'bg-blue-600 text-white hover:bg-blue-500'}`}>
+                  className={`flex items-center gap-3 px-6 py-3 text-sm font-body uppercase tracking-wider transition-all duration-300 ${previewing ? 'bg-white/20 text-white/60 cursor-wait' : 'bg-blue-600 text-white hover:bg-blue-500'}`}>
                   {previewing ? <HiRefresh className="w-5 h-5 animate-spin" /> : <HiEye className="w-5 h-5" />}
                   {previewing ? 'Preview bouwen...' : 'Preview bouwen'}
                 </button>
@@ -814,13 +814,13 @@ export default function AdminPage() {
             <div className="p-8 bg-surface border border-white/5">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-white font-heading text-xl mb-1 flex items-center gap-2"><HiCloudUpload className="w-5 h-5 text-accent" />Publiceren</h3>
-                  <p className="text-gray-400 text-sm">Zet alle wijzigingen live op de website. Er wordt automatisch een backup gemaakt.</p>
+                  <h3 className="text-white font-heading text-xl mb-1 flex items-center gap-2"><HiCloudUpload className="w-5 h-5 text-white/50" />Publiceren</h3>
+                  <p className="text-white/60 text-sm">Zet alle wijzigingen live op de website. Er wordt automatisch een backup gemaakt.</p>
                 </div>
               </div>
               <div className="flex items-center gap-6">
                 <button onClick={publishSite} disabled={publishing}
-                  className={`flex items-center gap-3 px-8 py-4 text-sm font-body uppercase tracking-wider transition-all duration-300 ${publishing ? 'bg-gray-700 text-gray-400 cursor-wait' : 'bg-accent text-primary hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20'}`}>
+                  className={`flex items-center gap-3 px-8 py-4 text-sm font-body uppercase tracking-wider transition-all duration-300 ${publishing ? 'bg-white/20 text-white/60 cursor-wait' : 'bg-white text-black hover:bg-white/85 hover:shadow-lg hover:shadow-white/20'}`}>
                   {publishing ? <HiRefresh className="w-5 h-5 animate-spin" /> : <HiCloudUpload className="w-5 h-5" />}
                   {publishing ? 'Bezig met publiceren...' : 'Publiceren'}
                 </button>
@@ -833,10 +833,10 @@ export default function AdminPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-white font-heading text-lg mb-1 flex items-center gap-2"><HiRewind className="w-5 h-5 text-orange-400" />Terugdraaien</h3>
-                  <p className="text-gray-400 text-sm">Herstel de vorige versie van de site als de laatste publicatie niet goed was.</p>
+                  <p className="text-white/60 text-sm">Herstel de vorige versie van de site als de laatste publicatie niet goed was.</p>
                 </div>
                 <button onClick={rollbackSite} disabled={rollingBack}
-                  className={`flex items-center gap-2 px-5 py-3 text-sm transition-colors ${rollingBack ? 'bg-gray-700 text-gray-400 cursor-wait' : 'bg-orange-600/20 border border-orange-500/30 text-orange-400 hover:bg-orange-600/30'}`}>
+                  className={`flex items-center gap-2 px-5 py-3 text-sm transition-colors ${rollingBack ? 'bg-white/20 text-white/60 cursor-wait' : 'bg-orange-600/20 border border-orange-500/30 text-orange-400 hover:bg-orange-600/30'}`}>
                   {rollingBack ? <HiRefresh className="w-4 h-4 animate-spin" /> : <HiRewind className="w-4 h-4" />}
                   {rollingBack ? 'Bezig...' : 'Vorige versie herstellen'}
                 </button>
@@ -846,10 +846,10 @@ export default function AdminPage() {
             {/* Quick start guide */}
             <div className="p-6 bg-surface border border-white/5">
               <h3 className="text-white font-heading text-lg mb-4">Snelstart</h3>
-              <div className="space-y-3 text-sm text-gray-400">
+              <div className="space-y-3 text-sm text-white/60">
                 <p><strong className="text-white">1.</strong> Pas content aan via de tabs hierboven.</p>
                 <p><strong className="text-white">2.</strong> Klik op <strong className="text-blue-400">Preview bouwen</strong> om de wijzigingen te bekijken.</p>
-                <p><strong className="text-white">3.</strong> Als alles goed is, klik op <strong className="text-accent">Publiceren</strong> om live te zetten.</p>
+                <p><strong className="text-white">3.</strong> Als alles goed is, klik op <strong className="text-white/50">Publiceren</strong> om live te zetten.</p>
                 <p><strong className="text-white">4.</strong> Niet tevreden? Klik op <strong className="text-orange-400">Vorige versie herstellen</strong>.</p>
               </div>
             </div>
@@ -861,13 +861,13 @@ export default function AdminPage() {
           <div className="space-y-8">
             {/* Album Upload Section */}
             {albumUploadTarget && (
-              <div className="p-6 bg-surface border border-accent/20">
+              <div className="p-6 bg-surface border border-white/10">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-lg font-heading font-bold text-white">
-                    <HiUpload className="inline w-5 h-5 mr-2 text-accent" />
-                    Foto uploaden naar: <span className="text-accent">{albums.find(a => a.id === albumUploadTarget)?.title || albumUploadTarget}</span>
+                    <HiUpload className="inline w-5 h-5 mr-2 text-white/50" />
+                    Foto uploaden naar: <span className="text-white/50">{albums.find(a => a.id === albumUploadTarget)?.title || albumUploadTarget}</span>
                   </h2>
-                  <button onClick={() => { setAlbumUploadTarget(null); setAlbumUploadFile(null); setAlbumUploadName(''); setAlbumUploadAlt(''); }} className="text-gray-400 hover:text-white"><HiX className="w-5 h-5" /></button>
+                  <button onClick={() => { setAlbumUploadTarget(null); setAlbumUploadFile(null); setAlbumUploadName(''); setAlbumUploadAlt(''); }} className="text-white/60 hover:text-white"><HiX className="w-5 h-5" /></button>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <div><label className={labelClass}>Naam</label><input type="text" className={inputClass} placeholder="Naam van de foto" value={albumUploadName} onChange={(e) => setAlbumUploadName(e.target.value)} /></div>
@@ -887,7 +887,7 @@ export default function AdminPage() {
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-xl font-heading font-bold text-white">{editType === 'edit' ? 'Album Bewerken' : 'Nieuw Album'}</h2>
-                  {editType === 'edit' && <button onClick={resetAlbumForm} className="text-gray-400 hover:text-white"><HiX className="w-5 h-5" /></button>}
+                  {editType === 'edit' && <button onClick={resetAlbumForm} className="text-white/60 hover:text-white"><HiX className="w-5 h-5" /></button>}
                 </div>
                 <div className="space-y-4">
                   <div><label className={labelClass}>Titel *</label><input type="text" className={inputClass} placeholder="Bijv. Zakelijk Event ABC" value={albumForm.title} onChange={(e) => setAlbumForm({ ...albumForm, title: e.target.value })} /></div>
@@ -903,8 +903,8 @@ export default function AdminPage() {
                   <div>
                     <label className={labelClass}>Cover Afbeelding *</label>
                     <div className="flex gap-2 mb-2">
-                      <button type="button" onClick={() => setAlbumCoverFile(null)} className={`px-3 py-1 text-xs transition-colors ${!albumCoverFile && albumForm.coverImage ? 'bg-accent text-primary' : 'bg-white/5 text-gray-400 hover:text-white'}`}>URL</button>
-                      <button type="button" onClick={() => {}} className={`px-3 py-1 text-xs transition-colors ${albumCoverFile ? 'bg-accent text-primary' : 'bg-white/5 text-gray-400 hover:text-white'}`}>Uploaden</button>
+                      <button type="button" onClick={() => setAlbumCoverFile(null)} className={`px-3 py-1 text-xs transition-colors ${!albumCoverFile && albumForm.coverImage ? 'bg-white text-black' : 'bg-white/5 text-white/60 hover:text-white'}`}>URL</button>
+                      <button type="button" onClick={() => {}} className={`px-3 py-1 text-xs transition-colors ${albumCoverFile ? 'bg-white text-black' : 'bg-white/5 text-white/60 hover:text-white'}`}>Uploaden</button>
                     </div>
                     <input type="url" className={`${inputClass} mb-2`} placeholder="https://... of laat leeg om te uploaden" value={albumForm.coverImage} onChange={(e) => setAlbumForm({ ...albumForm, coverImage: e.target.value })} />
                     <input type="file" accept="image/jpeg,image/jpg,image/png,image/webp" className={inputClass}
@@ -913,13 +913,13 @@ export default function AdminPage() {
                         setAlbumCoverFile(f);
                         if (f) setAlbumForm({ ...albumForm, coverImage: '' });
                       }} />
-                    {albumCoverFile && <p className="text-xs text-accent mt-1">Geselecteerd: {albumCoverFile.name}</p>}
+                    {albumCoverFile && <p className="text-xs text-white/50 mt-1">Geselecteerd: {albumCoverFile.name}</p>}
                     {albumCoverUploading && <p className="text-xs text-blue-400 mt-1 flex items-center gap-1"><HiRefresh className="w-3 h-3 animate-spin" />Cover wordt geüpload...</p>}
                   </div>
 
                   <div className="flex items-center space-x-3">
-                    <input type="checkbox" id="featured" checked={albumForm.featured} onChange={(e) => setAlbumForm({ ...albumForm, featured: e.target.checked })} className="accent-accent" />
-                    <label htmlFor="featured" className="text-sm text-gray-400">Uitgelicht album</label>
+                    <input type="checkbox" id="featured" checked={albumForm.featured} onChange={(e) => setAlbumForm({ ...albumForm, featured: e.target.checked })} className="accent-white" />
+                    <label htmlFor="featured" className="text-sm text-white/60">Uitgelicht album</label>
                   </div>
                   <button onClick={saveAlbum} className="btn-primary">{editType === 'edit' ? 'Bijwerken' : 'Opslaan'}</button>
                 </div>
@@ -935,21 +935,21 @@ export default function AdminPage() {
                         {album.coverImage && <img src={album.coverImage} alt="" className="w-12 h-12 object-cover border border-white/10" />}
                         <div>
                           <p className="text-white text-sm font-semibold">{album.title}</p>
-                          <p className="text-gray-500 text-xs">#{album.order || '–'} &middot; {album.category} &middot; {realPhotoCount} foto&apos;s</p>
+                          <p className="text-white/50 text-xs">#{album.order || '–'} &middot; {album.category} &middot; {realPhotoCount} foto&apos;s</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <button onClick={() => moveAlbum(album.id, 'up')} className="text-gray-400 hover:text-white" title="Omhoog"><HiChevronUp className="w-4 h-4" /></button>
-                        <button onClick={() => moveAlbum(album.id, 'down')} className="text-gray-400 hover:text-white" title="Omlaag"><HiChevronDown className="w-4 h-4" /></button>
-                        <span className="text-gray-600 mx-1">|</span>
+                        <button onClick={() => moveAlbum(album.id, 'up')} className="text-white/60 hover:text-white" title="Omhoog"><HiChevronUp className="w-4 h-4" /></button>
+                        <button onClick={() => moveAlbum(album.id, 'down')} className="text-white/60 hover:text-white" title="Omlaag"><HiChevronDown className="w-4 h-4" /></button>
+                        <span className="text-white/40 mx-1">|</span>
                         <button onClick={() => setAlbumUploadTarget(album.id)} className="text-green-400 hover:text-green-300" title="Foto uploaden"><HiUpload className="w-4 h-4" /></button>
-                        <button onClick={() => editAlbum(album)} className="text-accent hover:text-accent-light" title="Bewerken"><HiPencil className="w-4 h-4" /></button>
+                        <button onClick={() => editAlbum(album)} className="text-white/50 hover:text-white-light" title="Bewerken"><HiPencil className="w-4 h-4" /></button>
                         <button onClick={() => deleteItem('albums', album.id)} className="text-red-400 hover:text-red-300" title="Verwijderen"><HiTrash className="w-4 h-4" /></button>
                       </div>
                     </div>
                     );
                   })}
-                  {albums.length === 0 && <p className="text-gray-500 text-sm">Geen albums gevonden.</p>}
+                  {albums.length === 0 && <p className="text-white/50 text-sm">Geen albums gevonden.</p>}
                 </div>
               </div>
             </div>
@@ -963,7 +963,7 @@ export default function AdminPage() {
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-xl font-heading font-bold text-white">{editType === 'edit' ? 'Foto Bewerken' : 'Nieuwe Foto'}</h2>
-                  {editType === 'edit' && <button onClick={resetPhotoForm} className="text-gray-400 hover:text-white"><HiX className="w-5 h-5" /></button>}
+                  {editType === 'edit' && <button onClick={resetPhotoForm} className="text-white/60 hover:text-white"><HiX className="w-5 h-5" /></button>}
                 </div>
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
@@ -982,11 +982,11 @@ export default function AdminPage() {
                     <label className={labelClass}>Afbeelding *</label>
                     <div className="flex gap-2 mb-3">
                       <button type="button" onClick={() => setPhotoSourceMode('upload')}
-                        className={`px-4 py-2 text-xs font-medium transition-colors flex items-center gap-1 ${photoSourceMode === 'upload' ? 'bg-accent text-primary' : 'bg-white/5 text-gray-400 hover:text-white border border-white/10'}`}>
+                        className={`px-4 py-2 text-xs font-medium transition-colors flex items-center gap-1 ${photoSourceMode === 'upload' ? 'bg-white text-black' : 'bg-white/5 text-white/60 hover:text-white border border-white/10'}`}>
                         <HiUpload className="w-3.5 h-3.5" />Uploaden
                       </button>
                       <button type="button" onClick={() => setPhotoSourceMode('url')}
-                        className={`px-4 py-2 text-xs font-medium transition-colors flex items-center gap-1 ${photoSourceMode === 'url' ? 'bg-accent text-primary' : 'bg-white/5 text-gray-400 hover:text-white border border-white/10'}`}>
+                        className={`px-4 py-2 text-xs font-medium transition-colors flex items-center gap-1 ${photoSourceMode === 'url' ? 'bg-white text-black' : 'bg-white/5 text-white/60 hover:text-white border border-white/10'}`}>
                         <HiExternalLink className="w-3.5 h-3.5" />URL
                       </button>
                     </div>
@@ -998,7 +998,7 @@ export default function AdminPage() {
                             setPhotoFile(f);
                             if (f) setPhotoForm({ ...photoForm, src: '' });
                           }} />
-                        {photoFile && <p className="text-xs text-accent mt-1">Geselecteerd: {photoFile.name}</p>}
+                        {photoFile && <p className="text-xs text-white/50 mt-1">Geselecteerd: {photoFile.name}</p>}
                         {photoUploading && <p className="text-xs text-blue-400 mt-1 flex items-center gap-1"><HiRefresh className="w-3 h-3 animate-spin" />Foto wordt geüpload...</p>}
                       </div>
                     ) : (
@@ -1037,17 +1037,17 @@ export default function AdminPage() {
                         {photo.src && <img src={photo.src} alt={photo.alt || ''} className="w-12 h-12 object-cover border border-white/10" />}
                         <div className="min-w-0">
                           <p className="text-white text-sm font-semibold">{photo.title}</p>
-                          <p className="text-gray-500 text-xs">{albums.find(a => a.id === photo.albumId)?.title || photo.albumId}</p>
-                          {photo.alt && <p className="text-gray-600 text-xs mt-0.5 truncate" title={photo.alt}>Alt: {photo.alt}</p>}
+                          <p className="text-white/50 text-xs">{albums.find(a => a.id === photo.albumId)?.title || photo.albumId}</p>
+                          {photo.alt && <p className="text-white/40 text-xs mt-0.5 truncate" title={photo.alt}>Alt: {photo.alt}</p>}
                         </div>
                       </div>
                       <div className="flex items-center space-x-1 ml-2">
-                        <button onClick={() => editPhoto(photo)} className="text-accent hover:text-accent-light"><HiPencil className="w-4 h-4" /></button>
+                        <button onClick={() => editPhoto(photo)} className="text-white/50 hover:text-white-light"><HiPencil className="w-4 h-4" /></button>
                         <button onClick={() => deleteItem('photos', photo.id)} className="text-red-400 hover:text-red-300"><HiTrash className="w-4 h-4" /></button>
                       </div>
                     </div>
                   ))}
-                  {filteredPhotos.length === 0 && <p className="text-gray-500 text-sm">Geen foto&apos;s gevonden{photoFilter !== 'all' ? ' in dit album' : ''}.</p>}
+                  {filteredPhotos.length === 0 && <p className="text-white/50 text-sm">Geen foto&apos;s gevonden{photoFilter !== 'all' ? ' in dit album' : ''}.</p>}
                 </div>
               </div>
             </div>
@@ -1060,7 +1060,7 @@ export default function AdminPage() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-heading font-bold text-white">{editType === 'edit' ? 'Blogpost Bewerken' : 'Nieuwe Blogpost'}</h2>
-                {editType === 'edit' && <button onClick={resetBlogForm} className="text-gray-400 hover:text-white"><HiX className="w-5 h-5" /></button>}
+                {editType === 'edit' && <button onClick={resetBlogForm} className="text-white/60 hover:text-white"><HiX className="w-5 h-5" /></button>}
               </div>
               <div className="space-y-4">
                 <div><label className={labelClass}>Titel *</label><input type="text" className={inputClass} placeholder="Titel van uw blogpost" value={blogForm.title} onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })} /></div>
@@ -1078,7 +1078,7 @@ export default function AdminPage() {
                       setBlogCoverFile(f);
                       if (f) setBlogForm({ ...blogForm, coverImage: '' });
                     }} />
-                  {blogCoverFile && <p className="text-xs text-accent mt-1">Geselecteerd: {blogCoverFile.name}</p>}
+                  {blogCoverFile && <p className="text-xs text-white/50 mt-1">Geselecteerd: {blogCoverFile.name}</p>}
                   {blogCoverUploading && <p className="text-xs text-blue-400 mt-1 flex items-center gap-1"><HiRefresh className="w-3 h-3 animate-spin" />Cover wordt ge&uuml;pload...</p>}
                   {blogForm.coverImage && !blogCoverFile && <img src={blogForm.coverImage} alt="cover preview" className="mt-2 h-24 object-cover border border-white/10" onError={(e) => (e.currentTarget.style.display='none')} />}
                 </div>
@@ -1097,15 +1097,15 @@ export default function AdminPage() {
                   <div key={post.slug || post.filename} className="flex items-center justify-between p-4 bg-surface border border-white/5">
                     <div>
                       <p className="text-white text-sm font-semibold">{post.title}</p>
-                      <p className="text-gray-500 text-xs">{post.category} &middot; {post.date}</p>
+                      <p className="text-white/50 text-xs">{post.category} &middot; {post.date}</p>
                     </div>
                     <div className="flex space-x-2">
-                      <button onClick={() => editBlog(post)} className="text-accent hover:text-accent-light"><HiPencil className="w-4 h-4" /></button>
+                      <button onClick={() => editBlog(post)} className="text-white/50 hover:text-white-light"><HiPencil className="w-4 h-4" /></button>
                       <button onClick={() => deleteItem('blog', post.slug)} className="text-red-400 hover:text-red-300"><HiTrash className="w-4 h-4" /></button>
                     </div>
                   </div>
                 ))}
-                {blogPosts.length === 0 && <p className="text-gray-500 text-sm">Geen blogposts gevonden.</p>}
+                {blogPosts.length === 0 && <p className="text-white/50 text-sm">Geen blogposts gevonden.</p>}
               </div>
             </div>
           </div>
@@ -1117,7 +1117,7 @@ export default function AdminPage() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-heading font-bold text-white">{editType === 'edit' ? 'Getuigenis Bewerken' : 'Nieuwe Getuigenis'}</h2>
-                {editType === 'edit' && <button onClick={resetTestimonialForm} className="text-gray-400 hover:text-white"><HiX className="w-5 h-5" /></button>}
+                {editType === 'edit' && <button onClick={resetTestimonialForm} className="text-white/60 hover:text-white"><HiX className="w-5 h-5" /></button>}
               </div>
               <div className="space-y-4">
                 <div><label className={labelClass}>Naam *</label><input type="text" className={inputClass} placeholder="Naam van de klant" value={testimonialForm.name} onChange={(e) => setTestimonialForm({ ...testimonialForm, name: e.target.value })} /></div>
@@ -1143,16 +1143,16 @@ export default function AdminPage() {
                   <div key={t.id} className="flex items-center justify-between p-4 bg-surface border border-white/5">
                     <div>
                       <p className="text-white text-sm font-semibold">{t.name}</p>
-                      <p className="text-gray-500 text-xs">{t.title} &middot; {t.rating}&#9733;</p>
-                      <p className="text-gray-400 text-xs mt-1 line-clamp-2">{t.description}</p>
+                      <p className="text-white/50 text-xs">{t.title} &middot; {t.rating}&#9733;</p>
+                      <p className="text-white/60 text-xs mt-1 line-clamp-2">{t.description}</p>
                     </div>
                     <div className="flex space-x-2">
-                      <button onClick={() => editTestimonial(t)} className="text-accent hover:text-accent-light"><HiPencil className="w-4 h-4" /></button>
+                      <button onClick={() => editTestimonial(t)} className="text-white/50 hover:text-white-light"><HiPencil className="w-4 h-4" /></button>
                       <button onClick={() => deleteItem('testimonials', t.id)} className="text-red-400 hover:text-red-300"><HiTrash className="w-4 h-4" /></button>
                     </div>
                   </div>
                 ))}
-                {testimonials.length === 0 && <p className="text-gray-500 text-sm">Geen getuigenissen gevonden.</p>}
+                {testimonials.length === 0 && <p className="text-white/50 text-sm">Geen getuigenissen gevonden.</p>}
               </div>
             </div>
           </div>
@@ -1164,7 +1164,7 @@ export default function AdminPage() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-heading font-bold text-white">{editType === 'edit' ? 'FAQ Bewerken' : 'Nieuwe FAQ'}</h2>
-                {editType === 'edit' && <button onClick={resetFaqForm} className="text-gray-400 hover:text-white"><HiX className="w-5 h-5" /></button>}
+                {editType === 'edit' && <button onClick={resetFaqForm} className="text-white/60 hover:text-white"><HiX className="w-5 h-5" /></button>}
               </div>
               <div className="space-y-4">
                 <div><label className={labelClass}>Vraag *</label><input type="text" className={inputClass} placeholder="Bijv. Wat zijn de tarieven voor een fotoshoot?" value={faqForm.question} onChange={(e) => setFaqForm({ ...faqForm, question: e.target.value })} /></div>
@@ -1179,15 +1179,15 @@ export default function AdminPage() {
                   <div key={faq.id} className="flex items-center justify-between p-4 bg-surface border border-white/5">
                     <div className="flex-1 min-w-0 mr-4">
                       <p className="text-white text-sm font-semibold">{faq.question}</p>
-                      <p className="text-gray-400 text-xs mt-1 line-clamp-2">{faq.answer}</p>
+                      <p className="text-white/60 text-xs mt-1 line-clamp-2">{faq.answer}</p>
                     </div>
                     <div className="flex space-x-2">
-                      <button onClick={() => editFaq(faq)} className="text-accent hover:text-accent-light"><HiPencil className="w-4 h-4" /></button>
+                      <button onClick={() => editFaq(faq)} className="text-white/50 hover:text-white-light"><HiPencil className="w-4 h-4" /></button>
                       <button onClick={() => deleteItem('faq', faq.id)} className="text-red-400 hover:text-red-300"><HiTrash className="w-4 h-4" /></button>
                     </div>
                   </div>
                 ))}
-                {faqs.length === 0 && <p className="text-gray-500 text-sm">Geen FAQ items gevonden.</p>}
+                {faqs.length === 0 && <p className="text-white/50 text-sm">Geen FAQ items gevonden.</p>}
               </div>
             </div>
           </div>
@@ -1198,21 +1198,21 @@ export default function AdminPage() {
           <div className="max-w-2xl space-y-8">
             <div className="p-6 bg-surface border border-white/5">
               <h3 className="text-white font-heading text-lg mb-4">CMS Server Status</h3>
-              <p className="text-gray-400 text-sm mb-4">De CMS API draait online via AWS Lambda. Wijzigingen worden direct opgeslagen.</p>
-              <p className="text-gray-400 text-sm">API Endpoint: <code className="text-accent">{apiBase}</code></p>
+              <p className="text-white/60 text-sm mb-4">De CMS API draait online via AWS Lambda. Wijzigingen worden direct opgeslagen.</p>
+              <p className="text-white/60 text-sm">API Endpoint: <code className="text-white/50">{apiBase}</code></p>
             </div>
             <div className="p-6 bg-surface border border-white/5">
               <h3 className="text-white font-heading text-lg mb-4">Workflow</h3>
-              <ol className="space-y-2 text-sm text-gray-400 list-decimal list-inside">
+              <ol className="space-y-2 text-sm text-white/60 list-decimal list-inside">
                 <li>Content toevoegen of bewerken via de tabs</li>
                 <li>Klik op <strong className="text-blue-400">Preview bouwen</strong> om een testversie te bekijken</li>
-                <li>Als alles goed is, klik op <strong className="text-accent">Publiceren</strong></li>
+                <li>Als alles goed is, klik op <strong className="text-white/50">Publiceren</strong></li>
                 <li>Niet tevreden? Klik op <strong className="text-orange-400">Vorige versie herstellen</strong></li>
               </ol>
             </div>
             <div className="p-6 bg-surface border border-white/5">
               <h3 className="text-white font-heading text-lg mb-4">Foto Upload &amp; SEO</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-white/60">
                 <li>&bull; Upload foto&apos;s direct in het foto-formulier of via de album-tab</li>
                 <li>&bull; <strong className="text-white">Alt tekst is verplicht</strong> &mdash; dit helpt Google uw foto&apos;s te vinden</li>
                 <li>&bull; Album covers kunnen ook ge&uuml;pload worden</li>
@@ -1220,8 +1220,8 @@ export default function AdminPage() {
             </div>
             <div className="p-6 bg-surface border border-white/5">
               <h3 className="text-white font-heading text-lg mb-4">Ontwikkelaar</h3>
-              <p className="text-gray-400 text-sm mb-2">Voor handmatige deployment of code-wijzigingen:</p>
-              <code className="block p-3 bg-primary text-accent text-sm border border-white/5">.\deploy.ps1</code>
+              <p className="text-white/60 text-sm mb-2">Voor handmatige deployment of code-wijzigingen:</p>
+              <code className="block p-3 bg-primary text-white/50 text-sm border border-white/5">.\deploy.ps1</code>
             </div>
           </div>
         )}

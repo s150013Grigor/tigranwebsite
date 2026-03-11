@@ -51,7 +51,7 @@ function MasonryItem({ photo, albumSlug, index }: { photo: Photo; albumSlug: str
             {photo.tags && photo.tags.length > 0 && (
               <div className="flex gap-2 mt-2">
                 {photo.tags.slice(0, 3).map((tag: string) => (
-                  <span key={tag} className="text-[10px] text-accent/80 uppercase tracking-wider">
+                  <span key={tag} className="text-[10px] text-white/60 uppercase tracking-wider">
                     #{tag}
                   </span>
                 ))}

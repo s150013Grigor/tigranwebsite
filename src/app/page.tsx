@@ -47,17 +47,17 @@ export default function HomePage() {
     {
       title: 'Website Fotografie',
       description: 'Website bezoekers beslissen in 3 seconden. Geef ze een reden om te blijven. Professionele beelden voor je homepage, over ons en dienstenpagina\'s die vertrouwen wekken en converteren.',
-      href: '/contact/',
+      href: '/website-fotografie/',
     },
     {
       title: 'Social Media Content',
       description: 'Je concurrent post stockfoto\'s. Jij post content die er écht uitziet. Maandelijkse foto\'s voor Instagram en LinkedIn die consistent, authentiek en on-brand zijn.',
-      href: '/contact/',
+      href: '/social-media-content/',
     },
     {
       title: 'Branding & Rebranding',
       description: 'Je merk verdient beelden die even sterk zijn als je ambities. Een volledig nieuw visueel verhaal voor bedrijven die zich herpositioneren of willen groeien.',
-      href: '/contact/',
+      href: '/branding-rebranding/',
     },
   ];
 
@@ -88,20 +88,20 @@ export default function HomePage() {
           subtitle="Recent werk"
         />
 
-        {/* Gouden accent lijn */}
-        <div className="h-[1px] bg-gradient-to-r from-transparent via-accent/[0.18] to-transparent" />
+        {/* Neutrale accent lijn */}
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-white/[0.18] to-transparent" />
 
         {/* Marquee ticker — tweede scheidingselement */}
         <MarqueeTicker />
 
-        {/* Gouden accent lijn */}
-        <div className="h-[1px] bg-gradient-to-r from-transparent via-accent/[0.18] to-transparent" />
+        {/* Neutrale accent lijn */}
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-white/[0.18] to-transparent" />
 
         {/* Testimonial spotlight — eerlijke social proof */}
         <TestimonialSpotlight />
 
         {/* Divider — foto met quote */}
-        <div className="relative overflow-hidden bg-[#1a1a1a]" style={{ height: '60vh' }}>
+        <div className="relative overflow-hidden bg-primary-light" style={{ height: '60vh' }}>
           <Image
             src="/Kineworks13jan2026-114.webp"
             alt="Kineworks Turnhout — gefotografeerd door Tigran Media"
@@ -117,10 +117,10 @@ export default function HomePage() {
           <div className="absolute bottom-0 left-0 right-0 h-36 md:h-48 z-[15] pointer-events-none bg-gradient-to-b from-transparent to-[#1a1a1a]" />
           <div className="relative z-20 flex items-center justify-center w-full h-full">
             <div className="text-center px-4">
-              <ScrollReveal as="p" className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
+              <ScrollReveal as="p" className="text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
                 Mijn overtuiging
               </ScrollReveal>
-              <ScrollReveal as="h2" delay={0.08} className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl 3xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold tracking-[0.02em] text-gradient-gold max-w-3xl 4xl:max-w-5xl">
+              <ScrollReveal as="h2" delay={0.08} className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl 3xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold tracking-[0.02em] text-white max-w-3xl 4xl:max-w-5xl">
                 Goede foto&rsquo;s verkopen. Slechte foto&rsquo;s kosten.
               </ScrollReveal>
             </div>
@@ -135,10 +135,10 @@ export default function HomePage() {
           <section className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-primary-light">
             <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
               <div className="text-center mb-20 md:mb-24 4xl:mb-32">
-                <ScrollReveal as="p" className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
+                <ScrollReveal as="p" className="text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
                   Blog
                 </ScrollReveal>
-                <ScrollReveal as="h2" delay={0.08} className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl font-heading font-bold tracking-[0.02em] text-gradient-gold">
+                <ScrollReveal as="h2" delay={0.08} className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl font-heading font-bold tracking-[0.02em] text-white">
                   Laatste Berichten
                 </ScrollReveal>
               </div>

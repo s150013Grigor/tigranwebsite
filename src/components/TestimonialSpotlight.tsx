@@ -24,28 +24,9 @@ export default function TestimonialSpotlight() {
       ref={ref}
       className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-primary relative overflow-hidden"
     >
-      {/* Subtle warm gradient */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 50% at 30% 40%, rgba(200,169,126,0.045) 0%, transparent 70%), ' +
-            'radial-gradient(ellipse 40% 40% at 80% 70%, rgba(200,169,126,0.03) 0%, transparent 60%)',
-        }}
-      />
+      
 
       <div className="relative z-10 max-w-4xl xl:max-w-5xl 2xl:max-w-6xl 4xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
-        {/* Decorative gold quote mark */}
-        <motion.span
-          initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.6 }}
-          animate={inView ? (shouldReduceMotion ? {} : { opacity: 1, scale: 1 }) : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="block text-accent/20 font-heading text-[8rem] md:text-[12rem] 3xl:text-[14rem] 4xl:text-[16rem] leading-none select-none -mb-16 md:-mb-24 3xl:-mb-28"
-          aria-hidden="true"
-        >
-          &ldquo;
-        </motion.span>
-
         {/* Quote — word-by-word fade in */}
         <blockquote className="relative z-10">
           <p className="font-heading text-white text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl 3xl:text-5xl 4xl:text-6xl leading-snug md:leading-snug tracking-[-0.01em] italic">
@@ -80,7 +61,7 @@ export default function TestimonialSpotlight() {
         >
           {/* Conditional portrait */}
           {showImage ? (
-            <div className="w-14 h-14 3xl:w-16 3xl:h-16 4xl:w-20 4xl:h-20 rounded-full overflow-hidden border-2 border-accent/30 flex-shrink-0">
+            <div className="w-14 h-14 3xl:w-16 3xl:h-16 4xl:w-20 4xl:h-20 rounded-full overflow-hidden border-2 border-white/30 flex-shrink-0">
               <Image
                 src={testimonial.imageSrc!}
                 alt={`Foto van ${testimonial.name}`}
@@ -90,18 +71,18 @@ export default function TestimonialSpotlight() {
               />
             </div>
           ) : (
-            <div className="w-14 h-14 3xl:w-16 3xl:h-16 4xl:w-20 4xl:h-20 rounded-full bg-accent/10 border-2 border-accent/20 flex items-center justify-center flex-shrink-0">
-              <span className="text-accent text-lg 3xl:text-xl font-bold font-heading">
+            <div className="w-14 h-14 3xl:w-16 3xl:h-16 4xl:w-20 4xl:h-20 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+              <span className="text-white text-lg 3xl:text-xl font-bold font-heading">
                 {testimonial.name.charAt(0)}
               </span>
             </div>
           )}
 
           <div>
-            <p className="text-accent font-body text-sm 3xl:text-base 4xl:text-lg font-semibold tracking-wide uppercase">
+            <p className="text-white font-body text-sm 3xl:text-base 4xl:text-lg font-semibold tracking-wide uppercase">
               {testimonial.name}
             </p>
-            <p className="text-gray-500 font-body text-xs 3xl:text-sm 4xl:text-base">
+            <p className="text-white/50 font-body text-xs 3xl:text-sm 4xl:text-base">
               {testimonial.role}
               {testimonial.company &&
                 testimonial.role &&

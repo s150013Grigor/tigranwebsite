@@ -28,7 +28,7 @@ export default function AvailabilityBadge({
           }`}
         />
       </span>
-      <span className="text-[0.65rem] 3xl:text-xs 4xl:text-sm text-gray-400 font-body tracking-wide whitespace-nowrap">
+      <span className="text-[0.65rem] 3xl:text-xs 4xl:text-sm text-white/60 font-body tracking-wide whitespace-nowrap">
         {/* TODO: Tigran — pas de beschikbaarheidstekst aan */}
         {message}
       </span>

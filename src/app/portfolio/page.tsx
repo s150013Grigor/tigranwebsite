@@ -27,7 +27,7 @@ export default function PortfolioPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] flex items-center justify-center" style={{ height: '60vh' }}>
+      <section className="relative overflow-hidden bg-black flex items-center justify-center" style={{ height: '60vh' }}>
         {/* Noise overlay */}
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -36,16 +36,16 @@ export default function PortfolioPage() {
         {/* Subtle radial glow */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(200,169,126,0.06) 0%, transparent 70%)' }}
+          style={{ background: 'transparent' }}
         />
         <div className="relative z-10 text-center px-4">
-          <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
+          <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
             Ons Werk
           </p>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
             Portfolio
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-white/80 text-lg max-w-2xl mx-auto">
             Ontdek onze collectie van professionele fotografie. Kies een categorie om onze foto&apos;s te bekijken.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function PortfolioPage() {
       <section className="py-20 3xl:py-28 4xl:py-36 bg-primary">
         <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
           <div className="text-center mb-16 4xl:mb-24">
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
+            <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
               Categorie&euml;n
             </p>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
@@ -78,13 +78,13 @@ export default function PortfolioPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/90 transition-all duration-500" />
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <h3 className="text-white text-xl md:text-2xl font-heading font-bold group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-white text-xl md:text-2xl font-heading font-bold group-hover:text-white transition-colors duration-300">
                     {album.title}
                   </h3>
-                  <p className="text-gray-300 text-sm mt-2 line-clamp-2">
+                  <p className="text-white/80 text-sm mt-2 line-clamp-2">
                     {album.description}
                   </p>
-                  <span className="inline-flex items-center text-accent text-sm mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="inline-flex items-center text-white/50 text-sm mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Bekijk foto&apos;s &rarr;
                   </span>
                 </div>

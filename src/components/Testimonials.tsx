@@ -41,15 +41,7 @@ export default function Testimonials({
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-surface-dark overflow-hidden relative">
-      {/* Warm gradient mesh overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 70% 50% at 80% 10%, rgba(200, 169, 126, 0.055) 0%, transparent 60%), ' +
-            'radial-gradient(ellipse 50% 40% at 10% 90%, rgba(200, 169, 126, 0.04) 0%, transparent 55%)',
-        }}
-      />
+      
       <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
         <div className="text-center mb-20 md:mb-24 4xl:mb-32">
           <motion.p
@@ -58,7 +50,7 @@ export default function Testimonials({
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
-            className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.5em] uppercase mb-4 font-body"
+            className="text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.5em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
@@ -67,7 +59,7 @@ export default function Testimonials({
             whileInView={shouldReduceMotion ? {} : { scaleX: 1, opacity: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: 0.08, ease: [0.25, 0.4, 0.25, 1] }}
-            className="block w-10 h-[1px] bg-accent/40 mx-auto mb-5 origin-center"
+            className="block w-10 h-[1px] bg-white/20 mx-auto mb-5 origin-center"
           />
           <motion.h2
             variants={fadeUp}
@@ -75,7 +67,7 @@ export default function Testimonials({
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.45, delay: 0.08, ease: EASE_OUT_EXPO }}
-            className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold"
+            className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-white"
           >
             {title}
           </motion.h2>
@@ -94,24 +86,24 @@ export default function Testimonials({
               key={`${testimonial.id}-${index}`}
               className="flex-shrink-0 w-[400px] 3xl:w-[480px] 4xl:w-[560px] 5xl:w-[640px] mx-4"
             >
-              <div className="bg-primary-light p-8 3xl:p-10 4xl:p-12 border border-white/5 hover:border-accent/20 transition-all duration-300 h-full hover:shadow-[0_0_20px_-8px_rgba(200,169,126,0.1)]">
+              <div className="bg-primary-light p-8 3xl:p-10 4xl:p-12 border border-white/5 hover:border-white/10 transition-all duration-300 h-full">
                 {/* Gold quote mark */}
                 <span
-                  className="block text-4xl 3xl:text-5xl font-heading text-accent/20 leading-none mb-4 select-none"
+                  className="block text-4xl 3xl:text-5xl font-heading text-white/10 leading-none mb-4 select-none"
                   aria-hidden="true"
                 >
                   &ldquo;
                 </span>
 
                 {/* Content */}
-                <p className="text-gray-300 text-sm 3xl:text-base 4xl:text-lg leading-relaxed mb-6 italic">
+                <p className="text-white/80 text-sm 3xl:text-base 4xl:text-lg leading-relaxed mb-6 italic">
                   &ldquo;{testimonial.description}&rdquo;
                 </p>
 
                 {/* Author with company/role */}
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-accent/15 rounded-full flex items-center justify-center mr-3 border border-accent/20">
-                    <span className="text-accent text-sm font-bold font-heading">
+                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-3 border border-white/20">
+                    <span className="text-white text-sm font-bold font-heading">
                       {testimonial.name.charAt(0)}
                     </span>
                   </div>
@@ -120,7 +112,7 @@ export default function Testimonials({
                       {testimonial.name}
                     </p>
                     {/* TODO: Tigran — voeg 'role' en 'company' toe aan testimonials.json voor elke klant */}
-                    <p className="text-gray-500 text-xs">
+                    <p className="text-white/50 text-xs">
                       {testimonial.role && testimonial.company
                         ? `${testimonial.role}, ${testimonial.company}`
                         : testimonial.company || testimonial.title}

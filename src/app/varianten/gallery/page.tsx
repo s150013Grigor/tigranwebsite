@@ -60,14 +60,14 @@ function GalleryV2() {
 function GalleryV3() {
   return (
     <section className="bg-primary py-16 overflow-hidden">
-      <div className="flex gap-4 px-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-track-primary scrollbar-thumb-accent">
+      <div className="flex gap-4 px-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-track-primary scrollbar-thumb-white/50">
         {photos.map((p, i) => (
           <motion.div key={i} initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="flex-shrink-0 w-80 group">
             <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
               <img src={p.src} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <p className="text-white font-heading mt-3">{p.title}</p>
-            <p className="text-accent text-sm">{p.cat}</p>
+            <p className="text-white/50 text-sm">{p.cat}</p>
           </motion.div>
         ))}
       </div>
@@ -109,8 +109,8 @@ function GalleryV5() {
         {photos.slice(0, 6).map((p, i) => (
           <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.1 }} className="group relative aspect-square overflow-hidden">
             <img src={p.src} alt={p.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-            <div className="absolute inset-0 border-2 border-transparent group-hover:border-accent transition-colors m-4" />
-            <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform bg-accent p-4">
+            <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/30 transition-colors m-4" />
+            <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform bg-white p-4">
               <p className="text-primary font-semibold">{p.title}</p>
               <p className="text-primary/70 text-sm">{p.cat}</p>
             </div>
@@ -133,10 +133,10 @@ function GalleryV6() {
                 <img src={p.src} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
               </div>
               <div className="flex items-start gap-3 mt-3">
-                <span className="text-accent font-heading text-2xl">{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-white/50 font-heading text-2xl">{String(i + 1).padStart(2, '0')}</span>
                 <div>
                   <p className="text-white font-heading">{p.title}</p>
-                  <p className="text-gray-500 text-sm">{p.cat}</p>
+                  <p className="text-white/50 text-sm">{p.cat}</p>
                 </div>
               </div>
             </motion.div>
@@ -158,9 +158,9 @@ function GalleryV7() {
               <img src={p.src} alt={p.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="w-1/2">
-              <span className="text-accent text-sm uppercase tracking-widest">{p.cat}</span>
+              <span className="text-white/50 text-sm uppercase tracking-widest">{p.cat}</span>
               <h3 className="font-heading text-3xl text-white mt-2">{p.title}</h3>
-              <p className="text-gray-400 mt-2 text-sm">Professioneel vastgelegd door Tigran Media met oog voor detail en emotie.</p>
+              <p className="text-white/60 mt-2 text-sm">Professioneel vastgelegd door Tigran Media met oog voor detail en emotie.</p>
             </div>
           </motion.div>
         ))}
@@ -178,7 +178,7 @@ function GalleryV8() {
           {photos.map((p, i) => (
             <motion.div key={i} whileHover={{ zIndex: 10, scale: 1.05 }} className="relative aspect-square overflow-hidden cursor-pointer">
               <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
-              <motion.div initial={{ opacity: 0 }} whileHover={{ opacity: 1 }} className="absolute inset-0 bg-accent/80 flex items-center justify-center">
+              <motion.div initial={{ opacity: 0 }} whileHover={{ opacity: 1 }} className="absolute inset-0 bg-white/80 flex items-center justify-center">
                 <div className="text-center">
                   <p className="text-primary font-heading text-xl">{p.title}</p>
                   <p className="text-primary/70 text-sm mt-1">Bekijk foto</p>
@@ -230,7 +230,7 @@ function GalleryV10() {
               <div className="aspect-square overflow-hidden">
                 <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
               </div>
-              <p className="text-gray-800 font-heading text-center mt-4 text-sm">{p.title}</p>
+              <p className="text-white/20 font-heading text-center mt-4 text-sm">{p.title}</p>
             </motion.div>
           ))}
         </div>
@@ -245,10 +245,10 @@ const variants = [
   { component: <GalleryV2 />, name: 'Masonry', desc: 'Pinterest-stijl masonry layout met variërende hoogtes' },
   { component: <GalleryV3 />, name: 'Carousel', desc: 'Horizontaal scrollbare kaarten met categorielabels' },
   { component: <GalleryV4 />, name: 'Featured Bento', desc: 'Bento grid met één grote uitgelichte foto' },
-  { component: <GalleryV5 />, name: 'Grayscale Reveal', desc: 'Grijswaarden naar kleur bij hover met accent border' },
+  { component: <GalleryV5 />, name: 'Grayscale Reveal', desc: 'Grijswaarden naar kleur bij hover met witte border' },
   { component: <GalleryV6 />, name: 'Numbered Grid', desc: 'Genummerd grid met typografische details' },
   { component: <GalleryV7 />, name: 'Stacked Cards', desc: 'Afwisselend links/rechts uitgelijnde kaarten' },
-  { component: <GalleryV8 />, name: 'Lightbox Tiles', desc: 'Compact grid met accent-kleur hover overlay' },
+  { component: <GalleryV8 />, name: 'Lightbox Tiles', desc: 'Compact grid met witte hover overlay' },
   { component: <GalleryV9 />, name: 'Filmstrip', desc: 'Filmrol-stijl horizontale strip met perforaties' },
   { component: <GalleryV10 />, name: 'Polaroid', desc: 'Polaroid-foto stijl met rotaties en witte rand' },
 ];
@@ -257,19 +257,19 @@ export default function GalleryVariantenPage() {
   return (
     <main className="min-h-screen bg-primary pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <Link href="/varianten" className="text-accent hover:underline text-sm">← Terug naar varianten</Link>
+        <Link href="/varianten" className="text-white/50 hover:underline text-sm">← Terug naar varianten</Link>
         <h1 className="font-heading text-4xl md:text-5xl text-white mt-4">
-          Gallery <span className="text-accent">Varianten</span>
+          Gallery <span className="text-white/50">Varianten</span>
         </h1>
-        <p className="text-gray-400 mt-2">10 unieke galerij layouts om uit te kiezen</p>
+        <p className="text-white/60 mt-2">10 unieke galerij layouts om uit te kiezen</p>
       </div>
 
       {variants.map((v, i) => (
         <div key={i} className="mb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-            <span className="text-accent font-mono text-sm">Variant {i + 1}</span>
+            <span className="text-white/50 font-mono text-sm">Variant {i + 1}</span>
             <h2 className="font-heading text-2xl text-white">{v.name}</h2>
-            <p className="text-gray-500 text-sm">{v.desc}</p>
+            <p className="text-white/50 text-sm">{v.desc}</p>
           </div>
           {v.component}
         </div>

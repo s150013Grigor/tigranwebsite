@@ -30,7 +30,7 @@ export default function BlogPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] flex items-center justify-center" style={{ height: '60vh' }}>
+      <section className="relative overflow-hidden bg-black flex items-center justify-center" style={{ height: '60vh' }}>
         {/* Noise overlay */}
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -39,16 +39,16 @@ export default function BlogPage() {
         {/* Subtle radial glow */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(200,169,126,0.06) 0%, transparent 70%)' }}
+          style={{ background: 'transparent' }}
         />
         <div className="relative z-10 text-center px-4">
-          <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
+          <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
             Insights & Tips
           </p>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
             Blog
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-white/80 text-lg max-w-2xl mx-auto">
             Tips, verhalen en inspiratie uit de wereld van professionele fotografie.
           </p>
         </div>
@@ -69,29 +69,29 @@ export default function BlogPage() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-primary text-xs uppercase tracking-wider">
+                    <span className="px-3 py-1 bg-white text-black text-xs uppercase tracking-wider">
                       Uitgelicht
                     </span>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <span className="text-accent text-sm tracking-wider uppercase">
+                  <span className="text-white/50 text-sm tracking-wider uppercase">
                     {featuredPost.category}
                   </span>
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-white group-hover:text-accent transition-colors">
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-white group-hover:text-white transition-colors">
                     {featuredPost.title}
                   </h2>
-                  <p className="text-gray-400 leading-relaxed">
+                  <p className="text-white/60 leading-relaxed">
                     {featuredPost.excerpt}
                   </p>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-white/50 text-sm">
                     {new Date(featuredPost.date).toLocaleDateString('nl-BE', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
                     })}
                   </p>
-                  <span className="inline-block text-accent text-sm uppercase tracking-wider group-hover:underline">
+                  <span className="inline-block text-white/50 text-sm uppercase tracking-wider group-hover:underline">
                     Lees meer →
                   </span>
                 </div>

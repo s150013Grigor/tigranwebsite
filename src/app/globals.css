@@ -26,12 +26,12 @@
   }
 
   ::selection {
-    @apply bg-accent/30 text-white;
+    @apply bg-white/20 text-white;
   }
 
   /* Focus visible styles for accessibility */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent;
+    @apply outline-2 outline-offset-2 outline-white/50;
   }
 
   a:focus-visible,
@@ -39,7 +39,7 @@
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent;
+    @apply outline-2 outline-offset-2 outline-white/50;
   }
 
   ::-webkit-scrollbar {
@@ -55,7 +55,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-accent/50;
+    @apply bg-white/40;
   }
 }
 
@@ -80,37 +80,24 @@
     @apply text-3xl md:text-4xl 2xl:text-5xl 4xl:text-6xl font-heading font-semibold text-white;
   }
 
-  /* Warme gradient mesh achtergrond voor secties */
   .bg-mesh-warm {
-    background:
-      radial-gradient(ellipse 80% 55% at 10% 0%, rgba(200, 169, 126, 0.07) 0%, transparent 65%),
-      radial-gradient(ellipse 55% 45% at 90% 100%, rgba(200, 169, 126, 0.05) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(200, 169, 126, 0.025) 0%, transparent 70%),
-      #050505;
-  }
-
-  /* Wit-naar-goud gradient op display titels */
-  .text-gradient-gold {
-    background: linear-gradient(135deg, #ffffff 0%, #f5f0ea 50%, #c8a97e 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background: #000000;
   }
 
   .text-muted {
-    @apply text-gray-400 text-sm 2xl:text-base 4xl:text-lg 5xl:text-xl leading-relaxed;
+    @apply text-white/60 text-sm 2xl:text-base 4xl:text-lg 5xl:text-xl leading-relaxed;
   }
 
   .label-accent {
-    @apply text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase font-body;
+    @apply text-white/60 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase font-body;
   }
 
   .btn-primary {
-    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 bg-accent text-primary font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:brightness-110 transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block relative overflow-hidden;
+    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 bg-white text-black font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:bg-white/85 transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block relative overflow-hidden;
   }
 
   .btn-outline {
-    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 border border-white/30 text-white font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:border-accent hover:text-accent transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block relative overflow-hidden;
+    @apply px-8 py-4 2xl:px-10 2xl:py-5 4xl:px-12 4xl:py-6 border border-white/30 text-white font-body text-sm 2xl:text-base 4xl:text-lg uppercase tracking-wider hover:border-white hover:text-white transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block relative overflow-hidden;
   }
 
   /* Shimmer sweep op buttons */
@@ -147,7 +134,7 @@
 
   /* Prose styles for blog content */
   .prose-custom {
-    @apply text-gray-300 leading-relaxed;
+    @apply text-white/80 leading-relaxed;
   }
 
   .prose-custom h1 {
@@ -163,27 +150,27 @@
   }
 
   .prose-custom p {
-    @apply text-gray-300 leading-relaxed mb-4;
+    @apply text-white/80 leading-relaxed mb-4;
   }
 
   .prose-custom ul {
-    @apply list-disc list-inside mb-4 space-y-2 text-gray-300;
+    @apply list-disc list-inside mb-4 space-y-2 text-white/80;
   }
 
   .prose-custom ol {
-    @apply list-decimal list-inside mb-4 space-y-2 text-gray-300;
+    @apply list-decimal list-inside mb-4 space-y-2 text-white/80;
   }
 
   .prose-custom li {
-    @apply text-gray-300;
+    @apply text-white/80;
   }
 
   .prose-custom a {
-    @apply text-accent hover:text-accent-light underline transition-colors;
+    @apply text-white underline underline-offset-2 hover:text-white/70 transition-colors;
   }
 
   .prose-custom blockquote {
-    @apply border-l-2 border-accent pl-6 italic text-gray-400 my-6;
+    @apply border-l-2 border-white/30 pl-6 italic text-white/60 my-6;
   }
 
   .prose-custom strong {
@@ -199,6 +186,6 @@
   }
 
   .prose-custom code {
-    @apply bg-surface px-2 py-0.5 text-accent text-sm rounded;
+    @apply bg-surface px-2 py-0.5 text-white text-sm rounded;
   }
 }

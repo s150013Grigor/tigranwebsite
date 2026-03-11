@@ -44,7 +44,7 @@ export default function CTA({
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-        className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
+        className="text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
       >
         Laten we praten
       </motion.p>
@@ -54,7 +54,7 @@ export default function CTA({
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.35, delay: 0.08, ease: EASE_OUT_EXPO }}
-        className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-gradient-gold mb-6"
+        className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-heading font-bold tracking-[0.02em] text-white mb-6"
       >
         {title}
       </motion.h2>
@@ -64,7 +64,7 @@ export default function CTA({
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.35, delay: 0.16, ease: EASE_OUT_EXPO }}
-        className="text-gray-300 text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl mb-10 font-body leading-relaxed"
+        className="text-white/80 text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl mb-10 font-body leading-relaxed"
       >
         {description}
       </motion.p>
@@ -78,14 +78,14 @@ export default function CTA({
       >
         <Link
           href={ctaLink}
-          className="px-8 py-4 3xl:px-10 3xl:py-5 4xl:px-12 4xl:py-6 bg-accent text-primary font-body text-sm 3xl:text-base 4xl:text-lg uppercase tracking-wider hover:brightness-110 transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block"
+          className="px-8 py-4 3xl:px-10 3xl:py-5 4xl:px-12 4xl:py-6 bg-white text-primary font-body text-sm 3xl:text-base 4xl:text-lg uppercase tracking-wider hover:brightness-110 transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block"
         >
           {ctaText}
         </Link>
         {secondaryCtaText && secondaryCtaLink && (
           <Link
             href={secondaryCtaLink}
-            className="px-8 py-4 3xl:px-10 3xl:py-5 4xl:px-12 4xl:py-6 border border-white/30 text-white font-body text-sm 3xl:text-base 4xl:text-lg uppercase tracking-wider hover:border-accent hover:text-accent transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block"
+            className="px-8 py-4 3xl:px-10 3xl:py-5 4xl:px-12 4xl:py-6 border border-white/30 text-white font-body text-sm 3xl:text-base 4xl:text-lg uppercase tracking-wider hover:border-white/30 hover:text-white transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block"
           >
             {secondaryCtaText}
           </Link>

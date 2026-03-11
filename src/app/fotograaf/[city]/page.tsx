@@ -140,7 +140,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
           <section className="py-16 bg-primary">
             <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
               <div className="text-center mb-10">
-                <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-body">
+                <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
                   Regio
                 </p>
                 <h2 className="text-2xl md:text-3xl font-heading font-bold text-white">
@@ -152,12 +152,12 @@ export default function CityPage({ params }: { params: { city: string } }) {
                   <Link
                     key={nc.slug}
                     href={`/fotograaf/${nc.slug}/`}
-                    className="p-4 bg-primary-dark border border-white/5 hover:border-accent/30 transition-all text-center group"
+                    className="p-4 bg-primary-dark border border-white/5 hover:border-white/30 transition-all text-center group"
                   >
-                    <p className="text-white group-hover:text-accent transition-colors font-heading">
+                    <p className="text-white group-hover:text-white transition-colors font-heading">
                       Fotograaf {nc.name}
                     </p>
-                    <p className="text-gray-500 text-xs mt-1">{nc.province}</p>
+                    <p className="text-white/50 text-xs mt-1">{nc.province}</p>
                   </Link>
                 ))}
               </div>

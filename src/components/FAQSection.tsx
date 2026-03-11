@@ -33,7 +33,7 @@ export default function FAQSection({
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-accent text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
+            className="text-white/50 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body"
           >
             {subtitle}
           </motion.p>
@@ -64,7 +64,7 @@ export default function FAQSection({
                   {faq.question}
                 </span>
                 <HiChevronDown
-                  className={`w-5 h-5 text-accent transition-transform duration-300 flex-shrink-0 ${
+                  className={`w-5 h-5 text-white/50 transition-transform duration-300 flex-shrink-0 ${
                     openId === faq.id ? 'rotate-180' : ''
                   }`}
                 />
@@ -78,7 +78,7 @@ export default function FAQSection({
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <p className="px-6 3xl:px-8 4xl:px-10 pb-6 text-gray-400 text-sm 3xl:text-base 4xl:text-lg leading-relaxed">
+                <p className="px-6 3xl:px-8 4xl:px-10 pb-6 text-white/60 text-sm 3xl:text-base 4xl:text-lg leading-relaxed">
                   {faq.answer}
                 </p>
               </motion.div>

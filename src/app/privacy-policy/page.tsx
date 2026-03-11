@@ -13,8 +13,8 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="pt-32 pb-20 bg-primary">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center space-x-2 text-sm text-gray-400 mb-8">
-          <Link href="/" className="hover:text-accent transition-colors">Home</Link>
+        <nav className="flex items-center space-x-2 text-sm text-white/60 mb-8">
+          <Link href="/" className="hover:text-white transition-colors">Home</Link>
           <span>/</span>
           <span className="text-white">Privacybeleid</span>
         </nav>
@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
         <h1 className="text-4xl font-heading font-bold text-white mb-8">
           Privacybeleid
         </h1>
-        <p className="text-gray-500 text-sm mb-12">Laatst bijgewerkt: januari 2026</p>
+        <p className="text-white/50 text-sm mb-12">Laatst bijgewerkt: januari 2026</p>
 
         <div className="prose-custom space-y-8">
           <section>
@@ -172,10 +172,10 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex space-x-6">
-          <Link href="/terms-of-service/" className="text-accent text-sm hover:underline">
+          <Link href="/terms-of-service/" className="text-white/50 text-sm hover:underline">
             Algemene Voorwaarden →
           </Link>
-          <Link href="/contact/" className="text-accent text-sm hover:underline">
+          <Link href="/contact/" className="text-white/50 text-sm hover:underline">
             Contact →
           </Link>
         </div>

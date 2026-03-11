@@ -26,9 +26,9 @@ export default function VariantenPage() {
           className="text-center mb-16"
         >
           <h1 className="font-heading text-5xl md:text-6xl text-white mb-6">
-            Component <span className="text-accent">Varianten</span>
+            Component <span className="text-white/50">Varianten</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">
             Ontdek 10 unieke variaties van elk component. Kies de stijl die het beste
             bij jouw merk past en combineer ze voor een perfect resultaat.
           </p>
@@ -43,13 +43,13 @@ export default function VariantenPage() {
               transition={{ delay: index * 0.1 }}
             >
               <Link href={`/varianten/${component.slug}`}>
-                <div className="group bg-surface border border-white/10 rounded-xl p-8 hover:border-accent/50 transition-all duration-300 hover:-translate-y-1">
+                <div className="group bg-surface border border-white/10 rounded-xl p-8 hover:border-white/30 transition-all duration-300 hover:-translate-y-1">
                   <span className="text-4xl mb-4 block">{component.icon}</span>
-                  <h2 className="font-heading text-2xl text-white mb-2 group-hover:text-accent transition-colors">
+                  <h2 className="font-heading text-2xl text-white mb-2 group-hover:text-white transition-colors">
                     {component.name}
                   </h2>
-                  <p className="text-gray-400 text-sm mb-4">{component.description}</p>
-                  <div className="flex items-center text-accent text-sm font-medium">
+                  <p className="text-white/60 text-sm mb-4">{component.description}</p>
+                  <div className="flex items-center text-white/50 text-sm font-medium">
                     10 varianten bekijken
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
