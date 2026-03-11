@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import ImageReveal from '@/components/ImageReveal';
 
 interface GalleryItem {
   id: string;
@@ -127,19 +127,18 @@ export default function Gallery({
             >
               <Link href={item.href} className="group block relative overflow-hidden">
                 <div className="aspect-[4/3] relative overflow-hidden">
-                  <Image
+                  <ImageReveal
                     src={item.coverImage}
                     alt={item.title}
-                    fill
-                    loading="lazy"
-                    decoding="async"
-                    className="object-cover transition-transform duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                    delay={Math.min(index, 2) * 0.12}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="absolute inset-0"
+                    imageClassName="transition-transform duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms] ease-out" />
+                  <div className="absolute inset-0 z-20 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms] ease-out" />
                   {/* Hover text — fade up */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms] ease-out">
+                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms] ease-out">
                     {item.category && (
                       <span className="text-white/50 text-xs tracking-[0.2em] uppercase mb-2 font-body translate-y-2 group-hover:translate-y-0 transition-transform duration-[250ms] ease-out">
                         {item.category}
