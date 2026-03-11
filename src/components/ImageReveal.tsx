@@ -20,27 +20,29 @@ interface ImageRevealProps {
 export default function ImageReveal({
   src,
   alt,
-  aspectRatio,
+  aspectRatio = 'aspect-[4/3]',
   delay = 0,
-  sizes = '100vw',
+  sizes,
   priority = false,
   imageClassName = '',
   className = '',
 }: ImageRevealProps) {
-  const prefersReduced = useReducedMotion();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div
-      className={`relative overflow-hidden ${className}`}
-      style={aspectRatio ? { aspectRatio } : undefined}
+    <motion.div
+      className={`relative overflow-hidden ${aspectRatio} ${className}`}
+      initial={shouldReduceMotion ? {} : { clipPath: 'inset(100% 0% 0% 0%)' }}
+      whileInView={shouldReduceMotion ? {} : { clipPath: 'inset(0% 0% 0% 0%)' }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.85, delay, ease: REVEAL_EASE }}
     >
-      {/* Image — always visible, scale animates */}
       <motion.div
-        className="absolute inset-0"
-        initial={prefersReduced ? undefined : { scale: 1.08 }}
-        whileInView={prefersReduced ? undefined : { scale: 1 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.9, ease: REVEAL_EASE, delay }}
+        className="absolute inset-0 w-full h-full"
+        initial={shouldReduceMotion ? {} : { scale: 1.08 }}
+        whileInView={shouldReduceMotion ? {} : { scale: 1 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.85, delay, ease: REVEAL_EASE }}
       >
         <Image
           src={src}
@@ -51,17 +53,6 @@ export default function ImageReveal({
           className={`object-cover ${imageClassName}`}
         />
       </motion.div>
-
-      {/* Overlay mask — slides up to reveal the image */}
-      {!prefersReduced && (
-        <motion.div
-          className="absolute inset-0 z-10 bg-[#111111]"
-          initial={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-          whileInView={{ clipPath: 'inset(0% 0% 100% 0%)' }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.9, ease: REVEAL_EASE, delay }}
-        />
-      )}
-    </div>
+    </motion.div>
   );
 }

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import MarqueeTicker from '@/components/MarqueeTicker';
 import { getAlbums, getBlogPosts } from '@/lib/content';
@@ -12,7 +13,6 @@ const Testimonials = dynamic(() => import('@/components/Testimonials'));
 const CTA = dynamic(() => import('@/components/CTA'));
 const TestimonialSpotlight = dynamic(() => import('@/components/TestimonialSpotlight'));
 const BlogCard = dynamic(() => import('@/components/BlogCard'));
-const Parallax = dynamic(() => import('@/components/Parallax'));
 
 export const metadata: Metadata = generateSEO({
   url: '/',
@@ -85,26 +85,29 @@ export default function HomePage() {
           subtitle="Recent werk"
         />
 
-        {/* Divider — parallax */}
-        <Parallax
-          backgroundImage="/Kineworks13jan2026-114.webp"
-          imageAlt="Kineworks Turnhout — gefotografeerd door Tigran Media"
-          speed={0.4}
-          overlayOpacity={0.6}
-          height="60vh"
-          direction="up"
-        >
+        {/* Divider */}
+        <div className="relative overflow-hidden bg-primary-light" style={{ height: '60vh' }}>
+          <Image
+            src="/Kineworks13jan2026-114.webp"
+            alt="Kineworks Turnhout — gefotografeerd door Tigran Media"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute top-0 left-0 right-0 h-20 z-[15] pointer-events-none bg-gradient-to-b from-black to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-36 md:h-48 z-[15] pointer-events-none bg-gradient-to-b from-transparent to-[#111111]" />
-          <div className="text-center px-4">
-            <p className="text-white/60 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
-              Mijn overtuiging
-            </p>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl 3xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold tracking-[0.02em] text-white max-w-3xl 4xl:max-w-5xl">
-              Goede foto&rsquo;s verkopen. Slechte foto&rsquo;s kosten.
-            </h2>
+          <div className="relative z-20 flex items-center justify-center w-full h-full">
+            <div className="text-center px-4">
+              <p className="text-white/60 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase mb-4 font-body">
+                Mijn overtuiging
+              </p>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl 3xl:text-8xl 4xl:text-9xl 5xl:text-[10rem] font-heading font-bold tracking-[0.02em] text-white max-w-3xl 4xl:max-w-5xl">
+                Goede foto&rsquo;s verkopen. Slechte foto&rsquo;s kosten.
+              </h2>
+            </div>
           </div>
-        </Parallax>
+        </div>
 
         <TestimonialSpotlight />
 
