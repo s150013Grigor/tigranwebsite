@@ -30,33 +30,8 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-black flex items-center justify-center" style={{ height: '50vh' }}>
-        {/* Noise overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{ backgroundImage: "url('/noise.svg')", backgroundRepeat: 'repeat' }}
-        />
-        {/* Subtle radial glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'transparent' }}
-        />
-        <div className="relative z-10 text-center px-4">
-          <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
-            Hulp nodig?
-          </p>
-          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
-            Veelgestelde Vragen
-          </h1>
-          <p className="text-white/80 text-lg max-w-2xl mx-auto">
-            Vind hier antwoorden op de meest gestelde vragen over onze diensten.
-          </p>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <FAQSection faqs={faqs} />
+      {/* FAQ Section — with built-in heading, extra top padding for navbar clearance */}
+      <FAQSection faqs={faqs} className="pt-28 md:pt-32" />
 
       {/* CTA */}
       <CTA

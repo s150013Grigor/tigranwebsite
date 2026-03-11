@@ -30,27 +30,19 @@ export default function BlogPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-black flex items-center justify-center" style={{ height: '60vh' }}>
-        {/* Noise overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{ backgroundImage: "url('/noise.svg')", backgroundRepeat: 'repeat' }}
-        />
-        {/* Subtle radial glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'transparent' }}
-        />
-        <div className="relative z-10 text-center px-4">
-          <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
-            Insights & Tips
-          </p>
-          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
-            Blog
-          </h1>
-          <p className="text-white/80 text-lg max-w-2xl mx-auto">
-            Tips, verhalen en inspiratie uit de wereld van professionele fotografie.
-          </p>
+      <section className="pt-28 md:pt-32 pb-10 bg-black">
+        <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
+          <div className="text-center">
+            <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
+              Insights &amp; Tips
+            </p>
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
+              Blog
+            </h1>
+            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+              Tips, verhalen en inspiratie uit de wereld van professionele fotografie.
+            </p>
+          </div>
         </div>
       </section>
 

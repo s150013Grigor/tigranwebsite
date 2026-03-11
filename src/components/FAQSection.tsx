@@ -15,18 +15,20 @@ interface FAQSectionProps {
   faqs: FAQItemData[];
   title?: string;
   subtitle?: string;
+  className?: string;
 }
 
 export default function FAQSection({
   faqs,
   title = 'Veelgestelde Vragen',
   subtitle = 'FAQ',
+  className = '',
 }: FAQSectionProps) {
   const [openId, setOpenId] = useState<string | null>(null);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section ref={ref} className="py-20 3xl:py-28 4xl:py-36 bg-primary">
+    <section ref={ref} className={`py-20 3xl:py-28 4xl:py-36 bg-primary ${className}`}>
       <div className="max-w-3xl 3xl:max-w-4xl 4xl:max-w-5xl 5xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 4xl:px-16">
         <div className="text-center mb-16 4xl:mb-24">
           <motion.p

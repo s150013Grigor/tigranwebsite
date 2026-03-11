@@ -26,42 +26,25 @@ export default function PortfolioPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-black flex items-center justify-center" style={{ height: '60vh' }}>
-        {/* Noise overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{ backgroundImage: "url('/noise.svg')", backgroundRepeat: 'repeat' }}
-        />
-        {/* Subtle radial glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'transparent' }}
-        />
-        <div className="relative z-10 text-center px-4">
-          <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
-            Ons Werk
-          </p>
-          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
-            Portfolio
-          </h1>
-          <p className="text-white/80 text-lg max-w-2xl mx-auto">
-            Ontdek onze collectie van professionele fotografie. Kies een categorie om onze foto&apos;s te bekijken.
-          </p>
+      {/* Hero + Category Grid — compact */}
+      <section className="pt-28 md:pt-32 pb-10 bg-black">
+        <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
+          <div className="text-center">
+            <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
+              Ons Werk
+            </p>
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
+              Portfolio
+            </h1>
+            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+              Ontdek onze collectie van professionele fotografie. Kies een categorie om onze foto&apos;s te bekijken.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Category Grid */}
-      <section className="py-20 3xl:py-28 4xl:py-36 bg-primary">
+      <section className="pt-10 pb-20 3xl:pb-28 4xl:pb-36 bg-primary">
         <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
-          <div className="text-center mb-16 4xl:mb-24">
-            <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
-              Categorie&euml;n
-            </p>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
-              Kies een Categorie
-            </h2>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {albums.map((album) => (
               <Link
