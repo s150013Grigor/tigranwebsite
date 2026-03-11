@@ -36,12 +36,9 @@ export default function BlogPage() {
             <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
               Insights &amp; Tips
             </p>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white">
               Blog
             </h1>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto">
-              Tips, verhalen en inspiratie uit de wereld van professionele fotografie.
-            </p>
           </div>
         </div>
       </section>

@@ -33,12 +33,9 @@ export default function PortfolioPage() {
             <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
               Ons Werk
             </p>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white">
               Portfolio
             </h1>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto">
-              Ontdek onze collectie van professionele fotografie. Kies een categorie om onze foto&apos;s te bekijken.
-            </p>
           </div>
         </div>
       </section>

@@ -3,11 +3,8 @@ import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import dynamic from 'next/dynamic';
 import { generateLocalBusinessSchema, generateWebsiteSchema } from '@/lib/structured-data';
 import Script from 'next/script';
-
-const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: false });
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -146,7 +143,6 @@ export default function RootLayout({
         */}
       </head>
       <body className="min-h-screen bg-primary text-white font-body antialiased">
-        <CustomCursor />
         <Header />
         <main>{children}</main>
         <Footer />

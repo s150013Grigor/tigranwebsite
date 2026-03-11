@@ -30,8 +30,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* FAQ Section — with built-in heading, extra top padding for navbar clearance */}
-      <FAQSection faqs={faqs} className="pt-28 md:pt-32" />
+      <FAQSection faqs={faqs} subtitle="" className="pt-28 md:pt-32" />
 
       {/* CTA */}
       <CTA
