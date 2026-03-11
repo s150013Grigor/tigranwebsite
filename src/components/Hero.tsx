@@ -14,12 +14,12 @@ export default function Hero() {
           height={2100}
           fetchPriority="high"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-[center_25%]"
+          className="absolute inset-0 w-full h-full object-cover object-[center_60%]"
         />
       </picture>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/[0.55]" />
+      <div className="absolute inset-0 bg-black/[0.65]" />
 
       {/* Film grain texture */}
       <div
