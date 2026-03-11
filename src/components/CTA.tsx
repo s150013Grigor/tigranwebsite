@@ -38,7 +38,7 @@ export default function CTA({
       };
 
   const content = (
-    <div className="text-center px-4 max-w-3xl 4xl:max-w-5xl 5xl:max-w-6xl mx-auto py-20 3xl:py-28 4xl:py-36">
+    <div className="text-center px-4 max-w-3xl 4xl:max-w-5xl 5xl:max-w-6xl mx-auto pt-10 pb-20 3xl:pt-14 3xl:pb-28 4xl:pt-18 4xl:pb-36">
       <motion.p
         variants={fadeUp}
         initial="hidden"

@@ -23,7 +23,7 @@ export default function TestimonialSpotlight() {
   return (
     <section
       ref={ref}
-      className="py-24 md:py-32 3xl:py-44 4xl:py-56 bg-primary relative overflow-hidden"
+      className="pt-12 pb-24 md:pt-16 md:pb-32 3xl:pt-24 3xl:pb-44 4xl:pt-28 4xl:pb-56 bg-primary relative overflow-hidden"
     >
       
 
