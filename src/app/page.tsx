@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import MarqueeTicker from '@/components/MarqueeTicker';
 import { getAlbums, getBlogPosts } from '@/lib/content';
@@ -81,18 +82,13 @@ export default function HomePage() {
 
       {/* Divider */}
       <div className="relative overflow-hidden bg-primary-light" style={{ height: '60vh' }}>
-        <picture>
-          <source srcSet="/Kineworks13jan2026-114.webp" type="image/webp" />
-          <img
-            src="/Kineworks13jan2026-114.jpg"
-            alt="Kineworks Turnhout — gefotografeerd door Tigran Media"
-            width={1920}
-            height={1280}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-        </picture>
+        <Image
+          src="/Kineworks13jan2026-114.webp"
+          alt="Kineworks Turnhout — gefotografeerd door Tigran Media"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="absolute top-0 left-0 right-0 h-20 z-[15] pointer-events-none bg-gradient-to-b from-black to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-36 md:h-48 z-[15] pointer-events-none bg-gradient-to-b from-transparent to-[#111111]" />

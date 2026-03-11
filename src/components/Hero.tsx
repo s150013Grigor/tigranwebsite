@@ -1,22 +1,19 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
     <section className="relative h-screen min-h-[600px] max-h-[1200px] overflow-hidden">
-      {/* Background image — LCP, not lazy-loaded */}
-      <picture>
-        <source srcSet="/DSCF6090-2.webp" type="image/webp" />
-        <img
-          src="/DSCF6090-2.jpg"
-          alt=""
-          role="presentation"
-          width={1400}
-          height={2100}
-          fetchPriority="high"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-[center_60%]"
-        />
-      </picture>
+      {/* Background image — LCP, priority preloaded */}
+      <Image
+        src="/DSCF6090-2.webp"
+        alt=""
+        role="presentation"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[center_60%]"
+      />
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/[0.65]" />

@@ -88,6 +88,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
+        <link rel="preload" as="image" type="image/webp" href="/DSCF6090-2.webp" />
         <link rel="preconnect" href="https://tigranmedia.be" />
         <link rel="dns-prefetch" href="https://tigranmedia.be" />
 
