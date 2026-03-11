@@ -12,7 +12,6 @@ const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: f
 const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
   variable: '--font-dm-sans',
   display: 'swap',
   preload: true,
@@ -92,6 +91,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
+        <link rel="preconnect" href="https://tigranmedia.be" />
+        <link rel="dns-prefetch" href="https://tigranmedia.be" />
 
         {/* Structured Data */}
         <script
@@ -134,18 +135,15 @@ export default function RootLayout({
         </Script>
 
         {/*
-          Security headers that require HTTP-level config (CloudFront/nginx/CDN):
+          Security headers — set at CDN/hosting level (CloudFront/nginx):
           Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+          Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; ...
           Cross-Origin-Opener-Policy: same-origin
           X-Frame-Options: DENY
           X-Content-Type-Options: nosniff
           Referrer-Policy: strict-origin-when-cross-origin
           Permissions-Policy: camera=(), microphone=(), geolocation=()
         */}
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: ; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; frame-ancestors 'none';"
-        />
       </head>
       <body className="min-h-screen bg-primary text-white font-body antialiased">
         <CustomCursor />

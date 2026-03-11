@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { HiCalendar, HiArrowRight } from 'react-icons/hi';
 
 interface BlogCardProps {
@@ -10,6 +11,7 @@ interface BlogCardProps {
   excerpt: string;
   coverImage: string;
   date: string;
+  formattedDate?: string;
   slug: string;
   category: string;
   index?: number;
@@ -22,6 +24,7 @@ export default function BlogCard({
   excerpt,
   coverImage,
   date,
+  formattedDate,
   slug,
   category,
   index = 0,
@@ -57,7 +60,7 @@ export default function BlogCard({
           <div className="flex items-center text-white/60 text-xs 3xl:text-sm 4xl:text-base">
             <HiCalendar className="w-3.5 h-3.5 3xl:w-4 3xl:h-4 4xl:w-5 4xl:h-5 mr-1.5" />
             <time dateTime={date}>
-              {new Date(date).toLocaleDateString('nl-BE', {
+              {formattedDate || new Date(date).toLocaleDateString('nl-BE', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',

@@ -6,18 +6,24 @@ import { getAlbums, getBlogPosts } from '@/lib/content';
 import { generatePhotographerSchema } from '@/lib/structured-data';
 import { generateSEO } from '@/lib/seo';
 
-// Below-fold: ssr:false prevents React hydration errors #422/#425
-// caused by useReducedMotion/useSyncExternalStore on the server
-const Gallery = dynamic(() => import('@/components/Gallery'), { ssr: false });
-const ServicesSection = dynamic(() => import('@/components/ServicesSection'), { ssr: false });
-const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: false });
-const CTA = dynamic(() => import('@/components/CTA'), { ssr: false });
-const TestimonialSpotlight = dynamic(() => import('@/components/TestimonialSpotlight'), { ssr: false });
-const BlogCard = dynamic(() => import('@/components/BlogCard'), { ssr: false });
+const Gallery = dynamic(() => import('@/components/Gallery'));
+const ServicesSection = dynamic(() => import('@/components/ServicesSection'));
+const Testimonials = dynamic(() => import('@/components/Testimonials'));
+const CTA = dynamic(() => import('@/components/CTA'));
+const TestimonialSpotlight = dynamic(() => import('@/components/TestimonialSpotlight'));
+const BlogCard = dynamic(() => import('@/components/BlogCard'));
 
 export const metadata: Metadata = generateSEO({
   url: '/',
 });
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString('nl-BE', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
 
 export default function HomePage() {
   const allAlbums = getAlbums();
@@ -73,7 +79,7 @@ export default function HomePage() {
         subtitle="Recent werk"
       />
 
-      {/* Divider — full-width image with quote */}
+      {/* Divider */}
       <div className="relative overflow-hidden bg-primary-light" style={{ height: '60vh' }}>
         <picture>
           <source srcSet="/Kineworks13jan2026-114.webp" type="image/webp" />
@@ -125,6 +131,7 @@ export default function HomePage() {
                   excerpt={post.excerpt}
                   coverImage={post.coverImage}
                   date={post.date}
+                  formattedDate={formatDate(post.date)}
                   slug={post.slug}
                   category={post.category}
                   index={index}

@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
 
 const navItems = [
@@ -20,14 +19,13 @@ export default function Header() {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when clicking outside
+  const closeMenu = useCallback(() => setIsOpen(false), []);
+
   useEffect(() => {
     if (!isOpen) return;
     const handleClickOutside = (e: MouseEvent | TouchEvent) => {
@@ -35,7 +33,7 @@ export default function Header() {
         menuRef.current && !menuRef.current.contains(e.target as Node) &&
         buttonRef.current && !buttonRef.current.contains(e.target as Node)
       ) {
-        setIsOpen(false);
+        closeMenu();
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -44,7 +42,7 @@ export default function Header() {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, closeMenu]);
 
   return (
     <header
@@ -56,12 +54,10 @@ export default function Header() {
     >
       <nav className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
         <div className="flex items-center justify-between h-20 xl:h-22 2xl:h-24 3xl:h-28 4xl:h-32 5xl:h-36">
-          {/* Logo */}
           <Link href="/" className="text-white font-heading font-bold text-xl xl:text-2xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl 5xl:text-6xl tracking-tight hover:opacity-80 transition-opacity">
             Tigran Media
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-10 2xl:space-x-12 3xl:space-x-14 4xl:space-x-16 5xl:space-x-20">
             {navItems.map((item) => (
               <Link
@@ -82,63 +78,66 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             ref={buttonRef}
             className="md:hidden text-white p-2"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            ref={menuRef}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-primary-light/98 backdrop-blur-lg border-t border-white/10"
-          >
-            <div className="px-4 py-6 space-y-4">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block text-lg font-body text-white/60 hover:text-white transition-colors py-2 tracking-wider"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navItems.length * 0.1 }}
+      {/* Mobile menu — CSS grid transition for height:auto animation */}
+      <div
+        ref={menuRef}
+        className={`md:hidden grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+          isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        } bg-primary-light/98 backdrop-blur-lg border-t border-white/10`}
+        aria-hidden={!isOpen}
+      >
+        <div className="overflow-hidden">
+          <div className="px-4 py-6 space-y-4">
+            {navItems.map((item, index) => (
+              <div
+                key={item.href}
+                className="transition-all duration-300 ease-out"
+                style={{
+                  opacity: isOpen ? 1 : 0,
+                  transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
+                  transitionDelay: isOpen ? `${index * 80}ms` : '0ms',
+                }}
               >
                 <Link
-                  href="/contact/"
-                  className="inline-block mt-4 px-6 py-3 border border-white/30 text-white text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
-                  onClick={() => setIsOpen(false)}
+                  href={item.href}
+                  className="block text-lg font-body text-white/60 hover:text-white transition-colors py-2 tracking-wider"
+                  onClick={closeMenu}
                 >
-                  Samenwerken
+                  {item.label}
                 </Link>
-              </motion.div>
+              </div>
+            ))}
+            <div
+              className="transition-all duration-300 ease-out"
+              style={{
+                opacity: isOpen ? 1 : 0,
+                transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
+                transitionDelay: isOpen ? `${navItems.length * 80}ms` : '0ms',
+              }}
+            >
+              <Link
+                href="/contact/"
+                className="inline-block mt-4 px-6 py-3 border border-white/30 text-white text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
+                onClick={closeMenu}
+              >
+                Samenwerken
+              </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
