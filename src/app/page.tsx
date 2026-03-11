@@ -91,6 +91,7 @@ export default function HomePage() {
             src="/Kineworks13jan2026-114.webp"
             alt="Kineworks Turnhout — gefotografeerd door Tigran Media"
             fill
+            quality={80}
             sizes="100vw"
             className="object-cover object-center"
           />

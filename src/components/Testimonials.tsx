@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import testimonialsData from '@/content/testimonials.json';
 
@@ -25,8 +24,6 @@ export default function Testimonials({
   title = 'Wat Klanten Zeggen',
   subtitle = 'Getuigenissen',
 }: TestimonialsProps) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   const shouldReduceMotion = useReducedMotion();
   const testimonials: Testimonial[] = testimonialsData;
 
@@ -40,7 +37,7 @@ export default function Testimonials({
       };
 
   return (
-    <section ref={sectionRef} className="pt-12 pb-24 md:pt-16 md:pb-32 3xl:pt-24 3xl:pb-44 4xl:pt-28 4xl:pb-56 bg-surface-dark overflow-hidden relative">
+    <section className="pt-12 pb-24 md:pt-16 md:pb-32 3xl:pt-24 3xl:pb-44 4xl:pt-28 4xl:pb-56 bg-surface-dark overflow-hidden relative">
       
       <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
         <div className="text-center mb-20 md:mb-24 4xl:mb-32">

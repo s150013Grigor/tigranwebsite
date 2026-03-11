@@ -11,6 +11,7 @@ export default function Hero() {
         role="presentation"
         fill
         priority
+        quality={85}
         sizes="100vw"
         className="object-cover object-[center_60%]"
       />

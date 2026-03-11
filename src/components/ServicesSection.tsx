@@ -97,30 +97,28 @@ export default function ServicesSection({
             <motion.div
               key={service.title}
               variants={itemVariants}
-              className="flex"
+              className="relative flex flex-col border border-white/[0.07] bg-primary-light/30 p-8 sm:p-10 3xl:p-14 4xl:p-16 hover:border-white/15 transition-all duration-500 group"
             >
-              <div className="relative flex flex-col h-full w-full border border-white/[0.07] bg-primary-light/30 p-8 sm:p-10 3xl:p-14 4xl:p-16 hover:border-white/15 transition-all duration-500 group">
-                <span className="text-white/20 text-xs tracking-[0.5em] font-body uppercase mb-8 block">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+              <span className="text-white/20 text-xs tracking-[0.5em] font-body uppercase mb-8 block">
+                {String(index + 1).padStart(2, '0')}
+              </span>
 
-                <h3 className="text-white font-heading text-2xl md:text-3xl 2xl:text-4xl 3xl:text-4xl 4xl:text-5xl mb-4 leading-tight">
-                  {service.title}
-                </h3>
+              <h3 className="text-white font-heading text-2xl md:text-3xl 2xl:text-4xl 3xl:text-4xl 4xl:text-5xl mb-4 leading-tight">
+                {service.title}
+              </h3>
 
-                <span className="block w-8 h-[1px] bg-white/15 mb-6" />
+              <span className="block w-8 h-[1px] bg-white/15 mb-6" />
 
-                <p className="text-white/50 text-sm 2xl:text-base 3xl:text-base 4xl:text-lg leading-relaxed font-body flex-1">
-                  {service.description}
-                </p>
+              <p className="text-white/50 text-sm 2xl:text-base 3xl:text-base 4xl:text-lg leading-relaxed font-body flex-1">
+                {service.description}
+              </p>
 
-                <Link
-                  href={service.href}
-                  className="mt-8 inline-flex items-center text-white text-sm 3xl:text-base font-body tracking-wider uppercase hover:tracking-[0.3em] transition-all duration-500 underline decoration-white/20 underline-offset-4 hover:decoration-white/60"
-                >
-                  Ontdek {service.title} →
-                </Link>
-              </div>
+              <Link
+                href={service.href}
+                className="mt-8 inline-flex items-center text-white text-sm 3xl:text-base font-body tracking-wider uppercase hover:tracking-[0.3em] transition-all duration-500 underline decoration-white/20 underline-offset-4 hover:decoration-white/60"
+              >
+                Ontdek {service.title} →
+              </Link>
             </motion.div>
           ))}
         </motion.div>
