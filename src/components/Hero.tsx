@@ -51,7 +51,10 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="text-white/60 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl max-w-xl 2xl:max-w-2xl mt-8 mb-10 font-body leading-relaxed">
+          <p
+            className="text-white/60 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl max-w-xl 2xl:max-w-2xl mt-8 mb-10 font-body leading-relaxed"
+            style={{ textShadow: '0 1px 20px rgba(0,0,0,0.8)' }}
+          >
             Ik maak content die jouw bedrijf er zo uitziet als het eigenlijk is — professioneel, menselijk, en herkenbaar.
           </p>
 
