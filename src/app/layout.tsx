@@ -118,30 +118,34 @@ export default function RootLayout({
           Uncomment the scripts below once you have the IDs.
         */}
 
-        {/* Google Analytics 4 */}
+        {/* Google Analytics 4 + Ads — single gtag.js load, deferred */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-0YXKX26DMM"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script id="gtag-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-0YXKX26DMM');
-          `}
-        </Script>
-
-        {/* Google Ads Conversion Tracking */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17899815726"
-        />
-        <Script id="google-ads" strategy="afterInteractive">
-          {`
             gtag('config', 'AW-17899815726');
           `}
         </Script>
+
+        {/*
+          Security headers that require HTTP-level config (CloudFront/nginx/CDN):
+          Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+          Cross-Origin-Opener-Policy: same-origin
+          X-Frame-Options: DENY
+          X-Content-Type-Options: nosniff
+          Referrer-Policy: strict-origin-when-cross-origin
+          Permissions-Policy: camera=(), microphone=(), geolocation=()
+        */}
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: ; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; frame-ancestors 'none';"
+        />
       </head>
       <body className="min-h-screen bg-primary text-white font-body antialiased">
         <CustomCursor />

@@ -29,8 +29,7 @@ export default function Testimonials({
   const shouldReduceMotion = useReducedMotion();
   const testimonials: Testimonial[] = testimonialsData;
 
-  // Duplicate for seamless infinite scroll
-  const duplicated = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
+  const duplicated = [...testimonials, ...testimonials, ...testimonials];
 
   const fadeUp = shouldReduceMotion
     ? { hidden: {}, visible: {} }

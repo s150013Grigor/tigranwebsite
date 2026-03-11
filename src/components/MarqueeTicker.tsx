@@ -1,13 +1,4 @@
-'use client';
-
-// Visueel scheidingselement tussen secties — horizontale ticker
 const ITEMS = [
-  'WEBSITE',
-  'SOCIAL MEDIA',
-  'BRANDING',
-  'CONTENT',
-  'REBRANDING',
-  'B2B',
   'WEBSITE',
   'SOCIAL MEDIA',
   'BRANDING',
@@ -16,8 +7,7 @@ const ITEMS = [
   'B2B',
 ];
 
-// 4× dupliceren voor naadloze loop (translateX -50% = precies 1 volledige set)
-const TICKER = [...ITEMS, ...ITEMS, ...ITEMS, ...ITEMS];
+const TICKER = [...ITEMS, ...ITEMS, ...ITEMS];
 
 export default function MarqueeTicker() {
   return (

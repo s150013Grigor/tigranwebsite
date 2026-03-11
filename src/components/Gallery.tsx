@@ -130,6 +130,8 @@ export default function Gallery({
                     src={item.coverImage}
                     alt={item.title}
                     fill
+                    loading="lazy"
+                    decoding="async"
                     className="object-cover transition-transform duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />

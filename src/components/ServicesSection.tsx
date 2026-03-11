@@ -115,9 +115,9 @@ export default function ServicesSection({
 
                 <Link
                   href={service.href}
-                  className="mt-8 inline-flex items-center text-white text-sm 3xl:text-base font-body tracking-wider uppercase hover:tracking-[0.3em] transition-all duration-500"
+                  className="mt-8 inline-flex items-center text-white text-sm 3xl:text-base font-body tracking-wider uppercase hover:tracking-[0.3em] transition-all duration-500 underline decoration-white/20 underline-offset-4 hover:decoration-white/60"
                 >
-                  Meer info →
+                  Ontdek {service.title} →
                 </Link>
               </div>
             </motion.div>

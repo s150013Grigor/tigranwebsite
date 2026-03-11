@@ -82,7 +82,7 @@ export default function TestimonialSpotlight() {
             <p className="text-white font-body text-sm 3xl:text-base 4xl:text-lg font-semibold tracking-wide uppercase">
               {testimonial.name}
             </p>
-            <p className="text-white/50 font-body text-xs 3xl:text-sm 4xl:text-base">
+            <p className="text-white/60 font-body text-xs 3xl:text-sm 4xl:text-base">
               {testimonial.role}
               {testimonial.company &&
                 testimonial.role &&

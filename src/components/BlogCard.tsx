@@ -42,6 +42,8 @@ export default function BlogCard({
             src={coverImage}
             alt={title}
             fill
+            loading="lazy"
+            decoding="async"
             className="object-cover transition-transform duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
@@ -52,22 +54,24 @@ export default function BlogCard({
           </div>
         </div>
         <div className="space-y-3 4xl:space-y-4">
-          <div className="flex items-center text-white/50 text-xs 3xl:text-sm 4xl:text-base">
+          <div className="flex items-center text-white/60 text-xs 3xl:text-sm 4xl:text-base">
             <HiCalendar className="w-3.5 h-3.5 3xl:w-4 3xl:h-4 4xl:w-5 4xl:h-5 mr-1.5" />
-            {new Date(date).toLocaleDateString('nl-BE', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
+            <time dateTime={date}>
+              {new Date(date).toLocaleDateString('nl-BE', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
           </div>
           <h3 className="text-xl 3xl:text-2xl 4xl:text-3xl font-heading font-semibold text-white group-hover:text-white transition-colors">
             {title}
           </h3>
-          <p className="text-white/60 text-sm 3xl:text-base 4xl:text-lg leading-relaxed line-clamp-2">
+          <p className="text-white/70 text-sm 3xl:text-base 4xl:text-lg leading-relaxed line-clamp-2">
             {excerpt}
           </p>
-          <span className="inline-flex items-center text-white text-sm 3xl:text-base 4xl:text-lg group-hover:gap-3 gap-2 transition-all">
-            Lees meer <HiArrowRight className="w-4 h-4" />
+          <span className="inline-flex items-center text-white text-sm 3xl:text-base 4xl:text-lg group-hover:gap-3 gap-2 transition-all underline decoration-white/20 underline-offset-4 group-hover:decoration-white/60">
+            Lees artikel <HiArrowRight className="w-4 h-4" aria-hidden="true" />
           </span>
         </div>
       </Link>

@@ -5,7 +5,7 @@ export default function Hero() {
     <div className="relative min-h-screen flex items-center bg-black">
       <div className="w-full max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16 pt-28 pb-16 lg:pt-32 lg:pb-16">
 
-        <p className="text-white/50 text-xs md:text-sm 2xl:text-base tracking-[0.5em] uppercase mb-8 font-body">
+        <p className="text-white/60 text-xs md:text-sm 2xl:text-base tracking-[0.5em] uppercase mb-8 font-body">
           Content &amp; Branding Fotografie
         </p>
 
@@ -18,7 +18,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="text-white/50 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl max-w-xl 2xl:max-w-2xl mt-8 mb-10 font-body leading-relaxed">
+        <p className="text-white/60 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl max-w-xl 2xl:max-w-2xl mt-8 mb-10 font-body leading-relaxed">
           Ik maak content die jouw bedrijf er zo uitziet als het eigenlijk is — professioneel, menselijk, en herkenbaar.
         </p>
 

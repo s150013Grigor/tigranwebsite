@@ -89,7 +89,7 @@
   }
 
   .label-accent {
-    @apply text-white/60 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase font-body;
+    @apply text-white/70 text-sm 3xl:text-base 4xl:text-lg tracking-[0.3em] uppercase font-body;
   }
 
   .btn-primary {
