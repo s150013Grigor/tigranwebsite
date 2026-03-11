@@ -27,7 +27,7 @@ export default function Testimonials({
   const shouldReduceMotion = useReducedMotion();
   const testimonials: Testimonial[] = testimonialsData;
 
-  const duplicated = [...testimonials, ...testimonials, ...testimonials];
+  const duplicated = [...testimonials, ...testimonials];
 
   const fadeUp = shouldReduceMotion
     ? { hidden: {}, visible: {} }
@@ -77,7 +77,7 @@ export default function Testimonials({
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-surface-dark to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-surface-dark to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-marquee md:animate-marquee-desktop group-hover:[animation-play-state:paused]">
+        <div className="flex animate-marquee md:animate-marquee-desktop group-hover:[animation-play-state:paused]" style={{ width: 'max-content' }}>
           {duplicated.map((testimonial, index) => (
             <div
               key={`${testimonial.id}-${index}`}

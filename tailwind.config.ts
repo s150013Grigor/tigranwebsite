@@ -39,7 +39,7 @@ const config: Config = {
         'fade-in': 'fadeIn 0.8s ease-out forwards',
         'slide-up': 'slideUp 0.8s ease-out forwards',
         'scale-in': 'scaleIn 0.6s ease-out forwards',
-        'marquee': 'marquee 20s linear infinite',
+        'marquee': 'marquee 30s linear infinite',
         'marquee-desktop': 'marquee 40s linear infinite',
       },
       keyframes: {
