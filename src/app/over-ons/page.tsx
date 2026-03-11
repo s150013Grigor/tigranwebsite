@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-import AboutSection from '@/components/AboutSection';
+import dynamic from 'next/dynamic';
 import { generateSEO } from '@/lib/seo';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
+
+const AboutSection = dynamic(() => import('@/components/AboutSection'));
 
 export const metadata: Metadata = generateSEO({
   title: 'Wie ik ben',

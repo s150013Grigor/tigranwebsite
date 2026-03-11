@@ -13,7 +13,6 @@ interface ImageRevealProps {
   delay?: number;
   sizes?: string;
   priority?: boolean;
-  quality?: number;
   loading?: 'lazy' | 'eager';
   imageClassName?: string;
   className?: string;
@@ -26,7 +25,6 @@ export default function ImageReveal({
   delay = 0,
   sizes,
   priority = false,
-  quality,
   loading,
   imageClassName = '',
   className = '',
@@ -54,7 +52,6 @@ export default function ImageReveal({
           fill
           sizes={sizes}
           priority={priority}
-          quality={quality}
           loading={priority ? undefined : loading}
           className={`object-cover ${imageClassName}`}
         />

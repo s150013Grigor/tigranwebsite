@@ -132,7 +132,6 @@ export default function Gallery({
                     alt={item.title}
                     delay={Math.min(index, 2) * 0.12}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    quality={80}
                     priority={index === 0}
                     loading={index === 0 ? 'eager' : 'lazy'}
                     className="absolute inset-0"

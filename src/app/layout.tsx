@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
+import dynamic from 'next/dynamic';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { generateLocalBusinessSchema, generateWebsiteSchema } from '@/lib/structured-data';
-import Script from 'next/script';
+
+const Analytics = dynamic(() => import('@/components/Analytics'), { ssr: false });
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -102,36 +104,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
 
-        {/* 
-          ============================================
-          GOOGLE ANALYTICS & ADS — SETUP REQUIRED
-          ============================================
-          
-          To enable Google Analytics, replace 'G-XXXXXXXXXX' below with your 
-          Google Analytics 4 Measurement ID.
-          
-          To enable Google Ads, you'll need:
-          1. Google Ads Conversion ID (format: AW-XXXXXXXXX)
-          2. Optionally a Google Tag Manager Container ID (format: GTM-XXXXXXX)
-          
-          Uncomment the scripts below once you have the IDs.
-        */}
-
-        {/* Google Analytics 4 + Ads — single gtag.js load, deferred */}
-        <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-0YXKX26DMM"
-        />
-        <Script id="gtag-init" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-0YXKX26DMM');
-            gtag('config', 'AW-17899815726');
-          `}
-        </Script>
-
         {/*
           Security headers — set at CDN/hosting level (CloudFront/nginx):
           Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
@@ -147,6 +119,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
