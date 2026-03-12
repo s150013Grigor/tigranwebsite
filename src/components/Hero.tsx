@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Hero() {
@@ -41,41 +40,6 @@ export default function Hero() {
 
       {/* Bottom fade to page background */}
       <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
-
-      {/* Content — bottom-left aligned */}
-      <div className="relative z-20 h-full flex items-end">
-        <div className="w-full max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-6 sm:px-10 lg:px-8 2xl:px-12 4xl:px-16 pb-20 md:pb-24 lg:pb-20">
-        <div className="max-w-2xl lg:max-w-[45%]">
-
-          <p className="text-white/60 text-xs md:text-sm 2xl:text-base tracking-[0.5em] uppercase mb-8 font-body">
-            Content &amp; Branding Fotografie
-          </p>
-
-          <h1 className="font-heading font-bold leading-[1.05] tracking-[-0.02em] mb-2">
-            <span className="block text-white text-[2.5rem] sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl 4xl:text-[7rem] 5xl:text-[8.5rem]">
-              Stockfoto&apos;s kosten je klanten.
-            </span>
-            <span className="block text-white/80 text-[2.5rem] sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl 4xl:text-[7rem] 5xl:text-[8.5rem] mt-1">
-              Echte foto&apos;s brengen ze.
-            </span>
-          </h1>
-
-          <p
-            className="text-white/60 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl max-w-xl 2xl:max-w-2xl mt-8 mb-10 font-body leading-relaxed"
-            style={{ textShadow: '0 1px 20px rgba(0,0,0,0.8)' }}
-          >
-            Ik maak content die jouw bedrijf er zo uitziet als het eigenlijk is — professioneel, menselijk, en herkenbaar.
-          </p>
-
-          <Link
-            href="/contact/"
-            className="px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 bg-white text-black font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:bg-white/85 transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block"
-          >
-            Bekijk of we matchen →
-          </Link>
-        </div>
-        </div>
-      </div>
     </section>
   );
 }

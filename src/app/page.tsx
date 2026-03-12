@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import Link from 'next/link';
 import Hero from '@/components/Hero';
 import MarqueeTicker from '@/components/MarqueeTicker';
 import { getAlbums, getBlogPosts } from '@/lib/content';
@@ -67,9 +68,38 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(photographerSchema) }}
       />
 
-      {/* Hero spacer — hero is position:fixed, this reserves its height */}
-      <div className="relative z-0 h-screen min-h-[600px] max-h-[1200px]">
-        <Hero />
+      {/* Fixed background photo */}
+      <Hero />
+
+      {/* Hero text — scrolls, transparent, overlays fixed photo on load */}
+      <div className="relative z-10 h-screen min-h-[600px] max-h-[1200px] flex items-end">
+        <div className="w-full max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-6 sm:px-10 lg:px-8 2xl:px-12 4xl:px-16 pb-20 md:pb-24 lg:pb-20">
+          <div className="max-w-2xl lg:max-w-[45%]">
+            <p className="text-white/60 text-xs md:text-sm 2xl:text-base tracking-[0.5em] uppercase mb-8 font-body">
+              Content &amp; Branding Fotografie
+            </p>
+            <h1 className="font-heading font-bold leading-[1.05] tracking-[-0.02em] mb-2">
+              <span className="block text-white text-[2.5rem] sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl 4xl:text-[7rem] 5xl:text-[8.5rem]">
+                Stockfoto&apos;s kosten je klanten.
+              </span>
+              <span className="block text-white/80 text-[2.5rem] sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl 4xl:text-[7rem] 5xl:text-[8.5rem] mt-1">
+                Echte foto&apos;s brengen ze.
+              </span>
+            </h1>
+            <p
+              className="text-white/60 text-base md:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl max-w-xl 2xl:max-w-2xl mt-8 mb-10 font-body leading-relaxed"
+              style={{ textShadow: '0 1px 20px rgba(0,0,0,0.8)' }}
+            >
+              Ik maak content die jouw bedrijf er zo uitziet als het eigenlijk is — professioneel, menselijk, en herkenbaar.
+            </p>
+            <Link
+              href="/contact/"
+              className="px-10 py-4 3xl:px-12 3xl:py-5 4xl:px-14 4xl:py-6 bg-white text-black font-body text-xs 3xl:text-sm 4xl:text-base uppercase tracking-[0.22em] hover:bg-white/85 transition-all duration-[250ms] ease-out active:scale-[0.98] inline-block"
+            >
+              Bekijk of we matchen →
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* Page content scrolls over the fixed hero */}
