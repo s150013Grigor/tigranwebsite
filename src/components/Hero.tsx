@@ -4,16 +4,26 @@ import Image from 'next/image';
 export default function Hero() {
   return (
     <section className="fixed top-0 left-0 w-full h-screen min-h-[600px] max-h-[1200px] overflow-hidden z-0">
-      {/* Background image — LCP, priority preloaded */}
+      {/* Background image mobile — LCP, priority preloaded */}
+      <Image
+        src="/mobilehero.jpg"
+        alt=""
+        role="presentation"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center lg:hidden"
+      />
+
+      {/* Background image desktop */}
       <Image
         src="/Achtergrond_website.jpg"
         alt=""
         role="presentation"
         fill
         priority
-
         sizes="100vw"
-        className="object-cover object-[75%_50%] lg:object-[center_60%]"
+        className="hidden lg:block object-cover object-[center_60%]"
       />
 
       {/* Dark overlay */}
