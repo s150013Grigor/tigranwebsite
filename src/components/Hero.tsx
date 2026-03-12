@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="fixed top-0 left-0 w-full h-screen min-h-[600px] max-h-[1200px] overflow-hidden z-0">
       {/* Background image — LCP, priority preloaded */}
       <Image
-        src="/DSCF6090-2.webp"
+        src="/Achtergrond_website.jpg"
         alt=""
         role="presentation"
         fill

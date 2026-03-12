@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ScrollToTop from '@/components/ScrollToTop';
 import { generateLocalBusinessSchema, generateWebsiteSchema } from '@/lib/structured-data';
 
 const Analytics = dynamic(() => import('@/components/Analytics'), { ssr: false });
@@ -91,7 +90,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
-        <link rel="preload" as="image" type="image/webp" href="/DSCF6090-2.webp" fetchPriority="high" />
+        <link rel="preload" as="image" type="image/jpeg" href="/Achtergrond_website.jpg" fetchPriority="high" />
         <link rel="preconnect" href="https://tigranmedia.be" />
         <link rel="dns-prefetch" href="https://tigranmedia.be" />
 
@@ -117,7 +116,6 @@ export default function RootLayout({
         */}
       </head>
       <body className="min-h-screen bg-primary text-white font-body antialiased">
-        <ScrollToTop />
         <Header />
         <main>{children}</main>
         <Footer />
