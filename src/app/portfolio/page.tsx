@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import CTA from '@/components/CTA';
+import PortfolioGrid from '@/components/PortfolioGrid';
 import { getPhotos } from '@/lib/content';
 import { generateSEO } from '@/lib/seo';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
@@ -40,20 +40,7 @@ export default function PortfolioPage() {
 
       <section className="mt-12 pb-20 bg-primary">
         <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-[5px]">
-            {photos.map((photo) => (
-              <div key={photo.id} className="break-inside-avoid mb-[5px]">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  className="w-full h-auto block"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-            ))}
-          </div>
+          <PortfolioGrid photos={photos} />
         </div>
       </section>
 
