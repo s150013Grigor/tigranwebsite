@@ -6,7 +6,8 @@ import { cities } from '@/data/cities';
 const footerNavigation = {
   pages: [
     { name: 'Home', href: '/' },
-    { name: 'Wat ik doe', href: '/portfolio/' },
+    { name: 'Diensten', href: '/#diensten' },
+    { name: 'Ons werk', href: '/portfolio/' },
     { name: 'Wie ik ben', href: '/over-ons/' },
     { name: 'Blog', href: '/blog/' },
     { name: 'FAQ', href: '/faq/' },
