@@ -13,7 +13,7 @@ export default function Hero() {
         priority
 
         sizes="100vw"
-        className="object-cover object-[20%_50%] lg:object-[center_60%]"
+        className="object-cover object-[75%_50%] lg:object-[center_60%]"
       />
 
       {/* Dark overlay */}
