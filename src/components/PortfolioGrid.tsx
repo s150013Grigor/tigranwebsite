@@ -11,6 +11,48 @@ interface Photo {
   height: number;
 }
 
+function LightboxPhoto({ photo }: { photo: Photo }) {
+  const [loaded, setLoaded] = useState(false);
+
+  // Reset loaded state when photo changes
+  useEffect(() => { setLoaded(false); }, [photo.src]);
+
+  return (
+    <div
+      className="relative flex items-center justify-center"
+      style={{ maxWidth: '90vw', maxHeight: '90vh' }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Thumbnail shown as blurred placeholder while full image loads */}
+      {!loaded && (
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          width={photo.width}
+          height={photo.height}
+          quality={40}
+          className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain blur-sm"
+          sizes="90vw"
+          aria-hidden
+        />
+      )}
+
+      {/* Full quality image — fades in on load */}
+      <Image
+        src={photo.src}
+        alt={photo.alt}
+        width={photo.width}
+        height={photo.height}
+        quality={90}
+        className={`max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0 absolute inset-0 m-auto'}`}
+        sizes="90vw"
+        priority
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
+  );
+}
+
 export default function PortfolioGrid({ photos }: { photos: Photo[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -56,8 +98,10 @@ export default function PortfolioGrid({ photos }: { photos: Photo[] }) {
               alt={photo.alt}
               width={photo.width}
               height={photo.height}
+              quality={40}
+              sizes="(max-width: 768px) 50vw, 33vw"
+              priority={index < 6}
               className="w-full h-auto block transition-[filter] duration-300 group-hover:brightness-75"
-              sizes="(max-width: 1024px) 50vw, 33vw"
             />
           </div>
         ))}
@@ -87,22 +131,7 @@ export default function PortfolioGrid({ photos }: { photos: Photo[] }) {
             ‹
           </button>
 
-          {/* Photo — stopPropagation so clicking image doesn't close */}
-          <div
-            className="relative flex items-center justify-center"
-            style={{ maxWidth: '90vw', maxHeight: '90vh' }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={active.src}
-              alt={active.alt}
-              width={active.width}
-              height={active.height}
-              className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
-              sizes="90vw"
-              priority
-            />
-          </div>
+          <LightboxPhoto photo={active} />
 
           {/* Next */}
           <button
