@@ -34,7 +34,7 @@ export default function Hero() {
 
       {/* Content — bottom-left aligned */}
       <div className="relative z-20 h-full flex items-end">
-        <div className="w-full max-w-2xl md:max-w-2xl lg:max-w-3xl xl:max-w-3xl 2xl:max-w-3xl mr-auto px-6 sm:px-10 lg:px-20 2xl:px-24 4xl:px-28 pb-20 md:pb-24 lg:pb-20">
+        <div className="w-full max-w-2xl lg:max-w-[45%] mr-auto px-6 sm:px-10 lg:px-20 2xl:px-24 4xl:px-28 pb-20 md:pb-24 lg:pb-20">
 
           <p className="text-white/60 text-xs md:text-sm 2xl:text-base tracking-[0.5em] uppercase mb-8 font-body">
             Content &amp; Branding Fotografie
