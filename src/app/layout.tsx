@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 import { generateLocalBusinessSchema, generateWebsiteSchema } from '@/lib/structured-data';
 
 const Analytics = dynamic(() => import('@/components/Analytics'), { ssr: false });
@@ -116,6 +117,7 @@ export default function RootLayout({
         */}
       </head>
       <body className="min-h-screen bg-primary text-white font-body antialiased">
+        <ScrollToTop />
         <Header />
         <main>{children}</main>
         <Footer />
