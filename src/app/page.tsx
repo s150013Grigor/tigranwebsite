@@ -4,11 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import MarqueeTicker from '@/components/MarqueeTicker';
-import { getAlbums, getBlogPosts } from '@/lib/content';
+import { getBlogPosts } from '@/lib/content';
 import { generatePhotographerSchema } from '@/lib/structured-data';
 import { generateSEO } from '@/lib/seo';
 
-const Gallery = dynamic(() => import('@/components/Gallery'));
 const ServicesSection = dynamic(() => import('@/components/ServicesSection'));
 const Testimonials = dynamic(() => import('@/components/Testimonials'));
 const CTA = dynamic(() => import('@/components/CTA'));
@@ -28,20 +27,8 @@ function formatDate(iso: string): string {
 }
 
 export default function HomePage() {
-  const allAlbums = getAlbums();
-  const albums = allAlbums.filter((a) => a.id !== 'familie');
   const blogPosts = getBlogPosts().slice(0, 3);
   const photographerSchema = generatePhotographerSchema();
-
-  const galleryItems = albums.slice(0, 6).map((album) => ({
-    id: album.id,
-    title: album.title,
-    slug: album.slug,
-    coverImage: album.coverImage,
-    category: album.category,
-    description: album.description,
-    href: `/portfolio/${album.slug}/`,
-  }));
 
   const brandingServices = [
     {
@@ -107,13 +94,6 @@ export default function HomePage() {
         <ServicesSection services={brandingServices} />
 
         <MarqueeTicker />
-
-        <Gallery
-          items={galleryItems}
-          columns={3}
-          title="Portfolio"
-          subtitle="Recent werk"
-        />
 
         {/* Divider */}
         <div className="relative overflow-hidden bg-primary-light" style={{ height: '60vh' }}>

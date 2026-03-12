@@ -6,7 +6,8 @@ import { HiMenu, HiX } from 'react-icons/hi';
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Wat ik doe', href: '/portfolio/' },
+  { label: 'Diensten', href: '/#diensten' },
+  { label: 'Ons werk', href: '/portfolio/' },
   { label: 'Wie ik ben', href: '/over-ons/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'FAQ', href: '/faq/' },

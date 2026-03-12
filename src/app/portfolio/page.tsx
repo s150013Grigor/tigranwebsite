@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import CTA from '@/components/CTA';
-import { getAlbums } from '@/lib/content';
+import { getPhotos } from '@/lib/content';
 import { generateSEO } from '@/lib/seo';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
 
@@ -13,7 +12,7 @@ export const metadata: Metadata = generateSEO({
 });
 
 export default function PortfolioPage() {
-  const albums = getAlbums();
+  const photos = getPhotos();
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Portfolio', url: '/portfolio' },
@@ -26,8 +25,7 @@ export default function PortfolioPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* Hero + Category Grid — compact */}
-      <section className="pt-28 md:pt-32 pb-10 bg-black">
+      <section className="pt-32 pb-10 bg-black">
         <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
           <div className="text-center">
             <p className="text-white/50 text-sm tracking-[0.3em] uppercase mb-4 font-body">
@@ -40,41 +38,25 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="pt-10 pb-20 3xl:pb-28 4xl:pb-36 bg-primary">
+      <section className="mt-12 pb-20 bg-primary">
         <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {albums.map((album) => (
-              <Link
-                key={album.id}
-                href={`/portfolio/${album.slug}/`}
-                className="group relative block overflow-hidden aspect-[4/3]"
-              >
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-[5px]">
+            {photos.map((photo) => (
+              <div key={photo.id} className="break-inside-avoid mb-[5px]">
                 <Image
-                  src={album.coverImage}
-                  alt={album.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  className="w-full h-auto block"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/90 transition-all duration-500" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <h3 className="text-white text-xl md:text-2xl font-heading font-bold group-hover:text-white transition-colors duration-300">
-                    {album.title}
-                  </h3>
-                  <p className="text-white/80 text-sm mt-2 line-clamp-2">
-                    {album.description}
-                  </p>
-                  <span className="inline-flex items-center text-white/50 text-sm mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Bekijk foto&apos;s &rarr;
-                  </span>
-                </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
       <CTA
         title="Wilt u ook zulke foto's?"
         description="Neem contact op voor een vrijblijvende offerte en ontdek wat Tigran Media voor u kan betekenen."

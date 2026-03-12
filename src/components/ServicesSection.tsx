@@ -20,7 +20,7 @@ const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function ServicesSection({
   services = [],
-  title = 'Wat ik doe',
+  title = 'Diensten',
   subtitle = 'Diensten',
 }: ServicesSectionProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -53,7 +53,7 @@ export default function ServicesSection({
       };
 
   return (
-    <section className="pt-12 pb-24 md:pt-16 md:pb-32 3xl:pt-24 3xl:pb-44 4xl:pt-28 4xl:pb-56 bg-black relative overflow-hidden">
+    <section id="diensten" className="pt-12 pb-24 md:pt-16 md:pb-32 3xl:pt-24 3xl:pb-44 4xl:pt-28 4xl:pb-56 bg-black relative overflow-hidden">
       <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
 
         <div className="mb-20 md:mb-24 4xl:mb-32">
