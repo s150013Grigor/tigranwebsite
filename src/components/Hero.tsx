@@ -27,7 +27,7 @@ export default function Hero() {
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/[0.65]" />
+      <div className="absolute inset-0 bg-black/[0.45]" />
 
       {/* Film grain texture */}
       <div
@@ -44,7 +44,8 @@ export default function Hero() {
 
       {/* Content — bottom-left aligned */}
       <div className="relative z-20 h-full flex items-end">
-        <div className="w-full max-w-2xl lg:max-w-[45%] mr-auto px-6 sm:px-10 lg:px-20 2xl:px-24 4xl:px-28 pb-20 md:pb-24 lg:pb-20">
+        <div className="w-full max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-6 sm:px-10 lg:px-8 2xl:px-12 4xl:px-16 pb-20 md:pb-24 lg:pb-20">
+        <div className="max-w-2xl lg:max-w-[45%]">
 
           <p className="text-white/60 text-xs md:text-sm 2xl:text-base tracking-[0.5em] uppercase mb-8 font-body">
             Content &amp; Branding Fotografie
@@ -72,6 +73,7 @@ export default function Hero() {
           >
             Bekijk of we matchen →
           </Link>
+        </div>
         </div>
       </div>
     </section>
