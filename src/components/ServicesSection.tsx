@@ -56,7 +56,7 @@ export default function ServicesSection({
     <section id="diensten" className="pt-12 pb-24 md:pt-16 md:pb-32 3xl:pt-24 3xl:pb-44 4xl:pt-28 4xl:pb-56 bg-black relative overflow-hidden">
       <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[85%] 5xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 4xl:px-16">
 
-        <div className="mb-20 md:mb-24 4xl:mb-32">
+        <div className="mb-20 md:mb-24 4xl:mb-32 text-center">
           <motion.p
             variants={fadeUp}
             initial="hidden"
@@ -72,7 +72,7 @@ export default function ServicesSection({
             whileInView={shouldReduceMotion ? {} : { scaleX: 1, opacity: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: 0.08, ease: [0.25, 0.4, 0.25, 1] }}
-            className="block w-10 h-[1px] bg-white/20 mb-5 origin-left"
+            className="block w-10 h-[1px] bg-white/20 mb-5 mx-auto origin-center"
           />
           <motion.h2
             variants={fadeUp}
